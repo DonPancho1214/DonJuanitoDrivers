@@ -97,11 +97,17 @@ export default function SedeDetalle({ sede, onClose }) {
   if (preciosRaw) {
     preciosRaw.forEach(row => {
       // Ocultar visualmente la modalidad SIN PRACTICAS en el modal
-      if (row.modalidad === 'SIN PRACTICAS') return
+      if (row.modalidad.toUpperCase().includes('SIN PRACTICA')) return
 
       const isCombo = row.categoria.includes('/')
       const precioStr = `$${row.precio.toLocaleString('es-CO')}`
       const contadoStr = `$${(row.precio - 50000).toLocaleString('es-CO')}`
+
+      // Cambiar visualmente 'CON PRACTICAS' a 'CURSO COMPLETO'
+      let displayModalidad = row.modalidad
+      if (displayModalidad.toUpperCase() === 'CON PRACTICAS') {
+        displayModalidad = 'CURSO COMPLETO'
+      }
 
       if (isCombo) {
         const nombreCombo = row.categoria.replace('/', ' + ')
@@ -110,16 +116,12 @@ export default function SedeDetalle({ sede, onClose }) {
           combo = { nombre: nombreCombo, precios: {} }
           combosFormateados.push(combo)
         }
-        combo.precios[row.modalidad] = precioStr
-        if (row.modalidad !== 'CURSO COMPLETO') {
-          combo.precios[row.modalidad + ' DE CONTADO'] = contadoStr
-        }
+        combo.precios[displayModalidad] = precioStr
+        combo.precios[displayModalidad + ' DE CONTADO'] = contadoStr
       } else {
         if (!preciosFormateados[row.categoria]) preciosFormateados[row.categoria] = {}
-        preciosFormateados[row.categoria][row.modalidad] = precioStr
-        if (row.modalidad !== 'CURSO COMPLETO') {
-          preciosFormateados[row.categoria][row.modalidad + ' DE CONTADO'] = contadoStr
-        }
+        preciosFormateados[row.categoria][displayModalidad] = precioStr
+        preciosFormateados[row.categoria][displayModalidad + ' DE CONTADO'] = contadoStr
       }
     })
   }
