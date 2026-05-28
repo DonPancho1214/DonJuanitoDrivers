@@ -39,7 +39,7 @@ function PreciosBlock({ precios, combos, nota }) {
                   key={key} 
                   label={key.startsWith('↳') ? key : key} 
                   value={val} 
-                  highlight={key.includes('CONTADO') || key.includes('COMPLETO')} 
+                  highlight={key.includes('CONTADO')} 
                   indent={key.includes('CONTADO')} 
                 />
               ))}
@@ -67,7 +67,7 @@ function PreciosBlock({ precios, combos, nota }) {
                     key={key} 
                     label={key.startsWith('↳') ? key : key} 
                     value={val} 
-                    highlight={key.includes('CONTADO') || key.includes('COMPLETO')} 
+                    highlight={key.includes('CONTADO')} 
                     indent={key.includes('CONTADO')} 
                   />
                 ))}
