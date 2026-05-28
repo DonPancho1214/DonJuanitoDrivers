@@ -96,6 +96,9 @@ export default function SedeDetalle({ sede, onClose }) {
 
   if (preciosRaw) {
     preciosRaw.forEach(row => {
+      // Ocultar visualmente la modalidad SIN PRACTICAS en el modal
+      if (row.modalidad === 'SIN PRACTICAS') return
+
       const isCombo = row.categoria.includes('/')
       const precioStr = `$${row.precio.toLocaleString('es-CO')}`
       const contadoStr = `$${(row.precio - 50000).toLocaleString('es-CO')}`
@@ -255,6 +258,11 @@ export default function SedeDetalle({ sede, onClose }) {
           <div className="mb-6">
             <div className="text-gray-500 text-xs uppercase tracking-wider mb-3 flex items-center gap-2">
               <Wallet size={14} className="text-gray-500" /> Precios
+            </div>
+
+            <div className="py-2 px-3 mb-4 rounded-xl text-xs font-semibold text-center"
+              style={{ background: 'rgba(250,204,21,0.08)', border: '1px solid rgba(250,204,21,0.2)', color: '#FACC15' }}>
+              ★ Todos los precios incluyen exámenes médicos.
             </div>
 
             {/* Estado: cargando */}
