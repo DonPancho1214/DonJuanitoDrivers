@@ -10,7 +10,7 @@ export default function Hero() {
       <div className="absolute inset-0 z-0 bg-[#0a0a0a]">
         <div className="relative w-full h-[65vh] md:h-full">
           <img src="/hero-background.webp" alt="Familia feliz Don Juanito Drivers" width="1920" height="1080" loading="eager"
-            className="w-full h-full object-cover object-top md:object-center opacity-60"
+            className="w-full h-full object-cover object-[60%_top] md:object-center opacity-60"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#0a0a0a] md:hidden" />
         </div>

@@ -20,7 +20,7 @@ export default function App() {
       <div className="fixed inset-0 z-0 pointer-events-none">
         {/* Main Background Image */}
         <div className="w-full h-[65vh] md:h-full relative">
-          <img src="/hero-background.webp" alt="Fondo Don Juanito" width="1920" height="1080" loading="eager" className="w-full h-full object-cover object-top md:object-center opacity-45" />
+          <img src="/hero-background.webp" alt="Fondo Don Juanito" width="1920" height="1080" loading="eager" className="w-full h-full object-cover object-[60%_top] md:object-center opacity-45" />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#0a0a0a] md:hidden" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/30 via-[#0a0a0a]/50 to-[#0a0a0a]/70" />
