@@ -9,7 +9,7 @@ export default function Hero() {
       {/* Background */}
       <div className="absolute inset-0 z-0 bg-[#0a0a0a]">
         <img src="/hero-background.png" alt="Familia feliz Don Juanito Drivers"
-          className="w-full h-full object-cover object-center opacity-60"
+          className="w-full h-full object-cover object-[80%_center] md:object-center opacity-60"
         />
         {/* Gradients to darken the left side for text readability while revealing the right side */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent" />
@@ -101,9 +101,9 @@ export default function Hero() {
               { value: '9+', label: 'Sedes activas' },
               { value: '4', label: 'Categorías' },
               { value: '2.000+', label: 'Conductores formados' },
-              { value: '98%', label: 'Tasa de aprobación' },
+              { value: '98%', label: 'Tasa de aprobación', hideOnMobile: true },
             ].map((s, idx) => (
-              <div key={idx} className="flex flex-col items-center gap-1">
+              <div key={idx} className={`flex flex-col items-center gap-1 ${s.hideOnMobile ? 'hidden md:flex' : ''}`}>
                 <span className="text-white font-medium text-3xl leading-none" style={{ fontFamily: 'Outfit' }}>{s.value}</span>
                 <span className="text-gray-400 text-xs uppercase tracking-wider">{s.label}</span>
               </div>

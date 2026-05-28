@@ -381,7 +381,7 @@ export default function Sedes() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
             {principal.map(s => <SedeCard key={s.id} sede={s} onVerMas={setSedeSeleccionada} />)}
             {/* Brand card */}
-            <div className="relative overflow-hidden rounded-2xl flex flex-col items-center justify-center text-center p-6 gap-2"
+            <div className="hidden md:flex relative overflow-hidden rounded-2xl flex-col items-center justify-center text-center p-6 gap-2"
               style={{ background: 'linear-gradient(135deg, #0d0d00 0%, #1a1400 60%, #0a0800 100%)', border: '1px solid rgba(250,204,21,0.25)', boxShadow: '0 0 40px rgba(250,204,21,0.10)' }}>
               {/* Glow ambiental */}
               <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at 50% 35%, rgba(250,204,21,0.12) 0%, transparent 70%)' }} />
