@@ -48,7 +48,7 @@ export default function Navbar() {
           {/* Logo */}
           <a href="#inicio" className="flex items-center gap-4 group" onClick={() => setActiveSection('inicio')}>
             <div className="relative flex-shrink-0 transition-transform duration-300 group-hover:scale-105">
-              <img src="/nuevo-logo.png" alt="Don Juanito Drivers logo"
+              <img src="/nuevo-logo.webp" alt="Don Juanito Drivers logo" width="160" height="56" loading="lazy"
                 className="w-auto h-12 md:h-14 object-contain"
                 style={{ filter: 'drop-shadow(0 0 8px rgba(250,204,21,0.3))' }} />
             </div>

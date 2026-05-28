@@ -15,8 +15,9 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3 mb-5">
               <img
-                src="/nuevo-logo.png"
+                src="/nuevo-logo.webp"
                 alt="Don Juanito Drivers"
+                width="80" height="80" loading="lazy"
                 className="w-20 h-20 object-contain"
                 style={{ filter: 'drop-shadow(0 0 8px rgba(250,204,21,0.4))' }}
               />
@@ -48,7 +49,7 @@ export default function Footer() {
                   )
                 },
               ].map((s, i) => (
-                <a key={i} href={s.url} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded border border-white/10 flex items-center justify-center text-gray-500 hover:text-yellow-400 hover:border-yellow-400/40 transition-all">
+                <a key={i} href={s.url} target="_blank" rel="noopener noreferrer" aria-label={`Visítanos en ${s.name}`} className="w-9 h-9 rounded border border-white/10 flex items-center justify-center text-gray-500 hover:text-yellow-400 hover:border-yellow-400/40 transition-all">
                   {s.icon}
                 </a>
               ))}

@@ -139,14 +139,16 @@ export default function SedeDetalle({ sede, onClose }) {
 
         <div className="h-1 w-full" style={{ background: 'linear-gradient(90deg, #FACC15, #fde047, #FACC15)' }} />
 
-        <button onClick={onClose}
-          className="absolute top-4 right-4 w-9 h-9 rounded-full flex items-center justify-center transition-all z-10"
-          style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', color: '#9ca3af' }}
-          aria-label="Cerrar">
-          <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-            <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
-          </svg>
-        </button>
+        <div className="sticky top-4 z-50 w-full flex justify-end px-4 pointer-events-none h-0">
+          <button onClick={onClose}
+            className="w-9 h-9 rounded-full flex items-center justify-center transition-all pointer-events-auto hover:bg-white/10"
+            style={{ background: 'rgba(20,20,20,0.8)', backdropFilter: 'blur(8px)', border: '1px solid rgba(255,255,255,0.15)', color: '#fff' }}
+            aria-label="Cerrar">
+            <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+              <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
+        </div>
 
         <div className="p-7">
           {sede.destacada && (

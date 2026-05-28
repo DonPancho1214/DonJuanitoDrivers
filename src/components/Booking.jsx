@@ -847,8 +847,9 @@ https://www.runt.gov.co/directorio-de-actores`
 
               {/* Nombre */}
               <div className="flex flex-col gap-1.5">
-                <label className="text-gray-400 text-xs uppercase tracking-wider">Nombre completo <span className="text-[#FFD700] font-bold">*</span></label>
+                <label htmlFor="nombre" className="text-gray-400 text-xs uppercase tracking-wider">Nombre completo <span className="text-[#FFD700] font-bold">*</span></label>
                 <input 
+                  id="nombre"
                   className={`form-input ${errors.nombre ? 'border-red-500 focus:border-red-500' : ''}`} 
                   name="nombre" 
                   placeholder="Tu nombre completo" 
@@ -861,8 +862,9 @@ https://www.runt.gov.co/directorio-de-actores`
 
               {/* Cédula */}
               <div className="flex flex-col gap-1.5">
-                <label className="text-gray-400 text-xs uppercase tracking-wider">Número de cédula</label>
+                <label htmlFor="cedula" className="text-gray-400 text-xs uppercase tracking-wider">Número de cédula</label>
                 <input 
+                  id="cedula"
                   className={`form-input ${errors.cedula ? 'border-red-500 focus:border-red-500' : ''}`} 
                   name="cedula" 
                   placeholder="Tu número de cédula" 
@@ -874,8 +876,9 @@ https://www.runt.gov.co/directorio-de-actores`
 
               {/* Celular */}
               <div className="flex flex-col gap-1.5">
-                <label className="text-gray-400 text-xs uppercase tracking-wider">Celular / WhatsApp <span className="text-[#FFD700] font-bold">*</span></label>
+                <label htmlFor="celular" className="text-gray-400 text-xs uppercase tracking-wider">Celular / WhatsApp <span className="text-[#FFD700] font-bold">*</span></label>
                 <input 
+                  id="celular"
                   className={`form-input ${errors.celular ? 'border-red-500 focus:border-red-500' : ''}`} 
                   name="celular" 
                   type="tel" 
@@ -889,8 +892,9 @@ https://www.runt.gov.co/directorio-de-actores`
 
               {/* Sede */}
               <div className="flex flex-col gap-1.5">
-                <label className="text-gray-400 text-xs uppercase tracking-wider">Sede de preferencia <span className="text-[#FFD700] font-bold">*</span></label>
+                <label htmlFor="sede" className="text-gray-400 text-xs uppercase tracking-wider">Sede de preferencia <span className="text-[#FFD700] font-bold">*</span></label>
                 <select 
+                  id="sede"
                   className={`form-input ${errors.sede ? 'border-red-500 focus:border-red-500' : ''}`} 
                   name="sede" 
                   value={form.sede} 
@@ -905,8 +909,9 @@ https://www.runt.gov.co/directorio-de-actores`
 
               {/* Categoría */}
               <div className="flex flex-col gap-1.5">
-                <label className="text-gray-400 text-xs uppercase tracking-wider">Categoría de licencia <span className="text-[#FFD700] font-bold">*</span></label>
+                <label htmlFor="categoria" className="text-gray-400 text-xs uppercase tracking-wider">Categoría de licencia <span className="text-[#FFD700] font-bold">*</span></label>
                 <select 
+                  id="categoria"
                   className={`form-input ${!form.sede ? 'opacity-50 cursor-not-allowed' : ''} ${errors.categoria ? 'border-red-500 focus:border-red-500' : ''}`} 
                   name="categoria" 
                   value={form.categoria} 
@@ -926,8 +931,9 @@ https://www.runt.gov.co/directorio-de-actores`
 
               {/* Método de pago */}
               <div className="flex flex-col gap-1.5">
-                <label className="text-gray-400 text-xs uppercase tracking-wider">Método de pago <span className="text-[#FFD700] font-bold">*</span></label>
+                <label htmlFor="metodoPago" className="text-gray-400 text-xs uppercase tracking-wider">Método de pago <span className="text-[#FFD700] font-bold">*</span></label>
                 <select 
+                  id="metodoPago"
                   className={`form-input ${!form.sede ? 'opacity-50 cursor-not-allowed' : ''} ${errors.metodoPago ? 'border-red-500 focus:border-red-500' : ''}`} 
                   name="metodoPago" 
                   value={form.metodoPago} 
@@ -958,8 +964,9 @@ https://www.runt.gov.co/directorio-de-actores`
 
               {/* Fecha */}
               <div className="flex flex-col gap-1.5">
-                <label className="text-gray-400 text-xs uppercase tracking-wider">Fecha preferida <span className="text-[#FFD700] font-bold">*</span></label>
+                <label htmlFor="fecha" className="text-gray-400 text-xs uppercase tracking-wider">Fecha preferida <span className="text-[#FFD700] font-bold">*</span></label>
                 <input 
+                  id="fecha"
                   className={`form-input ${errors.fecha ? 'border-red-500 focus:border-red-500' : ''}`} 
                   name="fecha" 
                   type="date" 
@@ -976,8 +983,9 @@ https://www.runt.gov.co/directorio-de-actores`
 
               {/* Hora — opciones dinámicas según la sede seleccionada */}
               <div className="flex flex-col gap-1.5">
-                <label className="text-gray-400 text-xs uppercase tracking-wider">Hora preferida <span className="text-[#FFD700] font-bold">*</span></label>
+                <label htmlFor="hora" className="text-gray-400 text-xs uppercase tracking-wider">Hora preferida <span className="text-[#FFD700] font-bold">*</span></label>
                 <select 
+                  id="hora"
                   className={`form-input ${
                     !form.sede ? 'opacity-50 cursor-not-allowed' : ''
                   } ${errors.hora ? 'border-red-500 focus:border-red-500' : ''}`} 

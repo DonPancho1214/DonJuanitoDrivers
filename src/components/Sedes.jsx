@@ -387,8 +387,9 @@ export default function Sedes() {
               <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at 50% 35%, rgba(250,204,21,0.12) 0%, transparent 70%)' }} />
               <div className="relative z-10 flex flex-col items-center gap-2">
                 <img
-                  src="/nuevo-logo.png"
+                  src="/nuevo-logo.webp"
                   alt="Don Juanito Drivers"
+                  width="220" height="220" loading="lazy"
                   className="animate-float"
                   style={{ width: '220px', height: 'auto', mixBlendMode: 'multiply', filter: 'drop-shadow(0 0 22px rgba(250,204,21,0.50))' }}
                 />
