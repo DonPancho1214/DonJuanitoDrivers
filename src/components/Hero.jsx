@@ -9,7 +9,7 @@ export default function Hero() {
       {/* Background */}
       <div className="absolute inset-0 z-0 bg-[#0a0a0a]">
         <img src="/hero-background.webp" alt="Familia feliz Don Juanito Drivers" width="1920" height="1080" loading="eager"
-          className="w-full h-full object-cover object-[30%_center] md:object-center opacity-60"
+          className="w-full h-full object-contain object-top md:object-cover md:object-center opacity-60"
         />
         {/* Gradients to darken the left side for text readability while revealing the right side */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent" />

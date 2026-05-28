@@ -19,7 +19,7 @@ export default function App() {
     <div className="min-h-screen bg-[#0a0a0a] relative overflow-hidden">
       <div className="fixed inset-0 z-0 pointer-events-none">
         {/* Main Background Image */}
-        <img src="/hero-background.webp" alt="Fondo Don Juanito" width="1920" height="1080" loading="eager" className="w-full h-full object-cover object-[30%_center] md:object-center opacity-45" />
+        <img src="/hero-background.webp" alt="Fondo Don Juanito" width="1920" height="1080" loading="eager" className="w-full h-full object-contain object-top md:object-cover md:object-center opacity-45" />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/30 via-[#0a0a0a]/50 to-[#0a0a0a]/70" />
         
         {/* Minimalist Driving Details */}
