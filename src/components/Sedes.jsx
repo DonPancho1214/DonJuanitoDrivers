@@ -282,11 +282,15 @@ function SedeCard({ sede, onVerMas }) {
   return (
     <div className="glass-card card-hover p-6 flex flex-col relative overflow-hidden group">
       <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-yellow-400/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-      {sede.alertas?.length > 0 && (
-        <div className="mb-3 flex flex-wrap gap-1">
+      {sede.alertas?.length > 0 ? (
+        <div className="h-11 mb-3 flex flex-wrap gap-1 items-start pt-1.5">
           {sede.alertas.map((a, i) => (
             <span key={i} className="text-xs px-2 py-0.5 rounded-full" style={{ background: 'rgba(250,204,21,0.1)', color: '#FACC15', border: '1px solid rgba(250,204,21,0.2)' }}>{a}</span>
           ))}
+        </div>
+      ) : (
+        <div className="h-11 mb-3 flex flex-wrap gap-1 items-start pt-1.5 opacity-0 pointer-events-none" aria-hidden="true">
+          <span className="text-xs px-2 py-0.5 rounded-full select-none">&nbsp;</span>
         </div>
       )}
       <h3 className="font-black text-white text-xl mb-0.5" style={{ fontFamily: "'Outfit', sans-serif" }}>{sede.nombre}</h3>
@@ -357,7 +361,7 @@ export default function Sedes() {
 
   return (
     <>
-      <section id="sedes" className="py-24 relative" style={{ background: 'rgba(10,10,10,0.6)' }}>
+      <section id="sedes" className="py-24 relative" style={{ background: 'rgba(13,13,13,0.7)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="section-label mb-3">Nuestras sedes</div>

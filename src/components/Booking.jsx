@@ -732,7 +732,7 @@ https://www.runt.gov.co/directorio-de-actores`
       // Reemplazar costo en el mensaje de Telegram
       if (precioFinal && precioFinal.isCredito) {
         const provider = form.metodoPago.includes('Addi') ? 'Addi' : 'Sistecrédito'
-        const multiLineCost = `💰 Puedes empezar con: ${formatPrice(precioFinal.inicial)}\n💵 Valor total con ${provider}: ${formatPrice(precioFinal.total)}`
+        const multiLineCost = `💰 COSTO TOTAL con ${provider}: ${formatPrice(precioFinal.total)}\n⚠️ NOTA: Con ${provider} el pago debe ser completo desde el inicio.`
         message = message.replace(/💰 COSTO:/g, multiLineCost)
       } else {
         message = message.replace(/💰 COSTO:/g, `💰 COSTO: ${costStr}`)
@@ -772,7 +772,7 @@ https://www.runt.gov.co/directorio-de-actores`
   }
 
   return (
-    <section id="agendar" className="py-24 relative" style={{ background: 'rgba(10,10,10,0.75)' }}>
+    <section id="agendar" className="py-24 relative" style={{ background: 'rgba(13,13,13,0.7)' }}>
       <div className="absolute inset-0 grid-bg opacity-40 pointer-events-none" />
       <div className="absolute left-1/2 top-0 -translate-x-1/2 w-[600px] h-[300px] pointer-events-none"
         style={{ background: 'radial-gradient(ellipse, rgba(250,204,21,0.06) 0%, transparent 70%)' }} />
@@ -1067,15 +1067,18 @@ https://www.runt.gov.co/directorio-de-actores`
                         {precioFinal?.isCredito ? (
                           <div className="flex flex-col items-end gap-1">
                             <div className="flex flex-col items-end">
-                              <span className="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-0.5">Puedes empezar con:</span>
-                              <span className="text-yellow-400 text-3xl font-black block leading-none" style={{ fontFamily: 'Barlow Condensed' }}>
-                                {formatPrice(precioFinal.inicial)}
+                              <span className="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-0.5">
+                                Valor total con {form.metodoPago.includes('Addi') ? 'Addi (+7%)' : 'Sistecrédito (+5%)'}:
                               </span>
-                              <span className="text-gray-400 text-xs mt-1">Valor matrícula con {form.metodoPago.includes('Addi') ? 'Addi' : 'Sistecrédito'}</span>
+                              <span className="text-yellow-400 text-3xl font-black block leading-none" style={{ fontFamily: 'Barlow Condensed' }}>
+                                {formatPrice(precioFinal.total)}
+                              </span>
                             </div>
-                            <div className="flex items-center gap-2 mt-2 pt-2 border-t border-white/10">
-                              <span className="text-gray-500 text-xs">Valor total con {form.metodoPago.includes('Addi') ? 'Addi (+7%)' : 'Sistecrédito (+5%)'}:</span>
-                              <span className="text-gray-300 text-sm font-bold">{formatPrice(precioFinal.total)}</span>
+                            <div className="flex items-center gap-1.5 mt-2 pt-2 border-t border-yellow-400/20">
+                              <span className="text-yellow-500 text-xs">⚠️</span>
+                              <span className="text-yellow-500 text-xs font-semibold">
+                                Con {form.metodoPago.includes('Addi') ? 'Addi' : 'Sistecrédito'} el pago debe ser completo desde el inicio.
+                              </span>
                             </div>
                           </div>
                         ) : (

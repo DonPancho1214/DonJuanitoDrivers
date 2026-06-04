@@ -26,15 +26,14 @@ const CONTACT_OPTIONS = [
   }
 ]
 
-export default function WhatsAppFloat() {
-  const [isOpen, setIsOpen] = useState(false)
+export default function WhatsAppFloat({ isOpen, setIsOpen }) {
   const [hovered, setHovered] = useState(false)
 
   return (
-    <div className="fixed bottom-6 right-24 z-50 flex flex-col items-end gap-3">
+    <div className="fixed bottom-6 right-24 z-50 flex flex-col items-end gap-3 pointer-events-none">
       {/* Menu Container */}
       {isOpen && (
-        <div className="bg-[#1a1a1a] border border-white/10 rounded-2xl shadow-2xl p-3 flex flex-col gap-2 min-w-[260px] animate-fade-in-up mb-2 overflow-hidden relative"
+        <div className="pointer-events-auto bg-[#1a1a1a] border border-white/10 rounded-2xl shadow-2xl p-3 flex flex-col gap-2 min-w-[260px] animate-fade-in-up mb-2 overflow-hidden relative"
           style={{ boxShadow: '0 20px 50px rgba(0,0,0,0.5)' }}>
           <div className="absolute top-0 left-0 right-0 h-1 bg-green-500" />
           <div className="px-3 py-2 mb-1 border-b border-white/5">
@@ -62,7 +61,7 @@ export default function WhatsAppFloat() {
       )}
 
       {/* Button Row */}
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-3 pointer-events-auto">
         {!isOpen && (
           <div className="bg-white text-gray-900 text-sm font-bold px-4 py-2 rounded-lg shadow-2xl transition-all duration-300 whitespace-nowrap"
             style={{

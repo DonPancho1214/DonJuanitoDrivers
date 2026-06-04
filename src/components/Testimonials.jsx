@@ -313,7 +313,7 @@ const visibleReviews = showAll
   : fiveStars;
 
   return (
-    <section id="resenas" className="py-24 relative overflow-hidden" style={{ background: 'rgba(13,13,13,0.75)' }}>
+    <section id="resenas" className="py-24 relative overflow-hidden" style={{ background: 'rgba(13,13,13,0.7)' }}>
       <div className="absolute inset-0 grid-bg opacity-30 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">

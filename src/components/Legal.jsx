@@ -52,7 +52,7 @@ export default function Legal() {
   const [open, setOpen] = useState(null)
 
   return (
-    <section id="legal" className="py-20" style={{background:'rgba(8,8,8,0.85)'}}>
+    <section id="legal" className="py-20" style={{background:'rgba(13,13,13,0.7)'}}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <div className="section-label mb-3">Legal</div>

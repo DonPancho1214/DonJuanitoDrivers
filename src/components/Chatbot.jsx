@@ -31,8 +31,7 @@ const SUGGESTIONS = [
   "¿Cómo consultar mi licencia en el RUNT?"
 ]
 
-export default function Chatbot() {
-  const [isOpen, setIsOpen] = useState(false)
+export default function Chatbot({ isOpen, setIsOpen }) {
   const [messages, setMessages] = useState([
     { role: 'assistant', content: '¡Hola! Soy Don Juanito, tu asistente virtual. ¿En qué puedo ayudarte hoy sobre licencias de conducción o el RUNT?' }
   ])

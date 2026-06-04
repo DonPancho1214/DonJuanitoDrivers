@@ -19,8 +19,8 @@ const values = [
         <polyline points="12 6 12 12 16 14"/>
       </svg>
     ),
-    title: 'Rapidez y eficiencia',
-    desc: 'Programas intensivos diseñados para que obtengas tu licencia en el menor tiempo posible.',
+    title: 'Una experiencia única',
+    desc: 'Disfruta un proceso cómodo y cercano, diseñado para que aprender a conducir sea una experiencia memorable.',
   },
   {
     icon: (
@@ -44,11 +44,9 @@ const values = [
 
 export default function About() {
   return (
-    <section id="nosotros" className="py-24 relative overflow-hidden" style={{background:'rgba(13,13,13,0.65)'}}>
+    <section id="nosotros" className="py-24 relative overflow-hidden" style={{background:'rgba(13,13,13,0.7)'}}>
       {/* Decorative */}
       <div className="absolute inset-0 grid-bg opacity-40 pointer-events-none" />
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full pointer-events-none"
-        style={{background:'radial-gradient(circle, rgba(250,204,21,0.06) 0%, transparent 70%)'}} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -64,11 +62,22 @@ export default function About() {
             </h2>
 
             <p className="text-gray-300 text-base leading-relaxed mb-4">
-              <strong className="text-white">Don Juanito Drivers</strong> opera bajo un modelo de <strong className="text-yellow-400">outsourcing</strong> con múltiples escuelas afiliadas en Bogotá y Soacha.
-              En la sede principal <strong className="text-white">CEA Diverplaza</strong>, el asesor acompaña al estudiante durante <strong className="text-white">TODO el proceso</strong> con seguimiento personalizado y flexibilidad de precios.
+              En <strong className="text-white">Don Juanito Drivers</strong> hacemos que obtener tu licencia de conducción sea un proceso <strong className="text-yellow-400">sencillo, rápido y acompañado de principio a fin</strong>.
             </p>
-            <p className="text-gray-400 text-base leading-relaxed mb-8">
-              En las demás sedes afiliadas gestionamos la matrícula y el agendamiento bajo el nombre <strong className="text-white">CAMILO VELANDIA</strong>. Nuestra prioridad es siempre la atención humana, cercana y efectiva para que cada estudiante llegue al examen con total confianza.
+            <p className="text-gray-400 text-base leading-relaxed mb-4">
+              Conectamos a los estudiantes con las mejores opciones de formación, brindando <strong className="text-white">asesoría personalizada</strong> durante todo el proceso: desde la matrícula y los exámenes médicos hasta la programación de clases, exámenes y la expedición de la licencia.
+            </p>
+            <p className="text-gray-400 text-base leading-relaxed mb-4">
+              Nuestro objetivo es ayudarte a encontrar la alternativa que mejor se adapte a tus necesidades, presupuesto y disponibilidad de tiempo, garantizando siempre un servicio <strong className="text-white">transparente, confiable y profesional</strong>.
+            </p>
+            <p className="text-gray-400 text-base leading-relaxed mb-4">
+              Contamos con opciones para licencias de <strong className="text-white">moto, carro y categorías de servicio público</strong>, además de procesos de refrendación, recategorización y orientación en trámites relacionados con el RUNT y la movilidad.
+            </p>
+            <p className="text-gray-400 text-base leading-relaxed mb-2">
+              Montones de conductores han confiado en nosotros para dar el primer paso hacia nuevas oportunidades laborales, mayor independencia y una mejor calidad de vida.
+            </p>
+            <p className="text-yellow-400/80 text-sm italic font-medium mb-8">
+              Tu licencia, tu libertad, tu próximo destino.
             </p>
 
             <div className="flex flex-wrap gap-4">

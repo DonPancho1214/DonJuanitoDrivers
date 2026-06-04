@@ -8,10 +8,8 @@ const MSG_CRC = 'Hola quiero información sobre renovación de licencia / CRC en
 
 export default function CRC() {
   return (
-    <section id="crc" className="py-24 relative overflow-hidden" style={{ background: 'rgba(13,13,13,0.65)' }}>
+    <section id="crc" className="py-24 relative overflow-hidden" style={{ background: 'rgba(13,13,13,0.7)' }}>
       <div className="absolute inset-0 grid-bg opacity-40 pointer-events-none" />
-      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-72 h-72 rounded-full pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(250,204,21,0.06) 0%, transparent 70%)' }} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center mb-14">
@@ -108,8 +106,8 @@ export default function CRC() {
               {[
                 { n: '1', t: 'Contáctanos', d: 'Escríbenos por WhatsApp para coordinar tu cita.' },
                 { n: '2', t: 'Visita Medimetria', d: 'Ve al centro CRC en Calle 68 # 23-17 en el horario indicado.' },
-                { n: '3', t: 'Examen médico', d: 'El reconocimiento incluye exámenes visuales, auditivos y psicofísicos.' },
-                { n: '4', t: 'Renueva tu licencia', d: 'Con el CRC aprobado, tramita tu renovación en el RUNT.' },
+                { n: '3', t: 'Examen médico', d: 'Realizamos Audiometría, Optometría, Examen General y Examen Psicomotriz en un solo lugar.' },
+                { n: '4', t: 'Renueva tu licencia', d: 'Con tus exámenes aprobados, ya estás listo o lista para realizar el trámite de renovación de tu licencia.' },
               ].map(step => (
                 <div key={step.n} className="flex items-start gap-3 mb-3 last:mb-0">
                   <div className="w-7 h-7 rounded-full flex items-center justify-center shrink-0 text-xs font-black"
