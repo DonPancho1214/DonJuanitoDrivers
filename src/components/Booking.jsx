@@ -147,6 +147,7 @@ function calcularPrecio(preciosData, categoria, sabeManejar, metodoPago, esAutoX
   let inicial = null
   let total = base
   let isCredito = false
+  let isMatricula = false
 
   if (metodoPago === 'De Contado') {
     total = base - 50000
@@ -158,15 +159,21 @@ function calcularPrecio(preciosData, categoria, sabeManejar, metodoPago, esAutoX
     inicial = Math.round((base / 2) * 1.05)
     total = Math.round(base * 1.05)
     isCredito = true
-  } else if (
-    metodoPago === 'Me matriculo con el 50%' ||
-    metodoPago === 'Me matriculo con 400 Mil' ||
-    metodoPago === 'Me matriculo con 800 Mil'
-  ) {
-    total = Math.round(base / 2)
+  } else if (metodoPago === 'Me matriculo con el 50%') {
+    inicial = Math.round(base / 2)
+    total = base
+    isMatricula = true
+  } else if (metodoPago === 'Me matriculo con 400 Mil') {
+    inicial = 400000
+    total = base
+    isMatricula = true
+  } else if (metodoPago === 'Me matriculo con 800 Mil') {
+    inicial = 800000
+    total = base
+    isMatricula = true
   }
 
-  return { inicial, total, base, isCredito }
+  return { inicial, total, base, isCredito, isMatricula }
 }
 
 /** Label descriptivo bajo el precio según el método elegido */
@@ -934,14 +941,14 @@ https://www.runt.gov.co/directorio-de-actores`
                 <label htmlFor="metodoPago" className="text-gray-400 text-xs uppercase tracking-wider">Método de pago <span className="text-[#FFD700] font-bold">*</span></label>
                 <select 
                   id="metodoPago"
-                  className={`form-input ${!form.sede ? 'opacity-50 cursor-not-allowed' : ''} ${errors.metodoPago ? 'border-red-500 focus:border-red-500' : ''}`} 
+                  className={`form-input ${!(form.sede && form.categoria) ? 'opacity-50 cursor-not-allowed' : ''} ${errors.metodoPago ? 'border-red-500 focus:border-red-500' : ''}`} 
                   name="metodoPago" 
                   value={form.metodoPago} 
                   onChange={handleChange} 
-                  disabled={!form.sede}
+                  disabled={!(form.sede && form.categoria)}
                   required
                 >
-                  <option value="" disabled hidden>{!form.sede ? 'Primero selecciona sede' : 'Selecciona método'}</option>
+                  <option value="" disabled hidden>{!form.sede ? 'Primero selecciona sede' : !form.categoria ? 'Primero selecciona categoría' : 'Selecciona método'}</option>
                   
                   {form.sede === 'CEA Diverplaza (Sede Principal)' ? (
                     <>
@@ -987,16 +994,16 @@ https://www.runt.gov.co/directorio-de-actores`
                 <select 
                   id="hora"
                   className={`form-input ${
-                    !form.sede ? 'opacity-50 cursor-not-allowed' : ''
+                    !form.fecha ? 'opacity-50 cursor-not-allowed' : ''
                   } ${errors.hora ? 'border-red-500 focus:border-red-500' : ''}`} 
                   name="hora" 
                   value={form.hora} 
                   onChange={handleChange}
-                  disabled={!form.sede}
+                  disabled={!form.fecha}
                   required
                 >
                   <option value="" disabled hidden>
-                    {!form.sede ? 'Primero selecciona sede' : 'Selecciona un horario'}
+                    {!form.fecha ? 'Primero selecciona fecha' : 'Selecciona un horario'}
                   </option>
                   {/* Renderizar solo los slots válidos de la sede elegida */}
                   {(HORARIOS_SEDE[form.sede] || []).map(opt => (
@@ -1007,7 +1014,7 @@ https://www.runt.gov.co/directorio-de-actores`
               </div>
 
               {/* ¿Sabe manejar? — Condicional según sede y categoría */}
-              <div className="flex flex-col gap-1.5 md:col-span-2">
+              <div className={`flex flex-col gap-1.5 md:col-span-2 ${!(form.sede && form.categoria) ? 'opacity-50 pointer-events-none' : ''}`}>
                 {isAutoXua ? (
                   /* Auto Xua: clases prácticas obligatorias, no se pregunta */
                   <>
@@ -1079,6 +1086,17 @@ https://www.runt.gov.co/directorio-de-actores`
                               <span className="text-yellow-500 text-xs font-semibold">
                                 Con {form.metodoPago.includes('Addi') ? 'Addi' : 'Sistecrédito'} el pago debe ser completo desde el inicio.
                               </span>
+                            </div>
+                          </div>
+                        ) : precioFinal?.isMatricula ? (
+                          <div className="flex flex-col items-end gap-1">
+                            <span className="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-0.5">Valor matrícula inicial:</span>
+                            <span className="text-yellow-400 text-3xl font-black block leading-none" style={{ fontFamily: 'Barlow Condensed' }}>
+                              {formatPrice(precioFinal.inicial)}
+                            </span>
+                            <div className="flex items-center gap-1.5 mt-2 pt-2 border-t border-yellow-400/20">
+                              <span className="text-gray-400 text-xs">Total licencia:</span>
+                              <span className="text-white text-xs font-bold">{formatPrice(precioFinal.total)}</span>
                             </div>
                           </div>
                         ) : (

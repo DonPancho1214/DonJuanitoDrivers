@@ -28,7 +28,7 @@ export const sedes = [
     destacada: false,
     mapsUrl: 'https://maps.app.goo.gl/RKB3fmzkve582yny5',
     alertas: [<span className="flex items-center gap-1"><Star size={12} className="fill-yellow-400" /> Única sede que ofrece categoría C2</span>],
-    descripcion: 'Conductores Bogotá es la única sede de la red que ofrece la categoría C2. Cuenta con agendamiento previo requerido y gestión bajo el nombre CAMILO VELANDIA. Acepta Addi y Sistecrédito para primer pago.',
+    descripcion: 'Conductores Bogotá es la única sede de la red que ofrece la categoría C2. Cuenta con agendamiento previo requerido. Acepta Addi y Sistecrédito para primer pago.',
     horas: { A2: '13 clases teoría + 2 talleres', B1: '13 clases teoría + 3 talleres', C1: '15 clases teoría + 3 talleres', C2: '10 clases teoría + 5 talleres' },
   },
   {
@@ -41,7 +41,7 @@ export const sedes = [
     destacada: false,
     mapsUrl: 'https://maps.app.goo.gl/zKNmvj8DbRLrHryg8',
     alertas: [<span className="flex items-center gap-1"><Star size={12} className="fill-yellow-400" /> Acepta pagos con fondo de cesantías</span>],
-    descripcion: 'CEA Velari es la única sede de la red que acepta pagos con fondo de cesantías. Agendamiento previo requerido, gestión bajo el nombre CAMILO VELANDIA. Acepta Addi y Sistecrédito para primer pago.',
+    descripcion: 'CEA Velari es la única sede de la red que acepta pagos con fondo de cesantías. Agendamiento previo requerido. Acepta Addi y Sistecrédito para primer pago.',
   },
   {
     id: 'guerrero',
@@ -53,7 +53,7 @@ export const sedes = [
     destacada: false,
     mapsUrl: 'https://maps.app.goo.gl/MKqU6SqW65Nzav3G7',
     alertas: [],
-    descripcion: 'CEA El Agente Guerrero, ubicado sobre la Autopista Sur. Agendamiento previo requerido, gestión bajo el nombre CAMILO VELANDIA. Acepta Addi y Sistecrédito para primer pago.',
+    descripcion: 'CEA El Agente Guerrero, ubicado sobre la Autopista Sur. Agendamiento previo requerido. Acepta Addi y Sistecrédito para primer pago.',
   },
   {
     id: 'autoxua',
@@ -65,7 +65,7 @@ export const sedes = [
     destacada: false,
     mapsUrl: 'https://maps.app.goo.gl/wbUXngZHbEX5voTB9',
     alertas: [<span className="flex items-center gap-1"><AlertTriangle size={12} /> NO permite homologaciones — Curso completo obligatorio</span>],
-    descripcion: 'CEA Auto Xua está ubicada en Soacha. Esta sede NO permite homologaciones: el estudiante debe realizar TODO el curso completo. Agendamiento previo requerido, gestión bajo el nombre CAMILO VELANDIA.',
+    descripcion: 'CEA Auto Xua está ubicada en Soacha. Esta sede NO permite homologaciones: el estudiante debe realizar TODO el curso completo. Agendamiento previo requerido.',
   },
   {
     id: 'carvajal',
@@ -77,7 +77,7 @@ export const sedes = [
     destacada: false,
     mapsUrl: 'https://maps.app.goo.gl/nz5h39ry5xrn19Rm8',
     alertas: [<span className="flex items-center gap-1"><Star size={12} className="fill-yellow-400" /> Maneja sistema pico y cédula</span>],
-    descripcion: 'CEA Carvajal en el occidente de Bogotá. Maneja sistema pico y cédula. Agendamiento previo requerido, gestión bajo el nombre CAMILO VELANDIA. Acepta Addi y Sistecrédito para primer pago.',
+    descripcion: 'CEA Carvajal en el occidente de Bogotá. Maneja sistema pico y cédula. Agendamiento previo requerido. Acepta Addi y Sistecrédito para primer pago.',
   },
   {
     id: 'altimon',
@@ -89,7 +89,7 @@ export const sedes = [
     destacada: false,
     mapsUrl: 'https://maps.app.goo.gl/uUb3xfnHDMy3GVf27',
     alertas: [],
-    descripcion: 'CEA Al Timón en el sur de Bogotá. Agendamiento previo requerido, gestión bajo el nombre CAMILO VELANDIA. Acepta Addi y Sistecrédito para primer pago.',
+    descripcion: 'CEA Al Timón en el sur de Bogotá. Agendamiento previo requerido. Acepta Addi y Sistecrédito para primer pago.',
   },
   {
     id: 'valuvial',
@@ -101,7 +101,7 @@ export const sedes = [
     destacada: false,
     mapsUrl: 'https://maps.app.goo.gl/w4wC9dHfGGedq3ha7',
     alertas: [],
-    descripcion: 'CEA Valuvial en la zona centro-sur de Bogotá. Agendamiento previo requerido, gestión bajo el nombre CAMILO VELANDIA. Acepta Addi y Sistecrédito para primer pago.',
+    descripcion: 'CEA Valuvial en la zona centro-sur de Bogotá. Agendamiento previo requerido. Acepta Addi y Sistecrédito para primer pago.',
   },
   {
     id: 'centrosuba',
@@ -113,7 +113,7 @@ export const sedes = [
     destacada: false,
     mapsUrl: 'https://maps.app.goo.gl/w47g6RkKX2ERxFvL9',
     alertas: [],
-    descripcion: 'CEA Centro Suba en la zona norte de Bogotá, una de las más nuevas de la red. Agendamiento previo requerido, gestión bajo el nombre CAMILO VELANDIA. Acepta Addi y Sistecrédito para primer pago.',
+    descripcion: 'CEA Centro Suba en la zona norte de Bogotá, una de las más nuevas de la red. Agendamiento previo requerido. Acepta Addi y Sistecrédito para primer pago.',
   },
 ]
 
