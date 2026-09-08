@@ -105,7 +105,7 @@ function ReviewCard({ t, isMock }) {
 
       {hasTexto ? (
         <>
-          <div className="text-amber-500 opacity-25">
+          <div className="text-[#D4AF37] opacity-40">
             <svg width="28" height="28" fill="currentColor" viewBox="0 0 24 24">
               <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
             </svg>
@@ -127,7 +127,7 @@ function ReviewCard({ t, isMock }) {
         </div>
         <div className="ml-auto flex flex-col items-end gap-1">
           <Stars count={rating} />
-          <span className="text-xs px-2.5 py-0.5 rounded text-amber-900 bg-amber-50 border border-amber-300 font-bold"
+          <span className="text-xs px-2.5 py-0.5 rounded bg-black text-[#F5C518] border border-[#D4AF37] font-bold"
             style={{ fontFamily: 'Barlow Condensed' }}>
             {categoria}
           </span>
@@ -321,7 +321,7 @@ const visibleReviews = showAll
           <div className="section-label mb-3">Reseñas</div>
           <h2 className="font-black text-gray-900 mb-4" style={{ fontFamily: 'Barlow Condensed', fontSize: 'clamp(2.5rem,5vw,4rem)' }}>
             LO QUE DICEN NUESTROS
-            <br /><span className="text-amber-500">CONDUCTORES</span>
+            <br /><span className="font-black text-gold-outline">CONDUCTORES</span>
           </h2>
           <p className="text-gray-600 max-w-xl mx-auto">
             {Number(stats.total) === 1
@@ -402,7 +402,7 @@ const visibleReviews = showAll
         {/* Rating summary */}
         <div className="mt-12 glass-card p-8 flex flex-col md:flex-row items-center gap-8 justify-center shadow-md">
           <div className="text-center">
-            <div className="font-black text-amber-600 text-6xl" style={{ fontFamily: 'Barlow Condensed' }}>{stats.rating}</div>
+            <div className="font-black text-6xl text-gold-outline" style={{ fontFamily: 'Barlow Condensed' }}>{stats.rating}</div>
             <div className="flex justify-center my-2"><Stars count={Number(stats.rating)} /></div>
             <div className="text-gray-600 text-sm font-semibold">Calificación promedio</div>
           </div>
@@ -413,7 +413,7 @@ const visibleReviews = showAll
           </div>
           <div className="w-px h-16 bg-gray-200 hidden md:block" />
           <div className="text-center">
-            <div className="font-black text-amber-600 text-6xl" style={{ fontFamily: 'Barlow Condensed' }}>9</div>
+            <div className="font-black text-6xl text-gold-outline" style={{ fontFamily: 'Barlow Condensed' }}>9</div>
             <div className="text-gray-600 text-sm mt-2 font-semibold">Sedes activas</div>
           </div>
         </div>

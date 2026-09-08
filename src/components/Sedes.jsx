@@ -281,11 +281,11 @@ function SedeCard({ sede, onVerMas }) {
 
   return (
     <div className="glass-card card-hover p-6 flex flex-col relative overflow-hidden group">
-      <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-amber-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+      <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
       {sede.alertas?.length > 0 ? (
         <div className="h-11 mb-3 flex flex-wrap gap-1 items-start pt-1.5">
           {sede.alertas.map((a, i) => (
-            <span key={i} className="text-xs px-2.5 py-0.5 rounded-full font-semibold" style={{ background: '#fef3c7', color: '#92400e', border: '1px solid #fde68a' }}>{a}</span>
+            <span key={i} className="text-xs px-2.5 py-0.5 rounded-full font-bold bg-black text-[#F5C518] border border-[#D4AF37]">{a}</span>
           ))}
         </div>
       ) : (
@@ -295,7 +295,7 @@ function SedeCard({ sede, onVerMas }) {
       )}
       <h3 className="font-black text-gray-900 text-xl mb-0.5" style={{ fontFamily: "'Outfit', sans-serif" }}>{sede.nombre}</h3>
       <div className="flex flex-wrap items-center gap-2 mb-3">
-        <span className="text-amber-700 text-xs font-bold uppercase tracking-wider">{sede.subtitulo}</span>
+        <span className="text-[#B38728] text-xs font-bold uppercase tracking-wider">{sede.subtitulo}</span>
         {zona && (
           <span className={`text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider border ${zona.clase}`}>
             {zona.nombre}
@@ -304,11 +304,11 @@ function SedeCard({ sede, onVerMas }) {
       </div>
       <div className="flex flex-col gap-1.5 mb-4 flex-1">
         <div className="flex items-start gap-2">
-          <svg className="text-amber-500 shrink-0 mt-0.5" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" /><circle cx="12" cy="10" r="3" /></svg>
+          <svg className="text-[#D4AF37] shrink-0 mt-0.5" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" /><circle cx="12" cy="10" r="3" /></svg>
           <span className="text-gray-600 text-xs font-medium">{sede.direccion}</span>
         </div>
         <div className="flex items-center gap-2 flex-wrap">
-          <svg className="text-amber-500 shrink-0" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
+          <svg className="text-[#D4AF37] shrink-0" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
           <span className="text-gray-600 text-xs font-medium">{sede.horarios}</span>
           <span className="inline-flex items-center gap-1 ml-1.5 text-[10px] font-bold">
             {isOpen ? (
@@ -330,8 +330,8 @@ function SedeCard({ sede, onVerMas }) {
       </div>
       <div className="flex flex-wrap gap-1.5 mb-4">
         {sede.categorias.map(c => (
-          <span key={c} className="px-2.5 py-0.5 rounded text-xs font-bold"
-            style={{ background: '#fef3c7', border: '1px solid #fde68a', color: '#92400e', fontFamily: 'Barlow Condensed' }}>{c}</span>
+          <span key={c} className="px-2.5 py-0.5 rounded text-xs font-bold bg-black text-[#F5C518] border border-[#D4AF37]"
+            style={{ fontFamily: 'Barlow Condensed' }}>{c}</span>
         ))}
       </div>
       <div className="flex flex-col gap-2">
@@ -366,7 +366,7 @@ export default function Sedes() {
           <div className="text-center mb-16">
             <div className="section-label mb-3">Nuestras sedes</div>
             <h2 className="font-black text-gray-900 mb-4" style={{ fontFamily: 'Barlow Condensed', fontSize: 'clamp(2.5rem,5vw,4rem)' }}>
-              ENCUENTRA TU <span className="text-amber-500">SEDE MÁS CERCANA</span>
+              ENCUENTRA TU <span className="font-black text-gold-outline">SEDE MÁS CERCANA</span>
             </h2>
             <p className="text-gray-600 max-w-xl mx-auto text-base">
               9 sedes activas en Bogotá y Soacha. Agendamiento previo requerido salvo en Diverplaza.
@@ -374,10 +374,10 @@ export default function Sedes() {
           </div>
 
           {/* Info banner */}
-          <div className="mb-8 p-4 rounded-xl flex flex-wrap gap-3 items-center justify-center text-sm bg-amber-50/90 border border-amber-300 shadow-sm">
-            <span className="text-amber-900 font-bold flex items-center gap-1.5" style={{ fontFamily: 'Barlow Condensed' }}><CreditCard size={16} /> Métodos de pago:</span>
+          <div className="mb-8 p-4 rounded-xl flex flex-wrap gap-3 items-center justify-center text-sm bg-white border border-[#D4AF37]/50 shadow-sm">
+            <span className="text-gray-900 font-bold flex items-center gap-1.5" style={{ fontFamily: 'Barlow Condensed' }}><CreditCard size={16} className="text-[#B38728]" /> Métodos de pago:</span>
             <span className="text-gray-700 font-medium">Efectivo · Transferencia · Addi · Sistecrédito (primer pago) · Cesantías (solo Velari)</span>
-            <span className="text-amber-900 font-bold ml-2 flex items-center gap-1.5" style={{ fontFamily: 'Barlow Condensed' }}><Tag size={16} /> Descuento:</span>
+            <span className="text-gray-900 font-bold ml-2 flex items-center gap-1.5" style={{ fontFamily: 'Barlow Condensed' }}><Tag size={16} className="text-[#B38728]" /> Descuento:</span>
             <span className="text-gray-700 font-medium">$50.000 al pagar de contado (excl. Diverplaza)</span>
           </div>
 

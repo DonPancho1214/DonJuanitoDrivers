@@ -15,7 +15,7 @@ export default function CRC() {
         <div className="text-center mb-14">
           <div className="section-label mb-3">CRC & Renovaciones</div>
           <h2 className="font-black text-gray-900 mb-4" style={{ fontFamily: 'Barlow Condensed', fontSize: 'clamp(2.5rem,5vw,4rem)' }}>
-            RENOVACIÓN DE <span className="text-amber-500">LICENCIA</span>
+            RENOVACIÓN DE <span className="font-black text-gold-outline">LICENCIA</span>
           </h2>
           <p className="text-gray-600 max-w-xl mx-auto">
             Realizamos tu reconocimiento médico (CRC) en nuestro centro aliado para que renueves tu licencia de conducción de forma rápida y segura.
@@ -25,28 +25,28 @@ export default function CRC() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
           {/* Info card */}
           <div className="glass-card p-8 relative overflow-hidden shadow-sm">
-            <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-amber-400 to-transparent" />
+            <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent" />
 
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-xl border border-amber-300 bg-amber-50 flex items-center justify-center text-2xl shadow-sm">🏥</div>
+              <div className="w-12 h-12 rounded-xl border border-[#D4AF37] bg-black flex items-center justify-center text-2xl shadow-sm">🏥</div>
               <div>
                 <h3 className="font-black text-gray-900 text-xl" style={{ fontFamily: 'Barlow Condensed' }}>Medimetria Especializada Ltda.</h3>
-                <p className="text-amber-700 text-xs font-bold uppercase tracking-wider">Centro de reconocimiento de conductores</p>
+                <p className="text-[#B38728] text-xs font-bold uppercase tracking-wider">Centro de reconocimiento de conductores</p>
               </div>
             </div>
 
             <div className="flex flex-col gap-4 mb-6">
               <div className="flex items-start gap-3 p-3.5 rounded-xl" style={{ background: '#f9fafb', border: '1px solid #e5e7eb' }}>
-                <svg className="text-amber-500 shrink-0 mt-0.5" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" /><circle cx="12" cy="10" r="3" /></svg>
+                <svg className="text-[#D4AF37] shrink-0 mt-0.5" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" /><circle cx="12" cy="10" r="3" /></svg>
                 <div>
                   <div className="text-gray-500 text-xs uppercase tracking-wider mb-0.5 font-semibold">Dirección</div>
                   <div className="text-gray-900 text-sm font-semibold">Calle 68 # 23-17, Bogotá</div>
                 </div>
               </div>
               <a href="https://share.google/sUKKsdLbu2x9QwkTf" target="_blank" rel="noopener noreferrer"
-                className="flex items-center gap-2 text-amber-800 text-sm font-bold hover:underline px-3.5 py-2.5 rounded-xl transition-all"
-                style={{ background: '#fef3c7', border: '1px solid #fde68a' }}>
-                <MapPin size={16} className="inline mr-1" /> Ver en Google Maps
+                className="flex items-center gap-2 text-gray-900 text-sm font-bold hover:underline px-3.5 py-2.5 rounded-xl transition-all"
+                style={{ background: '#fefce8', border: '1px solid #D4AF37' }}>
+                <MapPin size={16} className="inline mr-1 text-[#B38728]" /> Ver en Google Maps
               </a>
 
               <div className="p-3.5 rounded-xl" style={{ background: '#f9fafb', border: '1px solid #e5e7eb' }}>
@@ -54,11 +54,11 @@ export default function CRC() {
                 <div className="flex flex-col gap-1 font-medium">
                   <div className="flex justify-between text-sm">
                     <span className="text-gray-700">Lunes a Viernes</span>
-                    <span className="text-amber-700 font-bold">8:00am – 4:30pm</span>
+                    <span className="text-[#B38728] font-bold">8:00am – 4:30pm</span>
                   </div>
                   <div className="flex justify-between text-sm">
                     <span className="text-gray-700">Sábados</span>
-                    <span className="text-amber-700 font-bold">8:00am – 12:30pm</span>
+                    <span className="text-[#B38728] font-bold">8:00am – 12:30pm</span>
                   </div>
                   <div className="flex justify-between text-sm">
                     <span className="text-gray-700">Domingos</span>
@@ -84,8 +84,8 @@ export default function CRC() {
             <h3 className="font-black text-gray-900 text-xl" style={{ fontFamily: 'Barlow Condensed' }}>Tarifas de Renovación</h3>
 
             {[
-              { tipo: 'Licencia individual', precio: '$190.000', desc: 'Una sola categoría de licencia', icon: <IdCard size={28} className="text-amber-600" /> },
-              { tipo: 'Doble categoría', precio: '$290.000', desc: 'Dos categorías en un solo reconocimiento', icon: <div className="flex gap-1.5"><IdCard size={28} className="text-amber-600" /><IdCard size={28} className="text-amber-600" /></div> },
+              { tipo: 'Licencia individual', precio: '$190.000', desc: 'Una sola categoría de licencia', icon: <IdCard size={28} className="text-[#B38728]" /> },
+              { tipo: 'Doble categoría', precio: '$290.000', desc: 'Dos categorías en un solo reconocimiento', icon: <div className="flex gap-1.5"><IdCard size={28} className="text-[#B38728]" /><IdCard size={28} className="text-[#B38728]" /></div> },
             ].map(item => (
               <div key={item.tipo} className="glass-card card-hover p-6 flex items-center gap-5 shadow-sm">
                 <div className="text-3xl">{item.icon}</div>
@@ -93,7 +93,7 @@ export default function CRC() {
                   <div className="font-black text-gray-900 text-lg" style={{ fontFamily: 'Barlow Condensed' }}>{item.tipo}</div>
                   <div className="text-gray-600 text-sm">{item.desc}</div>
                 </div>
-                <div className="text-amber-600 font-black text-2xl" style={{ fontFamily: 'Barlow Condensed' }}>{item.precio}</div>
+                <div className="font-black text-2xl text-gold-outline" style={{ fontFamily: 'Barlow Condensed' }}>{item.precio}</div>
               </div>
             ))}
 
@@ -110,7 +110,7 @@ export default function CRC() {
               ].map(step => (
                 <div key={step.n} className="flex items-start gap-3 mb-3 last:mb-0">
                   <div className="w-7 h-7 rounded-full flex items-center justify-center shrink-0 text-xs font-black"
-                    style={{ background: '#fef3c7', border: '1px solid #fde68a', color: '#b45309', fontFamily: 'Barlow Condensed' }}>
+                    style={{ background: '#0a0a0a', border: '1px solid #D4AF37', color: '#F5C518', fontFamily: 'Barlow Condensed' }}>
                     {step.n}
                   </div>
                   <div>

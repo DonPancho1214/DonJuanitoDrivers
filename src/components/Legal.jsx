@@ -4,7 +4,7 @@ import { ClipboardList, Lock, BarChart, Scale } from 'lucide-react'
 const sections = [
   {
     title: 'Términos y Condiciones',
-    icon: <ClipboardList size={24} className="text-amber-500" />,
+    icon: <ClipboardList size={24} className="text-[#D4AF37]" />,
     content: [
       'Al utilizar los servicios de Don Juanito Drivers, el usuario acepta los presentes Términos y Condiciones de forma íntegra y sin reservas.',
       'Don Juanito Drivers se reserva el derecho de modificar estos términos en cualquier momento, notificando los cambios a través de sus canales oficiales.',
@@ -15,7 +15,7 @@ const sections = [
   },
   {
     title: 'Política de Privacidad',
-    icon: <Lock size={24} className="text-amber-500" />,
+    icon: <Lock size={24} className="text-[#D4AF37]" />,
     content: [
       'Don Juanito Drivers recopila datos personales únicamente con fines de prestación del servicio de formación vial y comunicación con el usuario.',
       'Los datos recolectados incluyen: nombre completo, número de teléfono, correo electrónico, número de documento de identidad y localidad de residencia.',
@@ -26,7 +26,7 @@ const sections = [
   },
   {
     title: 'Tratamiento de Datos',
-    icon: <BarChart size={24} className="text-amber-500" />,
+    icon: <BarChart size={24} className="text-[#D4AF37]" />,
     content: [
       'De conformidad con la Ley 1581 de 2012 y el Decreto 1377 de 2013, Don Juanito Drivers informa que es responsable del tratamiento de los datos personales recolectados.',
       'Los datos personales suministrados por el usuario serán tratados con las siguientes finalidades: gestión de agendamiento, envío de información sobre servicios, seguimiento del proceso de formación y comunicaciones comerciales (previa autorización).',
@@ -37,7 +37,7 @@ const sections = [
   },
   {
     title: 'Aviso Legal',
-    icon: <Scale size={24} className="text-amber-500" />,
+    icon: <Scale size={24} className="text-[#D4AF37]" />,
     content: [
       'Don Juanito Drivers es una red de franquicias de escuelas de conducción legalmente constituida bajo las leyes de la República de Colombia.',
       'Cada sede afiliada opera bajo su propia razón social y es responsable de cumplir con la normativa vigente del Ministerio de Transporte y el Código Nacional de Tránsito.',
@@ -57,16 +57,16 @@ export default function Legal() {
         <div className="text-center mb-12">
           <div className="section-label mb-3">Legal</div>
           <h2 className="font-black text-gray-900 mb-3" style={{ fontFamily: 'Barlow Condensed', fontSize: 'clamp(2rem,4vw,3rem)' }}>
-            INFORMACIÓN <span className="text-amber-500">LEGAL</span>
+            INFORMACIÓN <span className="font-black text-gold-outline">LEGAL</span>
           </h2>
           <p className="text-gray-600 text-sm">Transparencia y confianza en cada servicio que ofrecemos.</p>
         </div>
 
         <div className="flex flex-col gap-3">
           {sections.map((s, i) => (
-            <div key={s.title} className="glass-card overflow-hidden" style={{ border: '1px solid rgba(217,119,6,0.2)' }}>
+            <div key={s.title} className="glass-card overflow-hidden" style={{ border: '1px solid rgba(212,175,55,0.25)' }}>
               <button
-                className="w-full flex items-center justify-between p-5 text-left hover:bg-amber-50/50 transition-colors"
+                className="w-full flex items-center justify-between p-5 text-left hover:bg-amber-50/30 transition-colors"
                 onClick={() => setOpen(open === i ? null : i)}
               >
                 <div className="flex items-center gap-3">
@@ -74,7 +74,7 @@ export default function Legal() {
                   <span className="font-bold text-gray-900" style={{ fontFamily: 'Barlow Condensed', fontSize: '1.1rem' }}>{s.title}</span>
                 </div>
                 <svg
-                  width="20" height="20" fill="none" stroke="#d97706" strokeWidth="2" viewBox="0 0 24 24"
+                  width="20" height="20" fill="none" stroke="#D4AF37" strokeWidth="2.5" viewBox="0 0 24 24"
                   style={{ transform: open === i ? 'rotate(180deg)' : 'rotate(0)', transition: 'transform 0.3s' }}
                 >
                   <polyline points="6 9 12 15 18 9"/>
@@ -82,11 +82,11 @@ export default function Legal() {
               </button>
 
               {open === i && (
-                <div className="px-5 pb-5 border-t border-amber-100">
+                <div className="px-5 pb-5 border-t border-gray-100">
                   <ol className="flex flex-col gap-3 mt-4">
                     {s.content.map((c, j) => (
                       <li key={j} className="flex gap-3 text-gray-600 text-sm leading-relaxed">
-                        <span className="text-amber-600 font-bold shrink-0 mt-0.5">{j+1}.</span>
+                        <span className="text-[#B38728] font-bold shrink-0 mt-0.5">{j+1}.</span>
                         <span>{c}</span>
                       </li>
                     ))}

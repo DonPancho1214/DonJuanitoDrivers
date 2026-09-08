@@ -10,7 +10,7 @@ function PriceRow({ label, value, highlight, indent }) {
   return (
     <div className="flex justify-between items-center py-1.5 border-b border-gray-100 last:border-0">
       <span className={`text-sm ${indent ? 'pl-4 text-gray-500 text-xs font-medium' : 'text-gray-700'}`}>{label}</span>
-      <span className={`font-black text-sm ${highlight ? 'text-amber-600 font-bold' : 'text-gray-900'}`}
+      <span className={`font-black text-sm ${highlight ? 'text-[#B38728] font-bold' : 'text-gray-900'}`}
         style={{ fontFamily: "'Outfit', sans-serif" }}>{value}</span>
     </div>
   )
@@ -28,8 +28,8 @@ function PreciosBlock({ precios, combos, nota }) {
           <div key={cat} className="rounded-xl overflow-hidden"
             style={{ background: '#f9fafb', border: '1px solid #e5e7eb' }}>
             <div className="px-4 py-2 flex items-center gap-2"
-              style={{ background: '#fef3c7', borderBottom: '1px solid #fde68a' }}>
-              <span className="text-amber-900 font-black text-sm" style={{ fontFamily: "'Outfit', sans-serif" }}>
+              style={{ background: '#0a0a0a', borderBottom: '1px solid #D4AF37' }}>
+              <span className="text-[#F5C518] font-black text-sm" style={{ fontFamily: "'Outfit', sans-serif" }}>
                 Categoría {cat}
               </span>
             </div>
@@ -53,9 +53,9 @@ function PreciosBlock({ precios, combos, nota }) {
         <div className="rounded-xl overflow-hidden"
           style={{ background: '#f9fafb', border: '1px solid #e5e7eb' }}>
           <div className="px-4 py-2"
-            style={{ background: '#fef3c7', borderBottom: '1px solid #fde68a' }}>
-            <span className="text-amber-900 font-black text-sm flex items-center gap-1.5" style={{ fontFamily: "'Outfit', sans-serif" }}>
-              <Lightbulb size={14} className="text-amber-600" /> Combos
+            style={{ background: '#0a0a0a', borderBottom: '1px solid #D4AF37' }}>
+            <span className="text-[#F5C518] font-black text-sm flex items-center gap-1.5" style={{ fontFamily: "'Outfit', sans-serif" }}>
+              <Lightbulb size={14} className="text-[#F5C518]" /> Combos
             </span>
           </div>
           <div className="px-4 py-1">
@@ -158,16 +158,16 @@ export default function SedeDetalle({ sede, onClose }) {
         <div className="p-7">
           {sede.destacada && (
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full mb-4 text-xs font-bold tracking-widest uppercase"
-              style={{ background: '#fef3c7', border: '1px solid #fde68a', color: '#b45309', fontFamily: 'Barlow Condensed' }}>
-              <Star size={14} className="inline mr-1 fill-amber-500 text-amber-500" /> SEDE PRINCIPAL — ACOMPAÑAMIENTO TOTAL
+              style={{ background: '#0a0a0a', border: '1px solid #D4AF37', color: '#F5C518', fontFamily: 'Barlow Condensed' }}>
+              <Star size={14} className="inline mr-1 fill-[#F5C518] text-[#F5C518]" /> SEDE PRINCIPAL — ACOMPAÑAMIENTO TOTAL
             </div>
           )}
 
           {sede.alertas?.length > 0 && (
             <div className="flex flex-wrap gap-2 mb-4">
               {sede.alertas.map((a, i) => (
-                <div key={i} className="px-3 py-1.5 rounded-lg text-xs font-semibold"
-                  style={{ background: '#fef3c7', border: '1px solid #fde68a', color: '#92400e' }}>
+                <div key={i} className="px-3 py-1.5 rounded-lg text-xs font-bold"
+                  style={{ background: '#0a0a0a', border: '1px solid #D4AF37', color: '#F5C518' }}>
                   {a}
                 </div>
               ))}
@@ -177,23 +177,23 @@ export default function SedeDetalle({ sede, onClose }) {
           <h2 className="font-black text-gray-900 mb-0.5" style={{ fontFamily: 'Barlow Condensed', fontSize: '2.2rem' }}>
             {sede.nombre}
           </h2>
-          <p className="text-amber-700 text-sm font-bold uppercase tracking-widest mb-5">{sede.subtitulo}</p>
+          <p className="text-[#B38728] text-sm font-bold uppercase tracking-widest mb-5">{sede.subtitulo}</p>
 
           {/* Info */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
             <div className="flex-1 p-4 rounded-xl flex items-start gap-3" style={{ background: '#f9fafb', border: '1px solid #e5e7eb' }}>
-              <MapPin className="text-amber-500 shrink-0 mt-0.5" size={18} />
+              <MapPin className="text-[#D4AF37] shrink-0 mt-0.5" size={18} />
               <div>
                 <div className="text-gray-500 text-xs uppercase tracking-wider mb-1 font-semibold">Dirección</div>
                 <div className="text-gray-900 font-semibold text-sm">{sede.direccion}</div>
               </div>
             </div>
             <div className="flex-1 p-4 rounded-xl flex items-start gap-3" style={{ background: '#f9fafb', border: '1px solid #e5e7eb' }}>
-              <CalendarDays className="text-amber-500 shrink-0 mt-0.5" size={18} />
+              <CalendarDays className="text-[#D4AF37] shrink-0 mt-0.5" size={18} />
               <div>
                 <div className="text-gray-500 text-xs uppercase tracking-wider mb-1 font-semibold">Horarios</div>
                 {sede.horariosUrl
-                  ? <a href={sede.horariosUrl} target="_blank" rel="noopener noreferrer" className="text-amber-700 font-semibold text-sm hover:underline">Ver horarios →</a>
+                  ? <a href={sede.horariosUrl} target="_blank" rel="noopener noreferrer" className="text-[#B38728] font-bold text-sm hover:underline">Ver horarios →</a>
                   : <div className="text-gray-900 font-semibold text-sm">{sede.horarios}</div>
                 }
               </div>
@@ -201,8 +201,8 @@ export default function SedeDetalle({ sede, onClose }) {
           </div>
 
           {/* Descripción */}
-          <div className="p-4 rounded-xl mb-5" style={{ background: '#fffbeb', border: '1px solid #fde68a' }}>
-            <div className="text-amber-900 font-bold text-xs uppercase tracking-wider mb-2">Sobre esta sede</div>
+          <div className="p-4 rounded-xl mb-5" style={{ background: '#fefce8', border: '1px solid rgba(212,175,55,0.4)' }}>
+            <div className="text-gray-900 font-bold text-xs uppercase tracking-wider mb-2">Sobre esta sede</div>
             <p className="text-gray-700 text-sm leading-relaxed">{sede.descripcion}</p>
           </div>
 
@@ -214,7 +214,7 @@ export default function SedeDetalle({ sede, onClose }) {
                 {Object.entries(sede.horas).map(([cat, h]) => (
                   <div key={cat} className="p-3 rounded-lg"
                     style={{ background: '#f9fafb', border: '1px solid #e5e7eb' }}>
-                    <span className="text-amber-700 font-black text-sm" style={{ fontFamily: 'Barlow Condensed' }}>{cat}</span>
+                    <span className="text-[#B38728] font-black text-sm" style={{ fontFamily: 'Barlow Condensed' }}>{cat}</span>
                     <p className="text-gray-600 text-xs mt-0.5 font-medium">{h}</p>
                   </div>
                 ))}
@@ -235,9 +235,9 @@ export default function SedeDetalle({ sede, onClose }) {
                 }[c] || {}
                 return (
                   <div key={c} className="flex items-center gap-2 px-3 py-2 rounded-lg"
-                    style={{ background: '#fef3c7', border: '1px solid #fde68a' }}>
-                    <span className="text-amber-700">{info.icon}</span>
-                    <span className="text-amber-900 font-black text-sm" style={{ fontFamily: 'Barlow Condensed' }}>{c}</span>
+                    style={{ background: '#f9fafb', border: '1px solid rgba(212,175,55,0.35)' }}>
+                    <span className="text-[#B38728]">{info.icon}</span>
+                    <span className="text-gray-900 font-black text-sm" style={{ fontFamily: 'Barlow Condensed' }}>{c}</span>
                     <span className="text-gray-700 text-xs font-medium">{info.label}</span>
                   </div>
                 )
@@ -247,12 +247,12 @@ export default function SedeDetalle({ sede, onClose }) {
 
           {/* Mensaje de Pago */}
           <div className="p-4 rounded-xl mb-5 flex items-center gap-3" 
-            style={{ background: '#fef3c7', border: '1px dashed #f59e0b' }}>
-            <div className="shrink-0 bg-amber-200/60 p-2 rounded-full">
-              <Lightbulb className="text-amber-800" size={24} />
+            style={{ background: '#fefce8', border: '1.5px dashed #D4AF37' }}>
+            <div className="shrink-0 bg-amber-100 p-2 rounded-full">
+              <Lightbulb className="text-[#B38728]" size={24} />
             </div>
-            <p className="text-amber-950 text-sm font-semibold leading-relaxed">
-              Puedes iniciar con el <span className="text-amber-800 font-bold">50% del valor total</span> del curso o <span className="text-amber-800 font-bold">pagar de contado</span> te saldrá más barato.
+            <p className="text-gray-900 text-sm font-semibold leading-relaxed">
+              Puedes iniciar con el <span className="text-[#B38728] font-bold">50% del valor total</span> del curso o <span className="text-[#B38728] font-bold">pagar de contado</span> te saldrá más barato.
             </p>
           </div>
 

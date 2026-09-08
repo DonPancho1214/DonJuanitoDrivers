@@ -3,7 +3,7 @@ import React from 'react'
 const values = [
   {
     icon: (
-      <svg width="28" height="28" fill="none" stroke="#d97706" strokeWidth="2" viewBox="0 0 24 24">
+      <svg width="28" height="28" fill="none" stroke="#F5C518" strokeWidth="2" viewBox="0 0 24 24">
         <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
         <circle cx="9" cy="7" r="4"/>
         <path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/>
@@ -14,7 +14,7 @@ const values = [
   },
   {
     icon: (
-      <svg width="28" height="28" fill="none" stroke="#d97706" strokeWidth="2" viewBox="0 0 24 24">
+      <svg width="28" height="28" fill="none" stroke="#F5C518" strokeWidth="2" viewBox="0 0 24 24">
         <circle cx="12" cy="12" r="10"/>
         <polyline points="12 6 12 12 16 14"/>
       </svg>
@@ -24,7 +24,7 @@ const values = [
   },
   {
     icon: (
-      <svg width="28" height="28" fill="none" stroke="#d97706" strokeWidth="2" viewBox="0 0 24 24">
+      <svg width="28" height="28" fill="none" stroke="#F5C518" strokeWidth="2" viewBox="0 0 24 24">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
       </svg>
     ),
@@ -33,7 +33,7 @@ const values = [
   },
   {
     icon: (
-      <svg width="28" height="28" fill="none" stroke="#d97706" strokeWidth="2" viewBox="0 0 24 24">
+      <svg width="28" height="28" fill="none" stroke="#F5C518" strokeWidth="2" viewBox="0 0 24 24">
         <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
       </svg>
     ),
@@ -58,11 +58,11 @@ export default function About() {
               <br/>
               DE CONDUCCIÓN
               <br/>
-              <span className="text-amber-500">MÁS CONFIABLE</span>
+              <span className="font-black text-gold-outline">MÁS CONFIABLE</span>
             </h2>
 
             <p className="text-gray-700 text-base leading-relaxed mb-4">
-              En <strong className="text-gray-900">Don Juanito Drivers</strong> hacemos que obtener tu licencia de conducción sea un proceso <strong className="text-amber-700">sencillo, rápido y acompañado de principio a fin</strong>.
+              En <strong className="text-gray-900">Don Juanito Drivers</strong> hacemos que obtener tu licencia de conducción sea un proceso <strong className="text-[#B38728]">sencillo, rápido y acompañado de principio a fin</strong>.
             </p>
             <p className="text-gray-600 text-base leading-relaxed mb-4">
               Conectamos a los estudiantes con las mejores opciones de formación, brindando <strong className="text-gray-900">asesoría personalizada</strong> durante todo el proceso: desde la matrícula y los exámenes médicos hasta la programación de clases, exámenes y la expedición de la licencia.
@@ -76,7 +76,7 @@ export default function About() {
             <p className="text-gray-600 text-base leading-relaxed mb-2">
               Montones de conductores han confiado en nosotros para dar el primer paso hacia nuevas oportunidades laborales, mayor independencia y una mejor calidad de vida.
             </p>
-            <p className="text-amber-800 text-sm italic font-bold mb-8">
+            <p className="text-[#B38728] text-sm italic font-bold mb-8">
               Tu licencia, tu libertad, tu próximo destino.
             </p>
 
@@ -94,7 +94,7 @@ export default function About() {
                 className="glass-card card-hover p-6 group"
                 style={{animationDelay:`${i*0.1}s`}}
               >
-                <div className="w-12 h-12 rounded-lg border border-amber-300 bg-amber-50 flex items-center justify-center mb-4 group-hover:bg-amber-100 transition-colors">
+                <div className="w-12 h-12 rounded-lg border border-[#D4AF37] bg-black flex items-center justify-center mb-4 group-hover:scale-105 transition-transform shadow-sm">
                   {v.icon}
                 </div>
                 <h4 className="font-bold text-gray-900 text-base mb-2">{v.title}</h4>

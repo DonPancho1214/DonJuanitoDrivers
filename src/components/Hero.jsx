@@ -32,17 +32,17 @@ export default function Hero() {
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
         <div className="max-w-2xl xl:max-w-3xl">
-          <div className="inline-flex items-center gap-3 mb-6 px-4 py-1.5 rounded-full border border-amber-300 bg-amber-50 shadow-sm animate-fade-in-up"
+          <div className="inline-flex items-center gap-2.5 mb-6 px-4 py-1.5 rounded-full border border-[#D4AF37] bg-black text-white shadow-sm animate-fade-in-up"
             style={{ animationDelay: '0.1s', opacity: 0 }}>
-            <span className="w-2 h-2 bg-amber-500 rounded-full animate-pulse" />
-            <span className="text-amber-900 text-xs font-bold uppercase tracking-wider">Red de escuelas certificadas</span>
+            <span className="w-2 h-2 bg-[#F5C518] rounded-full animate-pulse shadow-[0_0_8px_#F5C518]" />
+            <span className="text-[#F5C518] text-xs font-bold uppercase tracking-wider">Red de escuelas certificadas</span>
           </div>
 
           <h1 className="font-semibold leading-tight mb-6 animate-fade-in-up tracking-tight"
             style={{ fontFamily: 'Outfit', fontSize: 'clamp(3rem,6vw,5.5rem)', animationDelay: '0.2s', opacity: 0 }}>
             <span className="text-gray-900 font-extrabold">Obtener tu licencia</span><br />
             <span className="text-gray-600 font-medium">de conducción nunca fue</span><br />
-            <span className="text-amber-500 font-black">tan fácil.</span>
+            <span className="font-black text-gold-outline">tan fácil.</span>
           </h1>
 
           <div className="text-gray-600 text-lg md:text-xl mb-10 max-w-xl leading-relaxed font-normal animate-fade-in-up"
@@ -53,18 +53,22 @@ export default function Hero() {
             <p className="mb-6 text-base md:text-lg text-gray-700">
               En Don Juanito Drivers conectamos a nuestros estudiantes con una red de escuelas aliadas y los acompañamos durante todo el proceso para licencias A2, B1, C1 y C2.
             </p>
-            <ul className="text-base space-y-2 text-gray-700 font-medium">
-              <li className="flex items-center gap-2">
-                <span className="text-amber-500 font-black">✔</span> Atención personalizada
+            <ul className="text-base space-y-2.5 text-gray-800 font-medium">
+              <li className="flex items-center gap-2.5">
+                <span className="w-5 h-5 rounded-full bg-black text-[#F5C518] inline-flex items-center justify-center text-xs font-black shadow-sm shrink-0">✓</span>
+                <span>Atención personalizada</span>
               </li>
-              <li className="flex items-center gap-2">
-                <span className="text-amber-500 font-black">✔</span> Acompañamiento paso a paso
+              <li className="flex items-center gap-2.5">
+                <span className="w-5 h-5 rounded-full bg-black text-[#F5C518] inline-flex items-center justify-center text-xs font-black shadow-sm shrink-0">✓</span>
+                <span>Acompañamiento paso a paso</span>
               </li>
-              <li className="flex items-center gap-2">
-                <span className="text-amber-500 font-black">✔</span> Escuelas aliadas en Bogotá y Soacha
+              <li className="flex items-center gap-2.5">
+                <span className="w-5 h-5 rounded-full bg-black text-[#F5C518] inline-flex items-center justify-center text-xs font-black shadow-sm shrink-0">✓</span>
+                <span>Escuelas aliadas en Bogotá y Soacha</span>
               </li>
-              <li className="flex items-center gap-2">
-                <span className="text-amber-500 font-black">✔</span> Procesos seguros y confiables
+              <li className="flex items-center gap-2.5">
+                <span className="w-5 h-5 rounded-full bg-black text-[#F5C518] inline-flex items-center justify-center text-xs font-black shadow-sm shrink-0">✓</span>
+                <span>Procesos seguros y confiables</span>
               </li>
             </ul>
           </div>
@@ -94,8 +98,8 @@ export default function Hero() {
               { code: 'C1', label: 'Público', icon: <Bus size={16} /> },
               { code: 'C2', label: 'Camiones', icon: <Truck size={16} /> },
             ].map(cat => (
-              <div key={cat.code} className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/90 border border-amber-300 shadow-sm hover:border-amber-500 transition-colors">
-                <span className="text-amber-600">{cat.icon}</span>
+              <div key={cat.code} className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white border border-[#D4AF37]/50 shadow-sm hover:border-black transition-colors">
+                <span className="text-[#B38728]">{cat.icon}</span>
                 <span className="text-gray-900 font-bold text-sm">{cat.code}</span>
                 <span className="text-gray-600 text-xs hidden sm:inline font-medium">{cat.label}</span>
               </div>
@@ -105,7 +109,7 @@ export default function Hero() {
       </div>
 
       {/* Stats bar minimalist */}
-      <div className="absolute bottom-0 left-0 right-0 z-10 bg-white/95 backdrop-blur-md border-t border-amber-400/30 shadow-sm">
+      <div className="absolute bottom-0 left-0 right-0 z-10 bg-white/95 backdrop-blur-md border-t border-[#D4AF37]/30 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-wrap justify-center md:justify-between gap-8 text-center">
             {[
@@ -116,7 +120,7 @@ export default function Hero() {
             ].map((s, idx) => (
               <div key={idx} className={`flex flex-col items-center gap-1 ${s.hideOnMobile ? 'hidden md:flex' : ''}`}>
                 <span className="text-gray-900 font-black text-3xl leading-none" style={{ fontFamily: 'Outfit' }}>{s.value}</span>
-                <span className="text-amber-800 text-xs font-bold uppercase tracking-wider">{s.label}</span>
+                <span className="text-[#B38728] text-xs font-bold uppercase tracking-wider">{s.label}</span>
               </div>
             ))}
           </div>

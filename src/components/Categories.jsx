@@ -103,7 +103,7 @@ function CategoriaDetalle({ cat, onClose }) {
 
         <div className="p-7">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full mb-4 text-xs font-bold tracking-widest uppercase"
-            style={{ background: '#fef3c7', border: '1px solid #fde68a', color: '#b45309', fontFamily: 'Barlow Condensed' }}>
+            style={{ background: '#0a0a0a', border: '1px solid #D4AF37', color: '#F5C518', fontFamily: 'Barlow Condensed' }}>
             {cat.code} — {cat.subtitle}
           </div>
           
@@ -119,19 +119,18 @@ function CategoriaDetalle({ cat, onClose }) {
             <div className="text-gray-500 text-xs uppercase tracking-wider mb-3 font-semibold">Vehículos permitidos</div>
             <div className="flex flex-wrap gap-2">
               {cat.features.map((f, i) => (
-                <div key={i} className="px-3 py-1.5 rounded-lg text-sm font-semibold text-amber-900"
-                  style={{ background: '#fef3c7', border: '1px solid #fde68a' }}>
-                  ✓ {f}
+                <div key={i} className="px-3 py-1.5 rounded-lg text-sm font-semibold text-gray-900 bg-amber-50/40 border border-[#D4AF37]/30">
+                  <span className="text-[#B38728] font-bold mr-1">✓</span> {f}
                 </div>
               ))}
             </div>
           </div>
 
           <div className="p-4 rounded-xl mb-6 text-sm flex items-start gap-3" style={{ background: '#f9fafb', border: '1px solid #e5e7eb' }}>
-            <MapPin size={24} className="text-amber-500 shrink-0" />
+            <MapPin size={24} className="text-[#D4AF37] shrink-0" />
             <div>
               <span className="text-gray-900 font-bold block mb-1">¿Cómo conocer los precios?</span>
-              <span className="text-gray-600 leading-relaxed">Los precios varían dependiendo de la sede. Dirígete a la sección de sedes para ver los precios exactos y agendar tu cita. {cat.code === 'C2' && <span className="text-amber-700 font-bold">Nota: La categoría C2 solo está disponible en Conductores Bogotá.</span>}</span>
+              <span className="text-gray-600 leading-relaxed">Los precios varían dependiendo de la sede. Dirígete a la sección de sedes para ver los precios exactos y agendar tu cita. {cat.code === 'C2' && <span className="text-[#B38728] font-bold">Nota: La categoría C2 solo está disponible en Conductores Bogotá.</span>}</span>
             </div>
           </div>
 
@@ -159,7 +158,7 @@ export default function Categories() {
           <div className="text-center mb-16">
             <div className="section-label mb-3">Nuestras categorías</div>
             <h2 className="font-black text-gray-900 mb-4" style={{fontFamily:'Barlow Condensed', fontSize:'clamp(2.5rem,5vw,4rem)'}}>
-              ¿QUÉ LICENCIA <span className="text-amber-500">NECESITAS?</span>
+              ¿QUÉ LICENCIA <span className="font-black text-gold-outline">NECESITAS?</span>
             </h2>
             <p className="text-gray-600 max-w-xl mx-auto text-base">
               Ofrecemos formación completa para cuatro categorías de licencia. Cada programa está diseñado con los más altos estándares de seguridad vial.
@@ -177,31 +176,31 @@ export default function Categories() {
                 {/* Corner accent */}
                 <div className="absolute top-0 right-0 w-16 h-16 overflow-hidden">
                   <div className="absolute top-0 right-0 w-0 h-0"
-                    style={{borderLeft:'48px solid transparent', borderTop:'48px solid rgba(250,204,21,0.2)'}} />
+                    style={{borderLeft:'48px solid transparent', borderTop:'48px solid rgba(212,175,55,0.25)'}} />
                 </div>
-                <div className="absolute -top-px left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-amber-400 to-transparent opacity-60 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute -top-px left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent opacity-60 group-hover:opacity-100 transition-opacity" />
 
                 {/* Badge */}
-                <div className="inline-flex items-center gap-2.5 mb-5 px-4 py-1.5 rounded-full border border-amber-300 bg-amber-50 self-start shadow-sm">
-                  <span className="text-amber-600">
+                <div className="inline-flex items-center gap-2.5 mb-5 px-4 py-1.5 rounded-full border border-[#D4AF37] bg-black text-white self-start shadow-sm">
+                  <span className="text-[#F5C518]">
                     {cat.code === 'A2' && <Bike size={20} />}
                     {cat.code === 'B1' && <Car size={20} />}
                     {cat.code === 'C1' && <Bus size={20} />}
                     {cat.code === 'C2' && <Truck size={20} />}
                   </span>
-                  <span className="text-gray-900 font-black text-lg" style={{fontFamily:'Barlow Condensed', letterSpacing:'0.1em'}}>{cat.code}</span>
+                  <span className="text-white font-black text-lg" style={{fontFamily:'Barlow Condensed', letterSpacing:'0.1em'}}>{cat.code}</span>
                 </div>
 
                 {/* Icon Removed per user request */}
 
                 <h3 className="font-black text-gray-900 text-2xl mb-1" style={{fontFamily:'Barlow Condensed'}}>{cat.title}</h3>
-                <p className="text-amber-700 font-bold text-sm mb-3 tracking-wider uppercase">{cat.subtitle}</p>
+                <p className="text-[#B38728] font-bold text-sm mb-3 tracking-wider uppercase">{cat.subtitle}</p>
                 <p className="text-gray-600 text-sm mb-5 leading-relaxed flex-1">{cat.description}</p>
 
                 {/* Feature pills */}
                 <div className="flex flex-wrap gap-2 mb-6">
                   {cat.features.map(f => (
-                    <span key={f} className="px-2.5 py-1 rounded-md text-xs font-semibold text-amber-900 border border-amber-300 bg-amber-50">
+                    <span key={f} className="px-2.5 py-1 rounded-md text-xs font-semibold text-gray-900 border border-[#D4AF37]/40 bg-amber-50/30">
                       {f}
                     </span>
                   ))}
