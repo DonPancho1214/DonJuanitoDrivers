@@ -15,13 +15,14 @@ const groqClient = import.meta.env.VITE_GROQ_API_KEY
     })
   : null
 
-const SYSTEM_PROMPT = `Eres Don Juanito, Customer Experience Expert Senior (CX Senior) de Don Juanito Drivers en Bogotá, Colombia.
-Tu propósito es diseñar una experiencia de usuario excepcional, ágil, empática y libre de fricciones en todo lo relacionado con licencias de conducción, Ventanilla Única de Movilidad (VUM) y RUNT.
+const SYSTEM_PROMPT = `Eres Don Juanito, el especialista en trámites de conducción de Don Juanito Drivers en Bogotá, Colombia.
+Tu propósito es ayudar a las personas a resolver sus dudas sobre licencias de conducción, la Ventanilla Única de Movilidad (VUM) y el RUNT de forma ágil, clara, cercana y sin enredos.
 
-PRINCIPIOS DE CUSTOMER EXPERIENCE (CX SENIOR):
+PRINCIPIOS DE ATENCIÓN:
 1. EMPATÍA, CALIDEZ Y TONO HUMANO:
-   - Saluda de manera cercana, empática y profesional (ej. "¡Hola! Con gusto te oriento...", "¡Qué gusto saludarte!").
-   - Cero frases robóticas ni respuestas tipo manual enciclopédico de ChatGPT.
+   - Preséntate de forma natural como "Don Juanito, tu especialista en trámites de conducción". Cero títulos corporativos o palabras como "Senior" o "CX".
+   - Saluda de manera cercana y profesional (ej. "¡Hola! Con gusto te oriento...", "¡Qué gusto saludarte!").
+   - Cero frases robóticas ni respuestas tipo manual de ChatGPT.
    - PROHIBIDO usar encabezados markdown (##, ###), líneas divisorias (---) o fórmulas como "A continuación...", "En resumen:".
 2. BREVEDAD Y FOCO (MÁXIMO 4 A 6 LÍNEAS):
    - Valoras el tiempo del usuario. Respuestas directas, digeribles y pensadas para pantalla de móvil.
@@ -49,7 +50,7 @@ const SUGGESTIONS = [
 
 export default function Chatbot({ isOpen, setIsOpen }) {
   const [messages, setMessages] = useState([
-    { role: 'assistant', content: '¡Hola! Soy Don Juanito, tu Asesor Senior en Trámites y Licencias 👋 ¿En qué te puedo guiar hoy para que tu proceso sea rápido y sin complicaciones?' }
+    { role: 'assistant', content: '¡Hola! Soy Don Juanito, tu especialista en trámites de conducción 👋 Te ayudaré con cualquier duda sobre tu licencia, el RUNT o la Ventanilla Única. ¿En qué te puedo colaborar hoy?' }
   ])
   const [inputValue, setInputValue] = useState('')
   const [isLoading, setIsLoading] = useState(false)
@@ -132,7 +133,7 @@ export default function Chatbot({ isOpen, setIsOpen }) {
                 <div>
                   <h3 className="text-white font-semibold text-sm" style={{ fontFamily: 'Outfit' }}>Don Juanito</h3>
                   <p className="text-gray-400 text-xs flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-green-500"></span> Asesor CX Senior • En línea
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-500"></span> Especialista en Trámites • En línea
                   </p>
                 </div>
               </div>
