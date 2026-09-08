@@ -109,14 +109,47 @@ export default function Chatbot({ isOpen, setIsOpen }) {
   const [inputValue, setInputValue] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const messagesEndRef = useRef(null)
+  const chatContainerRef = useRef(null)
+  const modalRef = useRef(null)
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
-  }
+  // Prevenir que el scroll del mouse mueva la página web de fondo
+  useEffect(() => {
+    const modal = modalRef.current
+    if (!modal || !isOpen) return
 
+    const handleWheel = (e) => {
+      const container = chatContainerRef.current
+      if (!container) return
+
+      const { scrollTop, scrollHeight, clientHeight } = container
+      const deltaY = e.deltaY
+
+      if (scrollHeight > clientHeight) {
+        const isAtTop = scrollTop <= 0 && deltaY < 0
+        const isAtBottom = scrollTop + clientHeight >= scrollHeight - 1 && deltaY > 0
+        if (isAtTop || isAtBottom) {
+          e.preventDefault()
+        }
+      } else {
+        // Si el contenido cabe sin scroll, bloquear para que no mueva la página web
+        e.preventDefault()
+      }
+    }
+
+    modal.addEventListener('wheel', handleWheel, { passive: false })
+    return () => {
+      modal.removeEventListener('wheel', handleWheel)
+    }
+  }, [isOpen])
+
+  // Manejo de scroll: Al inicio mostrar desde arriba; cuando haya chat, bajar al último mensaje
   useEffect(() => {
     if (isOpen) {
-      scrollToBottom()
+      if (messages.length > 1 || isLoading) {
+        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+      } else if (chatContainerRef.current) {
+        chatContainerRef.current.scrollTop = 0
+      }
     }
   }, [messages, isOpen, isLoading])
 
@@ -172,11 +205,13 @@ export default function Chatbot({ isOpen, setIsOpen }) {
       <AnimatePresence>
         {isOpen && (
           <motion.div
+            ref={modalRef}
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="w-80 sm:w-96 h-[500px] max-h-[80vh] bg-[#0a0a0a]/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl flex flex-col overflow-hidden mb-4"
+            className="w-80 sm:w-96 h-[500px] max-h-[80vh] bg-[#0a0a0a]/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl flex flex-col overflow-hidden mb-4 overscroll-contain"
+            style={{ overscrollBehavior: 'contain' }}
           >
             {/* Header */}
             <div className="p-4 border-b border-white/10 bg-black/50 flex items-center justify-between">
@@ -199,8 +234,12 @@ export default function Chatbot({ isOpen, setIsOpen }) {
               </button>
             </div>
 
-            {/* Messages */}
-            <div className="flex-1 overflow-y-auto p-4 flex flex-col gap-4" style={{ scrollbarWidth: 'thin' }}>
+            {/* Messages & Suggestions in a single unified scroll container */}
+            <div 
+              ref={chatContainerRef}
+              className="flex-1 overflow-y-auto p-4 flex flex-col gap-4 overscroll-contain" 
+              style={{ scrollbarWidth: 'thin', overscrollBehavior: 'contain' }}
+            >
               {messages.map((msg, idx) => (
                 <div key={idx} className={`flex gap-3 max-w-[85%] ${msg.role === 'user' ? 'ml-auto flex-row-reverse' : 'mr-auto'}`}>
                   <div className={`w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center ${msg.role === 'user' ? 'bg-white/10 text-white' : 'bg-yellow-400 text-black'}`}>
@@ -211,6 +250,24 @@ export default function Chatbot({ isOpen, setIsOpen }) {
                   </div>
                 </div>
               ))}
+
+              {/* Suggestions directly inside scroll container */}
+              {messages.length === 1 && (
+                <div className="flex flex-col gap-2 pt-1">
+                  <p className="text-gray-400 text-xs font-medium">Preguntas frecuentes:</p>
+                  <div className="flex flex-wrap gap-2">
+                    {SUGGESTIONS.map((s, i) => (
+                      <button 
+                        key={i}
+                        onClick={() => handleSend(s)}
+                        className="text-xs px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-gray-300 hover:bg-yellow-400/10 hover:border-yellow-400/30 hover:text-yellow-400 transition-all text-left"
+                      >
+                        {s}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
               
               {isLoading && (
                 <div className="flex gap-3 max-w-[85%] mr-auto">
@@ -226,21 +283,6 @@ export default function Chatbot({ isOpen, setIsOpen }) {
               )}
               <div ref={messagesEndRef} />
             </div>
-
-            {/* Suggestions */}
-            {messages.length === 1 && (
-              <div className="px-4 pb-2 flex flex-wrap gap-2">
-                {SUGGESTIONS.map((s, i) => (
-                  <button 
-                    key={i}
-                    onClick={() => handleSend(s)}
-                    className="text-xs px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-gray-300 hover:bg-white/10 transition-colors text-left"
-                  >
-                    {s}
-                  </button>
-                ))}
-              </div>
-            )}
 
             {/* Input */}
             <div className="p-4 border-t border-white/10 bg-black/50">
