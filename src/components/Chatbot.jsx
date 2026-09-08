@@ -16,41 +16,95 @@ const groqClient = import.meta.env.VITE_GROQ_API_KEY
   : null
 
 const SYSTEM_PROMPT = `Eres Don Juanito, el especialista en trámites de conducción de Don Juanito Drivers en Bogotá, Colombia.
-Tu propósito es ayudar a las personas a resolver sus dudas sobre licencias de conducción, la Ventanilla Única de Movilidad (VUM) y el RUNT de forma ágil, clara, cercana y sin enredos.
+Tu propósito es orientar al usuario con total claridad y retenerlo en nuestra página para que NO tenga que buscar en otras escuelas ni centros médicos. Siempre ofrece nuestras propias soluciones y enlaza a los apartados de nuestra página.
 
-PRINCIPIOS DE ATENCIÓN:
-1. EMPATÍA, CALIDEZ Y TONO HUMANO:
-   - Preséntate de forma natural como "Don Juanito, tu especialista en trámites de conducción". Cero títulos corporativos o palabras como "Senior" o "CX".
-   - Saluda de manera cercana y profesional (ej. "¡Hola! Con gusto te oriento...", "¡Qué gusto saludarte!").
-   - Cero frases robóticas ni respuestas tipo manual de ChatGPT.
-   - PROHIBIDO usar encabezados markdown (##, ###), líneas divisorias (---) o fórmulas como "A continuación...", "En resumen:".
-2. BREVEDAD Y FOCO (MÁXIMO 4 A 6 LÍNEAS):
-   - Valoras el tiempo del usuario. Respuestas directas, digeribles y pensadas para pantalla de móvil.
-   - Si listas requisitos, usa solo viñetas simples (•).
-3. ASESORÍA PREVENTIVA Y ANTICIPACIÓN (ZERO FRICTION):
-   - Aconseja al usuario proactivamente para evitarle pérdidas de tiempo o dinero (ej. verificar paz y salvo en SIMIT antes de agendar cita en la VUM, llevar siempre la cédula física original).
-4. CONOCIMIENTO TÉCNICO EXACTO:
-   - Ventanilla Única de Movilidad (VUM): ventanillamovilidad.com.co (agendamiento con número de cédula, sedes en Bogotá como Mallplaza, Chapinero, Calle 13, Suba, descarga de turno QR).
-   - RUNT: runt.gov.co (consulta de licencia, estado activo, examen médico CRC y certificado CEA).
-   - Licencia por primera vez (B1 carro o A2 moto): edad mínima 16 años (público C1 es 18), documento de identidad, paz y salvo en SIMIT, examen médico (CRC), curso en escuela autorizada (CEA como Don Juanito Drivers) y cita en la VUM para reclamar el plástico.
-   - Renovación: no requiere curso nuevo; solo examen médico CRC, paz y salvo en SIMIT y cita en la VUM.
-   - Comparendos: se debe estar a paz y salvo en SIMIT o con acuerdo de pago vigente al día. (En Colombia no aplica sistema de puntos).
-5. ACOMPAÑAMIENTO DON JUANITO DRIVERS:
-   - Si preguntan por precios, clases o sedes, aclara que varían según experiencia y sede; invítalos amablemente a cotizar en el formulario de la página o por WhatsApp con un asesor para aplicarles el mejor beneficio.
-6. CIERRE CONSULTIVO Y MEMORABLE:
-   - Termina siempre con una pregunta breve y atenta que invite a dar el siguiente paso con tranquilidad.`;
+SOLUCIONES PROPIAS Y ENLACES DE NUESTRA PÁGINA (USA SIEMPRE ESTOS ENLACES):
+1. EXAMEN MÉDICO CRC Y RENOVACIONES:
+   - Contamos con nuestro centro médico aliado oficial: **Medimetria Especializada** (Calle 68 # 23-17, Bogotá).
+   - Hacen el examen médico oficial (CRC) en solo 30 minutos y lo suben de inmediato al RUNT.
+   - Si preguntan por examen médico, certificado o cómo renovar, diles que lo hacen con nosotros en Medimetria y enlázalos a: [Examen Médico y Renovaciones](#crc).
+2. PRECIOS, COSTOS O AGENDAMIENTO:
+   - Tenemos los mejores precios en cursos para moto (A2), carro particular (B1) y servicio público (C1/C2), con $50.000 de descuento por pago de contado.
+   - Si preguntan por precios, costos o cómo empezar, invítalos a cotizar en nuestro cotizador: [Ver Precios y Agendar](#agendar).
+3. NUESTRAS SEDES EN BOGOTÁ Y SOACHA:
+   - Contamos con 9 sedes autorizadas (Diverplaza Calle 80, Chapinero, Calle 100, Kennedy, Soacha, Suba, Bosa, etc.).
+   - Si preguntan dónde tomar clases o por ubicaciones, enlázalos a: [Ver Nuestras Sedes](#sedes).
+4. CATEGORÍAS DE LICENCIA:
+   - Cursos para Moto (A2), Carro (B1), Servicio Público (C1, C2) y combos Moto + Carro.
+   - Enlázalos a: [Ver Categorías de Licencia](#categorias).
+5. TRÁMITE ANTE LA VENTANILLA ÚNICA (VUM) Y RUNT:
+   - Explica el trámite con claridad: estar a paz y salvo en SIMIT, examen CRC en nuestro centro aliado Medimetria, curso con Don Juanito Drivers y cita en la VUM (ventanillamovilidad.com.co) para reclamar el plástico.
+
+REGLAS DE ESTILO:
+- Máximo 4 a 6 líneas. Tono cálido, humano, profesional y directo (estilo WhatsApp).
+- NUNCA uses formato de manual de ChatGPT (prohibido usar ##, ###, líneas --- o introducciones tipo "¡Claro!", "A continuación...").
+- Usa viñetas simples (•) si listas requisitos.
+- Cierra siempre con una pregunta amable orientada al siguiente paso.`;
 
 const SUGGESTIONS = [
   "¿Qué necesito para sacar la B1?",
-  "¿Cómo agendo en la Ventanilla Única?",
-  "¿Cómo consultar mi estado en el RUNT?",
-  "¿Qué pasa si tengo comparendos?",
-  "¿Cómo renovar mi licencia?"
+  "¿Cómo renovar mi licencia y costos?",
+  "¿Dónde hacen el examen médico CRC?",
+  "¿Qué sedes tienen en Bogotá?",
+  "¿Qué pasa si tengo comparendos?"
 ]
+
+function renderMessageContent(content) {
+  if (!content) return null
+  const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g
+  const parts = []
+  let lastIndex = 0
+  let match
+
+  const formatBold = (str, keyPrefix) => {
+    const boldParts = str.split(/(\*\*[^*]+\*\*)/g)
+    return boldParts.map((bp, i) => {
+      if (bp.startsWith('**') && bp.endsWith('**')) {
+        return <strong key={`${keyPrefix}-${i}`} className="font-semibold text-yellow-300">{bp.slice(2, -2)}</strong>
+      }
+      return bp
+    })
+  }
+
+  while ((match = linkRegex.exec(content)) !== null) {
+    if (match.index > lastIndex) {
+      parts.push(formatBold(content.substring(lastIndex, match.index), `txt-${lastIndex}`))
+    }
+    const label = match[1]
+    const url = match[2]
+    parts.push(
+      <a
+        key={`link-${match.index}`}
+        href={url}
+        onClick={(e) => {
+          if (url.startsWith('#')) {
+            e.preventDefault()
+            const elem = document.querySelector(url)
+            if (elem) {
+              elem.scrollIntoView({ behavior: 'smooth' })
+            }
+          }
+        }}
+        target={url.startsWith('http') ? '_blank' : undefined}
+        rel={url.startsWith('http') ? 'noopener noreferrer' : undefined}
+        className="text-yellow-400 font-semibold underline underline-offset-2 hover:text-yellow-300 transition-colors cursor-pointer inline-flex items-center gap-0.5"
+      >
+        {label} ↗
+      </a>
+    )
+    lastIndex = match.index + match[0].length
+  }
+
+  if (lastIndex < content.length) {
+    parts.push(formatBold(content.substring(lastIndex), `txt-${lastIndex}`))
+  }
+
+  return parts
+}
 
 export default function Chatbot({ isOpen, setIsOpen }) {
   const [messages, setMessages] = useState([
-    { role: 'assistant', content: '¡Hola! Soy Don Juanito, tu especialista en trámites de conducción 👋 Te ayudaré con cualquier duda sobre tu licencia, el RUNT o la Ventanilla Única. ¿En qué te puedo colaborar hoy?' }
+    { role: 'assistant', content: '¡Hola! Soy Don Juanito, tu especialista en trámites de conducción 👋 Te ayudaré con cualquier duda sobre tu licencia, el examen médico o agendamiento. ¿En qué te puedo colaborar hoy?' }
   ])
   const [inputValue, setInputValue] = useState('')
   const [isLoading, setIsLoading] = useState(false)
@@ -153,7 +207,7 @@ export default function Chatbot({ isOpen, setIsOpen }) {
                     {msg.role === 'user' ? <User size={16} /> : <Bot size={16} />}
                   </div>
                   <div className={`p-3 rounded-2xl text-sm whitespace-pre-wrap ${msg.role === 'user' ? 'bg-yellow-400 text-black rounded-tr-none font-medium' : 'bg-white/10 text-white rounded-tl-none font-light leading-relaxed'}`}>
-                    {msg.content}
+                    {renderMessageContent(msg.content)}
                   </div>
                 </div>
               ))}
