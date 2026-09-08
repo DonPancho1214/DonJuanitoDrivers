@@ -37,10 +37,10 @@ export default function Navbar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
       style={{
-        background: scrolled ? 'rgba(8,8,8,0.97)' : 'linear-gradient(to bottom, rgba(0,0,0,0.65) 0%, transparent 100%)',
-        borderBottom: scrolled ? '1px solid rgba(250,204,21,0.15)' : 'none',
-        backdropFilter: scrolled ? 'blur(20px)' : 'none',
-        boxShadow: scrolled ? '0 4px 30px rgba(0,0,0,0.5)' : 'none',
+        background: 'rgba(10, 10, 10, 0.97)',
+        borderBottom: '1px solid rgba(212, 175, 55, 0.25)',
+        backdropFilter: 'blur(20px)',
+        boxShadow: scrolled ? '0 4px 30px rgba(0,0,0,0.5)' : '0 2px 20px rgba(0,0,0,0.2)',
       }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

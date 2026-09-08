@@ -17,20 +17,17 @@ export default function App() {
   const [activeWidget, setActiveWidget] = useState(null) // 'whatsapp' | 'chatbot' | null
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] relative overflow-hidden">
+    <div className="min-h-screen bg-[#f8f9fa] text-gray-900 relative overflow-hidden">
       <div className="fixed inset-0 z-0 pointer-events-none">
         {/* Main Background Image */}
-        <div className="w-full h-[65vh] md:h-full relative">
-          <img src="/hero-background.webp" alt="Fondo Don Juanito" width="1920" height="1080" loading="eager" className="w-full h-full object-cover object-[60%_top] md:object-center opacity-60" />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#0a0a0a] md:hidden" />
+        <div className="w-full h-full relative">
+          <img src="/hero-background.webp" alt="Fondo Don Juanito" width="1920" height="1080" loading="eager" className="w-full h-full object-cover object-[60%_top] md:object-center opacity-20" />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/15 via-[#0a0a0a]/35 to-[#0a0a0a]/55" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/85 to-[#f8f9fa]" />
         
         {/* Minimalist Driving Details */}
         {/* Vertical Road Dashed Line */}
-        <div className="absolute top-0 bottom-0 left-8 md:left-24 w-0.5 border-l-2 border-dashed border-yellow-400/20" />
-        
-
+        <div className="absolute top-0 bottom-0 left-8 md:left-24 w-0.5 border-l-2 border-dashed border-amber-500/25" />
       </div>
       <div className="relative z-10">
         <Navbar />

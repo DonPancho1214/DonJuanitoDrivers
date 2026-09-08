@@ -210,11 +210,11 @@ export default function Chatbot({ isOpen, setIsOpen }) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="w-80 sm:w-96 h-[500px] max-h-[80vh] bg-[#0a0a0a]/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl flex flex-col overflow-hidden mb-4 overscroll-contain"
+            className="w-80 sm:w-96 h-[500px] max-h-[80vh] bg-[#0a0a0a]/95 backdrop-blur-xl border border-amber-500/30 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.6),0_0_25px_rgba(217,119,6,0.15)] flex flex-col overflow-hidden mb-4 overscroll-contain"
             style={{ overscrollBehavior: 'contain' }}
           >
             {/* Header */}
-            <div className="p-4 border-b border-white/10 bg-black/50 flex items-center justify-between">
+            <div className="p-4 border-b border-amber-500/20 bg-black/60 flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 rounded-full bg-yellow-400 flex items-center justify-center">
                   <Bot size={18} className="text-black" />
@@ -285,7 +285,7 @@ export default function Chatbot({ isOpen, setIsOpen }) {
             </div>
 
             {/* Input */}
-            <div className="p-4 border-t border-white/10 bg-black/50">
+            <div className="p-4 border-t border-amber-500/20 bg-black/60">
               <div className="relative flex items-center">
                 <input
                   type="text"

@@ -779,7 +779,7 @@ https://www.runt.gov.co/directorio-de-actores`
   }
 
   return (
-    <section id="agendar" className="py-24 relative" style={{ background: 'rgba(13,13,13,0.7)' }}>
+    <section id="agendar" className="py-24 relative" style={{ background: 'rgba(255,255,255,0.7)' }}>
       <div className="absolute inset-0 grid-bg opacity-40 pointer-events-none" />
       <div className="absolute left-1/2 top-0 -translate-x-1/2 w-[600px] h-[300px] pointer-events-none"
         style={{ background: 'radial-gradient(ellipse, rgba(250,204,21,0.06) 0%, transparent 70%)' }} />
@@ -787,27 +787,27 @@ https://www.runt.gov.co/directorio-de-actores`
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center mb-12">
           <div className="section-label mb-3">Agenda tu cita</div>
-          <h2 className="font-black text-white mb-4" style={{ fontFamily: 'Barlow Condensed', fontSize: 'clamp(2.5rem,5vw,4rem)' }}>
-            ¡UN PASO MÁS CERCA<br />DE <span className="text-yellow-400">TU LICENCIA!</span>
+          <h2 className="font-black text-gray-900 mb-4" style={{ fontFamily: 'Barlow Condensed', fontSize: 'clamp(2.5rem,5vw,4rem)' }}>
+            ¡UN PASO MÁS CERCA<br />DE <span className="text-amber-500">TU LICENCIA!</span>
           </h2>
-          <p className="text-gray-400 max-w-lg mx-auto">
-            Diligencia el formulario y un asesor de <strong className="text-yellow-400">Don Juanito Drivers</strong> se comunicará contigo en menos de 24 horas.
+          <p className="text-gray-600 max-w-lg mx-auto">
+            Diligencia el formulario y un asesor de <strong className="text-gray-900">Don Juanito Drivers</strong> se comunicará contigo en menos de 24 horas.
           </p>
         </div>
 
-        <div className="glass-card p-8 relative overflow-hidden" style={{ border: '1px solid rgba(250,204,21,0.2)' }}>
-          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent" />
+        <div className="glass-card p-8 relative overflow-hidden shadow-lg">
+          <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-transparent via-amber-400 to-transparent" />
 
           {status.type === 'success' ? (
             <div className="flex flex-col items-center justify-center py-12 text-center gap-4 animate-fade-in">
-              <div className="w-20 h-20 rounded-full border-2 border-green-500 flex items-center justify-center animate-float" style={{ borderColor: '#22c55e' }}>
-                <CheckCircle2 size={40} className="text-green-500" />
+              <div className="w-20 h-20 rounded-full border-2 border-green-500 flex items-center justify-center animate-float bg-green-50" style={{ borderColor: '#22c55e' }}>
+                <CheckCircle2 size={40} className="text-green-600" />
               </div>
-              <h3 className="font-black text-white text-3xl" style={{ fontFamily: 'Barlow Condensed', letterSpacing: '0.05em' }}>¡SOLICITUD RECIBIDA!</h3>
-              <p className="text-green-400 text-lg font-semibold max-w-md">✅ ¡Tu cita ha sido pre-agendada con éxito!</p>
+              <h3 className="font-black text-gray-900 text-3xl" style={{ fontFamily: 'Barlow Condensed', letterSpacing: '0.05em' }}>¡SOLICITUD RECIBIDA!</h3>
+              <p className="text-green-700 text-lg font-bold max-w-md">✅ ¡Tu cita ha sido pre-agendada con éxito!</p>
               
-              <div className="text-gray-300 text-sm max-w-sm mb-4 space-y-4">
-                <p className="font-medium text-yellow-400/90">
+              <div className="text-gray-700 text-sm max-w-sm mb-4 space-y-4 font-medium">
+                <p className="font-bold text-amber-900">
                   Muchas gracias por confiar en Don Juanito Drivers. Que Dios te bendiga enormemente en este nuevo proceso. 🙏
                 </p>
                 <p>Un asesor se pondrá en contacto contigo lo más pronto posible.</p>
@@ -828,24 +828,24 @@ https://www.runt.gov.co/directorio-de-actores`
             <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-5">
               {/* Mensaje de Error */}
               {status.type === 'error' && (
-                <div className="md:col-span-2 p-4 bg-red-500/10 border border-red-500/30 rounded-lg flex items-center gap-3 text-red-400 mb-2">
-                  <XCircle size={20} className="shrink-0 text-red-400" />
+                <div className="md:col-span-2 p-4 bg-red-50 border border-red-200 rounded-lg flex items-center gap-3 text-red-600 mb-2 font-medium">
+                  <XCircle size={20} className="shrink-0 text-red-500" />
                   <span className="font-semibold">{status.message}</span>
                 </div>
               )}
 
               {/* Aviso de envío duplicado */}
               {duplicateWarning && (
-                <div className="md:col-span-2 p-4 bg-yellow-500/10 border border-yellow-400/30 rounded-xl flex items-start gap-3 text-yellow-300 mb-2">
-                  <AlertTriangle size={20} className="shrink-0 mt-0.5 text-yellow-400" />
+                <div className="md:col-span-2 p-4 bg-amber-50 border border-amber-300 rounded-xl flex items-start gap-3 text-amber-900 mb-2">
+                  <AlertTriangle size={20} className="shrink-0 mt-0.5 text-amber-600" />
                   <div className="flex flex-col gap-1">
                     <span className="font-semibold text-sm">{duplicateWarning}</span>
                     <button
                       type="button"
                       onClick={() => abrirWhatsApp('Hola, quiero información sobre las licencias de conducción')}
-                      className="text-yellow-400 hover:text-yellow-300 underline text-xs font-medium transition-colors inline-flex items-center gap-1 w-fit"
+                      className="text-amber-800 hover:text-amber-900 underline text-xs font-bold transition-colors inline-flex items-center gap-1 w-fit"
                     >
-                      <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a8 8 0 01-4.243-1.212l-.258-.153-2.844.846.846-2.844-.153-.258A8 8 0 1112 20z"/></svg>
+                      <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                       Ir a WhatsApp
                     </button>
                   </div>
@@ -854,7 +854,7 @@ https://www.runt.gov.co/directorio-de-actores`
 
               {/* Nombre */}
               <div className="flex flex-col gap-1.5">
-                <label htmlFor="nombre" className="text-gray-400 text-xs uppercase tracking-wider">Nombre completo <span className="text-[#FFD700] font-bold">*</span></label>
+                <label htmlFor="nombre" className="text-gray-700 text-xs uppercase tracking-wider font-bold">Nombre completo <span className="text-amber-600 font-bold">*</span></label>
                 <input 
                   id="nombre"
                   className={`form-input ${errors.nombre ? 'border-red-500 focus:border-red-500' : ''}`} 
@@ -869,7 +869,7 @@ https://www.runt.gov.co/directorio-de-actores`
 
               {/* Cédula */}
               <div className="flex flex-col gap-1.5">
-                <label htmlFor="cedula" className="text-gray-400 text-xs uppercase tracking-wider">Número de cédula</label>
+                <label htmlFor="cedula" className="text-gray-700 text-xs uppercase tracking-wider font-bold">Número de cédula</label>
                 <input 
                   id="cedula"
                   className={`form-input ${errors.cedula ? 'border-red-500 focus:border-red-500' : ''}`} 
@@ -883,7 +883,7 @@ https://www.runt.gov.co/directorio-de-actores`
 
               {/* Celular */}
               <div className="flex flex-col gap-1.5">
-                <label htmlFor="celular" className="text-gray-400 text-xs uppercase tracking-wider">Celular / WhatsApp <span className="text-[#FFD700] font-bold">*</span></label>
+                <label htmlFor="celular" className="text-gray-700 text-xs uppercase tracking-wider font-bold">Celular / WhatsApp <span className="text-amber-600 font-bold">*</span></label>
                 <input 
                   id="celular"
                   className={`form-input ${errors.celular ? 'border-red-500 focus:border-red-500' : ''}`} 
@@ -899,7 +899,7 @@ https://www.runt.gov.co/directorio-de-actores`
 
               {/* Sede */}
               <div className="flex flex-col gap-1.5">
-                <label htmlFor="sede" className="text-gray-400 text-xs uppercase tracking-wider">Sede de preferencia <span className="text-[#FFD700] font-bold">*</span></label>
+                <label htmlFor="sede" className="text-gray-700 text-xs uppercase tracking-wider font-bold">Sede de preferencia <span className="text-amber-600 font-bold">*</span></label>
                 <select 
                   id="sede"
                   className={`form-input ${errors.sede ? 'border-red-500 focus:border-red-500' : ''}`} 
@@ -916,7 +916,7 @@ https://www.runt.gov.co/directorio-de-actores`
 
               {/* Categoría */}
               <div className="flex flex-col gap-1.5">
-                <label htmlFor="categoria" className="text-gray-400 text-xs uppercase tracking-wider">Categoría de licencia <span className="text-[#FFD700] font-bold">*</span></label>
+                <label htmlFor="categoria" className="text-gray-700 text-xs uppercase tracking-wider font-bold">Categoría de licencia <span className="text-amber-600 font-bold">*</span></label>
                 <select 
                   id="categoria"
                   className={`form-input ${!form.sede ? 'opacity-50 cursor-not-allowed' : ''} ${errors.categoria ? 'border-red-500 focus:border-red-500' : ''}`} 
@@ -938,7 +938,7 @@ https://www.runt.gov.co/directorio-de-actores`
 
               {/* Método de pago */}
               <div className="flex flex-col gap-1.5">
-                <label htmlFor="metodoPago" className="text-gray-400 text-xs uppercase tracking-wider">Método de pago <span className="text-[#FFD700] font-bold">*</span></label>
+                <label htmlFor="metodoPago" className="text-gray-700 text-xs uppercase tracking-wider font-bold">Método de pago <span className="text-amber-600 font-bold">*</span></label>
                 <select 
                   id="metodoPago"
                   className={`form-input ${!(form.sede && form.categoria) ? 'opacity-50 cursor-not-allowed' : ''} ${errors.metodoPago ? 'border-red-500 focus:border-red-500' : ''}`} 
@@ -971,7 +971,7 @@ https://www.runt.gov.co/directorio-de-actores`
 
               {/* Fecha */}
               <div className="flex flex-col gap-1.5">
-                <label htmlFor="fecha" className="text-gray-400 text-xs uppercase tracking-wider">Fecha preferida <span className="text-[#FFD700] font-bold">*</span></label>
+                <label htmlFor="fecha" className="text-gray-700 text-xs uppercase tracking-wider font-bold">Fecha preferida <span className="text-amber-600 font-bold">*</span></label>
                 <input 
                   id="fecha"
                   className={`form-input ${errors.fecha ? 'border-red-500 focus:border-red-500' : ''}`} 
@@ -990,7 +990,7 @@ https://www.runt.gov.co/directorio-de-actores`
 
               {/* Hora — opciones dinámicas según la sede seleccionada */}
               <div className="flex flex-col gap-1.5">
-                <label htmlFor="hora" className="text-gray-400 text-xs uppercase tracking-wider">Hora preferida <span className="text-[#FFD700] font-bold">*</span></label>
+                <label htmlFor="hora" className="text-gray-700 text-xs uppercase tracking-wider font-bold">Hora preferida <span className="text-amber-600 font-bold">*</span></label>
                 <select 
                   id="hora"
                   className={`form-input ${
@@ -1018,10 +1018,10 @@ https://www.runt.gov.co/directorio-de-actores`
                 {isAutoXua ? (
                   /* Auto Xua: clases prácticas obligatorias, no se pregunta */
                   <>
-                    <label className="text-gray-400 text-xs uppercase tracking-wider">Clases prácticas</label>
-                    <div className="p-4 rounded-lg flex items-center gap-3" style={{ background: 'rgba(250,204,21,0.08)', border: '1px solid rgba(250,204,21,0.3)' }}>
-                      <AlertTriangle size={20} className="text-yellow-400 shrink-0" />
-                      <span className="text-sm text-yellow-300 font-medium">
+                    <label className="text-gray-700 text-xs uppercase tracking-wider font-bold">Clases prácticas</label>
+                    <div className="p-4 rounded-lg flex items-center gap-3" style={{ background: '#fef3c7', border: '1px solid #fde68a' }}>
+                      <AlertTriangle size={20} className="text-amber-700 shrink-0" />
+                      <span className="text-sm text-amber-950 font-semibold">
                         En esta sede las clases prácticas son obligatorias. No se permite homologación de experiencia previa.
                       </span>
                     </div>
@@ -1029,24 +1029,24 @@ https://www.runt.gov.co/directorio-de-actores`
                 ) : (
                   /* Otras sedes: mostrar opciones de saber manejar */
                   <>
-                    <label className="text-gray-400 text-xs uppercase tracking-wider">¿Ya sabe manejar? <span className="text-[#FFD700] font-bold">*</span></label>
+                    <label className="text-gray-700 text-xs uppercase tracking-wider font-bold">¿Ya sabe manejar? <span className="text-amber-600 font-bold">*</span></label>
                     <div className="flex flex-wrap gap-3">
                       {[
-                        { val: 'Si', label: <><CheckCircle2 size={16} className="inline mr-1" /> {showFourOptions ? 'Sí, ya sé manejar (los dos)' : 'Sí, ya sé manejar'}</> },
+                        { val: 'Si', label: <><CheckCircle2 size={16} className="inline mr-1 text-green-600" /> {showFourOptions ? 'Sí, ya sé manejar (los dos)' : 'Sí, ya sé manejar'}</> },
                         { val: 'No', label: <><XCircle size={16} className="inline mr-1 text-red-500" /> No, soy principiante</> },
                         // Opciones extra solo para combos A2+B1 o A2+C1 en Diverplaza
                         ...(showFourOptions ? [
-                          { val: 'moto_si_carro_no', label: <span className="flex items-center gap-1"><Bike size={16} className="inline mr-1 text-yellow-400" /> Sé manejar moto pero carro no</span> },
-                          { val: 'carro_si_moto_no', label: <span className="flex items-center gap-1"><Car size={16} className="inline mr-1 text-yellow-400" /> Sé manejar carro pero moto no</span> },
+                          { val: 'moto_si_carro_no', label: <span className="flex items-center gap-1"><Bike size={16} className="inline mr-1 text-amber-600" /> Sé manejar moto pero carro no</span> },
+                          { val: 'carro_si_moto_no', label: <span className="flex items-center gap-1"><Car size={16} className="inline mr-1 text-amber-600" /> Sé manejar carro pero moto no</span> },
                         ] : []),
                       ].map(op => (
                         <label key={op.val} className="flex items-center gap-2 cursor-pointer px-4 py-2.5 rounded-lg transition-all"
                           style={{
-                            background: form.sabeManejar === op.val ? 'rgba(250,204,21,0.15)' : 'rgba(255,255,255,0.04)',
-                            border: `1px solid ${form.sabeManejar === op.val ? 'rgba(250,204,21,0.5)' : 'rgba(255,255,255,0.1)'}`,
+                            background: form.sabeManejar === op.val ? '#fef3c7' : '#f9fafb',
+                            border: `1.5px solid ${form.sabeManejar === op.val ? '#f59e0b' : '#e5e7eb'}`,
                           }}>
                           <input type="radio" name="sabeManejar" value={op.val} checked={form.sabeManejar === op.val} onChange={handleChange} className="sr-only" />
-                          <span className="text-sm text-gray-300">{op.label}</span>
+                          <span className="text-sm font-semibold text-gray-800">{op.label}</span>
                         </label>
                       ))}
                     </div>
@@ -1057,54 +1057,54 @@ https://www.runt.gov.co/directorio-de-actores`
 
               {/* Total Price Display */}
               {form.sede && form.categoria && (
-                <div className="md:col-span-2 p-4 rounded-xl flex items-center justify-between border animate-fade-in"
+                <div className="md:col-span-2 p-4 rounded-xl flex items-center justify-between border animate-fade-in shadow-sm"
                   style={{
-                    background: 'rgba(250,204,21,0.05)',
-                    borderColor: 'rgba(250,204,21,0.2)',
+                    background: '#fffbeb',
+                    borderColor: '#fde68a',
                   }}>
                   <div>
-                    <span className="text-gray-400 text-xs uppercase tracking-wider block font-semibold">Valor Total Licencia</span>
-                    <span className="text-gray-500 text-xs mt-0.5 block">Sede: {form.sede} | Categoría: {CATEGORIA_LABEL[form.categoria] || form.categoria}</span>
+                    <span className="text-gray-700 text-xs uppercase tracking-wider block font-bold">Valor Total Licencia</span>
+                    <span className="text-gray-500 text-xs mt-0.5 block font-medium">Sede: {form.sede} | Categoría: {CATEGORIA_LABEL[form.categoria] || form.categoria}</span>
                   </div>
                   <div className="text-right">
                     {preciosLoading ? (
-                      <div className="h-8 w-32 bg-white/10 rounded animate-pulse" />
+                      <div className="h-8 w-32 bg-amber-100 rounded animate-pulse" />
                     ) : (
                       <>
                         {precioFinal?.isCredito ? (
                           <div className="flex flex-col items-end gap-1">
                             <div className="flex flex-col items-end">
-                              <span className="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-0.5">
+                              <span className="text-gray-600 text-xs font-semibold uppercase tracking-wider mb-0.5">
                                 Valor total con {form.metodoPago.includes('Addi') ? 'Addi (+7%)' : 'Sistecrédito (+5%)'}:
                               </span>
-                              <span className="text-yellow-400 text-3xl font-black block leading-none" style={{ fontFamily: 'Barlow Condensed' }}>
+                              <span className="text-amber-600 text-3xl font-black block leading-none" style={{ fontFamily: 'Barlow Condensed' }}>
                                 {formatPrice(precioFinal.total)}
                               </span>
                             </div>
-                            <div className="flex items-center gap-1.5 mt-2 pt-2 border-t border-yellow-400/20">
-                              <span className="text-yellow-500 text-xs">⚠️</span>
-                              <span className="text-yellow-500 text-xs font-semibold">
+                            <div className="flex items-center gap-1.5 mt-2 pt-2 border-t border-amber-200">
+                              <span className="text-amber-700 text-xs">⚠️</span>
+                              <span className="text-amber-800 text-xs font-bold">
                                 Con {form.metodoPago.includes('Addi') ? 'Addi' : 'Sistecrédito'} el pago debe ser completo desde el inicio.
                               </span>
                             </div>
                           </div>
                         ) : precioFinal?.isMatricula ? (
                           <div className="flex flex-col items-end gap-1">
-                            <span className="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-0.5">Valor matrícula inicial:</span>
-                            <span className="text-yellow-400 text-3xl font-black block leading-none" style={{ fontFamily: 'Barlow Condensed' }}>
+                            <span className="text-gray-600 text-xs font-semibold uppercase tracking-wider mb-0.5">Valor matrícula inicial:</span>
+                            <span className="text-amber-600 text-3xl font-black block leading-none" style={{ fontFamily: 'Barlow Condensed' }}>
                               {formatPrice(precioFinal.inicial)}
                             </span>
-                            <div className="flex items-center gap-1.5 mt-2 pt-2 border-t border-yellow-400/20">
-                              <span className="text-gray-400 text-xs">Total licencia:</span>
-                              <span className="text-white text-xs font-bold">{formatPrice(precioFinal.total)}</span>
+                            <div className="flex items-center gap-1.5 mt-2 pt-2 border-t border-amber-200">
+                              <span className="text-gray-600 text-xs font-medium">Total licencia:</span>
+                              <span className="text-gray-900 text-xs font-bold">{formatPrice(precioFinal.total)}</span>
                             </div>
                           </div>
                         ) : (
                           <>
-                            <span className="text-yellow-400 text-3xl font-black block" style={{ fontFamily: 'Barlow Condensed' }}>
+                            <span className="text-amber-600 text-3xl font-black block" style={{ fontFamily: 'Barlow Condensed' }}>
                               {precioFinal ? formatPrice(precioFinal.total) : 'Por definir con asesor'}
                             </span>
-                            <span className="text-gray-400 text-xs">{getPrecioLabel(form.metodoPago)}</span>
+                            <span className="text-gray-600 text-xs font-semibold">{getPrecioLabel(form.metodoPago)}</span>
                           </>
                         )}
                       </>
@@ -1114,20 +1114,20 @@ https://www.runt.gov.co/directorio-de-actores`
               )}
 
               {/* Nota Informativa */}
-              <div className="md:col-span-2 text-xs text-[#FFD700] font-semibold flex items-center gap-1.5">
-                <span>⭐ Los campos marcados con <span className="text-[#FFD700] font-bold">*</span> son obligatorios.</span>
+              <div className="md:col-span-2 text-xs text-amber-800 font-semibold flex items-center gap-1.5">
+                <span>⭐ Los campos marcados con <span className="text-amber-600 font-bold">*</span> son obligatorios.</span>
               </div>
 
               {/* Legal */}
               <div className="md:col-span-2 text-xs text-gray-500">
                 Al enviar aceptas nuestra{' '}
-                <a href="#legal" className="text-yellow-400 hover:underline">política de privacidad</a>{' '}
+                <a href="#legal" className="text-amber-700 font-semibold hover:underline">política de privacidad</a>{' '}
                 y el tratamiento de datos personales conforme a la Ley 1581 de 2012.
               </div>
 
               {/* Submit */}
               <div className="md:col-span-2">
-                <button type="submit" className="btn-yellow w-full justify-center text-base py-4 rounded-lg" disabled={loading}>
+                <button type="submit" className="btn-yellow w-full justify-center text-base py-4 rounded-lg shadow-md" disabled={loading}>
                   {loading ? (
                     <>
                       <svg className="animate-spin" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" strokeOpacity="0.3" /><path d="M12 2a10 10 0 0110 10" /></svg>

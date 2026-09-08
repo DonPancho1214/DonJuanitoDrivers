@@ -4,7 +4,7 @@ export default function SectionDivider() {
   return (
     <div
       style={{
-        background: 'rgba(13,13,13,0.7)',
+        background: 'transparent',
         lineHeight: 0,
         fontSize: 0,
         overflow: 'hidden',

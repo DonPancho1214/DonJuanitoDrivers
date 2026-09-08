@@ -81,21 +81,21 @@ function CategoriaDetalle({ cat, onClose }) {
   if (!cat) return null
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4"
-      style={{ background: 'rgba(0,0,0,0.88)', backdropFilter: 'blur(10px)' }}
+      style={{ background: 'rgba(0,0,0,0.65)', backdropFilter: 'blur(10px)' }}
       onClick={onClose}>
       <div className="relative w-full max-w-xl rounded-2xl overflow-hidden animate-fade-in-up"
         style={{
-          background: 'linear-gradient(135deg, #111100 0%, #0d0d0d 100%)',
-          border: '1.5px solid rgba(250,204,21,0.3)',
-          boxShadow: '0 0 80px rgba(250,204,21,0.15)',
+          background: '#ffffff',
+          border: '1.5px solid rgba(217, 119, 6, 0.35)',
+          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
         }}
         onClick={e => e.stopPropagation()}>
         
-        <div className="h-1 w-full" style={{ background: 'linear-gradient(90deg, #FACC15, #fde047, #FACC15)' }} />
+        <div className="h-1.5 w-full" style={{ background: 'linear-gradient(90deg, #FACC15, #f59e0b, #FACC15)' }} />
 
         <button onClick={onClose}
-          className="absolute top-4 right-4 w-9 h-9 rounded-full flex items-center justify-center transition-all z-10"
-          style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', color: '#9ca3af' }}>
+          className="absolute top-4 right-4 w-9 h-9 rounded-full flex items-center justify-center transition-all z-10 hover:bg-gray-200"
+          style={{ background: '#f3f4f6', border: '1px solid #e5e7eb', color: '#374151' }}>
           <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
             <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
           </svg>
@@ -103,35 +103,35 @@ function CategoriaDetalle({ cat, onClose }) {
 
         <div className="p-7">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full mb-4 text-xs font-bold tracking-widest uppercase"
-            style={{ background: 'rgba(250,204,21,0.12)', border: '1px solid rgba(250,204,21,0.4)', color: '#FACC15', fontFamily: 'Barlow Condensed' }}>
+            style={{ background: '#fef3c7', border: '1px solid #fde68a', color: '#b45309', fontFamily: 'Barlow Condensed' }}>
             {cat.code} — {cat.subtitle}
           </div>
           
-          <h2 className="font-black text-white mb-2" style={{ fontFamily: 'Barlow Condensed', fontSize: '2.2rem' }}>
+          <h2 className="font-black text-gray-900 mb-2" style={{ fontFamily: 'Barlow Condensed', fontSize: '2.2rem' }}>
             {cat.title}
           </h2>
           
-          <p className="text-gray-300 text-sm leading-relaxed mb-5">
+          <p className="text-gray-600 text-sm leading-relaxed mb-5">
             {cat.description}
           </p>
 
           <div className="mb-6">
-            <div className="text-gray-500 text-xs uppercase tracking-wider mb-3">Vehículos permitidos</div>
+            <div className="text-gray-500 text-xs uppercase tracking-wider mb-3 font-semibold">Vehículos permitidos</div>
             <div className="flex flex-wrap gap-2">
               {cat.features.map((f, i) => (
-                <div key={i} className="px-3 py-1.5 rounded-lg text-sm font-semibold text-yellow-400"
-                  style={{ background: 'rgba(250,204,21,0.1)', border: '1px solid rgba(250,204,21,0.3)' }}>
+                <div key={i} className="px-3 py-1.5 rounded-lg text-sm font-semibold text-amber-900"
+                  style={{ background: '#fef3c7', border: '1px solid #fde68a' }}>
                   ✓ {f}
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="p-4 rounded-xl mb-6 text-sm flex items-start gap-3" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)' }}>
-            <MapPin size={24} className="text-yellow-400 shrink-0" />
+          <div className="p-4 rounded-xl mb-6 text-sm flex items-start gap-3" style={{ background: '#f9fafb', border: '1px solid #e5e7eb' }}>
+            <MapPin size={24} className="text-amber-500 shrink-0" />
             <div>
-              <span className="text-yellow-400 font-bold block mb-1">¿Cómo conocer los precios?</span>
-              <span className="text-gray-400 leading-relaxed">Los precios varían dependiendo de la sede. Dirígete a la sección de sedes para ver los precios exactos y agendar tu cita. {cat.code === 'C2' && <span className="text-yellow-400">Nota: La categoría C2 solo está disponible en Conductores Bogotá.</span>}</span>
+              <span className="text-gray-900 font-bold block mb-1">¿Cómo conocer los precios?</span>
+              <span className="text-gray-600 leading-relaxed">Los precios varían dependiendo de la sede. Dirígete a la sección de sedes para ver los precios exactos y agendar tu cita. {cat.code === 'C2' && <span className="text-amber-700 font-bold">Nota: La categoría C2 solo está disponible en Conductores Bogotá.</span>}</span>
             </div>
           </div>
 
@@ -151,17 +151,17 @@ export default function Categories() {
 
   return (
     <>
-      <section id="categorias" className="py-24 relative" style={{background:'rgba(13,13,13,0.7)'}}>
+      <section id="categorias" className="py-24 relative" style={{background:'rgba(255,255,255,0.7)'}}>
         <div className="absolute inset-0 grid-bg opacity-50 pointer-events-none" />
 
         <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 relative">
           {/* Header */}
           <div className="text-center mb-16">
             <div className="section-label mb-3">Nuestras categorías</div>
-            <h2 className="font-black text-white mb-4" style={{fontFamily:'Barlow Condensed', fontSize:'clamp(2.5rem,5vw,4rem)'}}>
-              ¿QUÉ LICENCIA <span className="text-yellow-400">NECESITAS?</span>
+            <h2 className="font-black text-gray-900 mb-4" style={{fontFamily:'Barlow Condensed', fontSize:'clamp(2.5rem,5vw,4rem)'}}>
+              ¿QUÉ LICENCIA <span className="text-amber-500">NECESITAS?</span>
             </h2>
-            <p className="text-gray-400 max-w-xl mx-auto text-base">
+            <p className="text-gray-600 max-w-xl mx-auto text-base">
               Ofrecemos formación completa para cuatro categorías de licencia. Cada programa está diseñado con los más altos estándares de seguridad vial.
             </p>
           </div>
@@ -177,31 +177,31 @@ export default function Categories() {
                 {/* Corner accent */}
                 <div className="absolute top-0 right-0 w-16 h-16 overflow-hidden">
                   <div className="absolute top-0 right-0 w-0 h-0"
-                    style={{borderLeft:'48px solid transparent', borderTop:'48px solid rgba(250,204,21,0.12)'}} />
+                    style={{borderLeft:'48px solid transparent', borderTop:'48px solid rgba(250,204,21,0.2)'}} />
                 </div>
-                <div className="absolute -top-px left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-yellow-400 to-transparent opacity-60 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute -top-px left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-amber-400 to-transparent opacity-60 group-hover:opacity-100 transition-opacity" />
 
                 {/* Badge */}
-                <div className="inline-flex items-center gap-2.5 mb-5 px-4 py-1.5 rounded-full border border-yellow-400/30 bg-yellow-400/8 self-start">
-                  <span className="text-yellow-400">
+                <div className="inline-flex items-center gap-2.5 mb-5 px-4 py-1.5 rounded-full border border-amber-300 bg-amber-50 self-start shadow-sm">
+                  <span className="text-amber-600">
                     {cat.code === 'A2' && <Bike size={20} />}
                     {cat.code === 'B1' && <Car size={20} />}
                     {cat.code === 'C1' && <Bus size={20} />}
                     {cat.code === 'C2' && <Truck size={20} />}
                   </span>
-                  <span className="text-yellow-400 font-black text-lg" style={{fontFamily:'Barlow Condensed', letterSpacing:'0.1em'}}>{cat.code}</span>
+                  <span className="text-gray-900 font-black text-lg" style={{fontFamily:'Barlow Condensed', letterSpacing:'0.1em'}}>{cat.code}</span>
                 </div>
 
                 {/* Icon Removed per user request */}
 
-                <h3 className="font-black text-white text-2xl mb-1" style={{fontFamily:'Barlow Condensed'}}>{cat.title}</h3>
-                <p className="text-yellow-400 font-semibold text-sm mb-3 tracking-wider uppercase">{cat.subtitle}</p>
-                <p className="text-gray-400 text-sm mb-5 leading-relaxed flex-1">{cat.description}</p>
+                <h3 className="font-black text-gray-900 text-2xl mb-1" style={{fontFamily:'Barlow Condensed'}}>{cat.title}</h3>
+                <p className="text-amber-700 font-bold text-sm mb-3 tracking-wider uppercase">{cat.subtitle}</p>
+                <p className="text-gray-600 text-sm mb-5 leading-relaxed flex-1">{cat.description}</p>
 
                 {/* Feature pills */}
                 <div className="flex flex-wrap gap-2 mb-6">
                   {cat.features.map(f => (
-                    <span key={f} className="px-2 py-1 rounded text-xs font-medium text-yellow-400 border border-yellow-400/20 bg-yellow-400/5">
+                    <span key={f} className="px-2.5 py-1 rounded-md text-xs font-semibold text-amber-900 border border-amber-300 bg-amber-50">
                       {f}
                     </span>
                   ))}
@@ -209,7 +209,7 @@ export default function Categories() {
 
                 <button
                   onClick={() => setCatSeleccionada(cat)}
-                  className="btn-outline w-full justify-center text-center text-sm py-2.5"
+                  className="btn-outline w-full justify-center text-center text-sm py-2.5 shadow-sm"
                 >
                   Más información →
                 </button>

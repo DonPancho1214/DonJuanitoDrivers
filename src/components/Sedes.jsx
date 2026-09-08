@@ -281,11 +281,11 @@ function SedeCard({ sede, onVerMas }) {
 
   return (
     <div className="glass-card card-hover p-6 flex flex-col relative overflow-hidden group">
-      <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-yellow-400/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+      <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-amber-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
       {sede.alertas?.length > 0 ? (
         <div className="h-11 mb-3 flex flex-wrap gap-1 items-start pt-1.5">
           {sede.alertas.map((a, i) => (
-            <span key={i} className="text-xs px-2 py-0.5 rounded-full" style={{ background: 'rgba(250,204,21,0.1)', color: '#FACC15', border: '1px solid rgba(250,204,21,0.2)' }}>{a}</span>
+            <span key={i} className="text-xs px-2.5 py-0.5 rounded-full font-semibold" style={{ background: '#fef3c7', color: '#92400e', border: '1px solid #fde68a' }}>{a}</span>
           ))}
         </div>
       ) : (
@@ -293,9 +293,9 @@ function SedeCard({ sede, onVerMas }) {
           <span className="text-xs px-2 py-0.5 rounded-full select-none">&nbsp;</span>
         </div>
       )}
-      <h3 className="font-black text-white text-xl mb-0.5" style={{ fontFamily: "'Outfit', sans-serif" }}>{sede.nombre}</h3>
+      <h3 className="font-black text-gray-900 text-xl mb-0.5" style={{ fontFamily: "'Outfit', sans-serif" }}>{sede.nombre}</h3>
       <div className="flex flex-wrap items-center gap-2 mb-3">
-        <span className="text-yellow-400/70 text-xs font-semibold uppercase tracking-wider">{sede.subtitulo}</span>
+        <span className="text-amber-700 text-xs font-bold uppercase tracking-wider">{sede.subtitulo}</span>
         {zona && (
           <span className={`text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider border ${zona.clase}`}>
             {zona.nombre}
@@ -304,12 +304,12 @@ function SedeCard({ sede, onVerMas }) {
       </div>
       <div className="flex flex-col gap-1.5 mb-4 flex-1">
         <div className="flex items-start gap-2">
-          <svg className="text-yellow-400 shrink-0 mt-0.5" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" /><circle cx="12" cy="10" r="3" /></svg>
-          <span className="text-gray-400 text-xs">{sede.direccion}</span>
+          <svg className="text-amber-500 shrink-0 mt-0.5" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" /><circle cx="12" cy="10" r="3" /></svg>
+          <span className="text-gray-600 text-xs font-medium">{sede.direccion}</span>
         </div>
         <div className="flex items-center gap-2 flex-wrap">
-          <svg className="text-yellow-400 shrink-0" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
-          <span className="text-gray-400 text-xs">{sede.horarios}</span>
+          <svg className="text-amber-500 shrink-0" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
+          <span className="text-gray-600 text-xs font-medium">{sede.horarios}</span>
           <span className="inline-flex items-center gap-1 ml-1.5 text-[10px] font-bold">
             {isOpen ? (
               <>
@@ -317,12 +317,12 @@ function SedeCard({ sede, onVerMas }) {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                 </span>
-                <span className="text-green-400">Abierta ahora</span>
+                <span className="text-green-600">Abierta ahora</span>
               </>
             ) : (
               <>
                 <span className="h-2 w-2 rounded-full bg-red-500"></span>
-                <span className="text-red-400">Cerrada</span>
+                <span className="text-red-500">Cerrada</span>
               </>
             )}
           </span>
@@ -330,22 +330,22 @@ function SedeCard({ sede, onVerMas }) {
       </div>
       <div className="flex flex-wrap gap-1.5 mb-4">
         {sede.categorias.map(c => (
-          <span key={c} className="px-2 py-0.5 rounded text-xs font-bold"
-            style={{ background: 'rgba(250,204,21,0.1)', border: '1px solid rgba(250,204,21,0.25)', color: '#FACC15', fontFamily: 'Barlow Condensed' }}>{c}</span>
+          <span key={c} className="px-2.5 py-0.5 rounded text-xs font-bold"
+            style={{ background: '#fef3c7', border: '1px solid #fde68a', color: '#92400e', fontFamily: 'Barlow Condensed' }}>{c}</span>
         ))}
       </div>
       <div className="flex flex-col gap-2">
         <button type="button" onClick={() => abrirWhatsApp(waMsg)}
-          className="btn-yellow text-xs py-2.5 justify-center w-full" style={{ whiteSpace: 'nowrap' }}>
+          className="btn-yellow text-xs py-2.5 justify-center w-full shadow-sm" style={{ whiteSpace: 'nowrap' }}>
           {WA_ICON} WhatsApp
         </button>
         <div className="flex gap-2">
           <button onClick={() => onVerMas(sede)}
-            className="btn-outline text-xs py-2.5 w-1/2 justify-center cursor-pointer px-2" style={{ whiteSpace: 'nowrap' }}>
+            className="btn-outline text-xs py-2.5 w-1/2 justify-center cursor-pointer px-2 shadow-sm" style={{ whiteSpace: 'nowrap' }}>
             Ver precios
           </button>
           <a href={sede.mapsUrl} target="_blank" rel="noopener noreferrer"
-            className="btn-outline text-xs py-2.5 w-1/2 justify-center px-2" title="Cómo llegar">
+            className="btn-outline text-xs py-2.5 w-1/2 justify-center px-2 shadow-sm" title="Cómo llegar">
             <MapPin size={14} />
           </a>
         </div>
@@ -361,32 +361,31 @@ export default function Sedes() {
 
   return (
     <>
-      <section id="sedes" className="py-24 relative" style={{ background: 'rgba(13,13,13,0.7)' }}>
+      <section id="sedes" className="py-24 relative" style={{ background: 'rgba(255,255,255,0.7)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="section-label mb-3">Nuestras sedes</div>
-            <h2 className="font-black text-white mb-4" style={{ fontFamily: 'Barlow Condensed', fontSize: 'clamp(2.5rem,5vw,4rem)' }}>
-              ENCUENTRA TU <span className="text-yellow-400">SEDE MÁS CERCANA</span>
+            <h2 className="font-black text-gray-900 mb-4" style={{ fontFamily: 'Barlow Condensed', fontSize: 'clamp(2.5rem,5vw,4rem)' }}>
+              ENCUENTRA TU <span className="text-amber-500">SEDE MÁS CERCANA</span>
             </h2>
-            <p className="text-gray-400 max-w-xl mx-auto text-base">
+            <p className="text-gray-600 max-w-xl mx-auto text-base">
               9 sedes activas en Bogotá y Soacha. Agendamiento previo requerido salvo en Diverplaza.
             </p>
           </div>
 
           {/* Info banner */}
-          <div className="mb-8 p-4 rounded-xl flex flex-wrap gap-3 items-center justify-center text-sm"
-            style={{ background: 'rgba(250,204,21,0.05)', border: '1px solid rgba(250,204,21,0.15)' }}>
-            <span className="text-yellow-400 font-bold flex items-center gap-1.5" style={{ fontFamily: 'Barlow Condensed' }}><CreditCard size={16} /> Métodos de pago:</span>
-            <span className="text-gray-400">Efectivo · Transferencia · Addi · Sistecrédito (primer pago) · Cesantías (solo Velari)</span>
-            <span className="text-yellow-400 font-bold ml-2 flex items-center gap-1.5" style={{ fontFamily: 'Barlow Condensed' }}><Tag size={16} /> Descuento:</span>
-            <span className="text-gray-400">$50.000 al pagar de contado (excl. Diverplaza)</span>
+          <div className="mb-8 p-4 rounded-xl flex flex-wrap gap-3 items-center justify-center text-sm bg-amber-50/90 border border-amber-300 shadow-sm">
+            <span className="text-amber-900 font-bold flex items-center gap-1.5" style={{ fontFamily: 'Barlow Condensed' }}><CreditCard size={16} /> Métodos de pago:</span>
+            <span className="text-gray-700 font-medium">Efectivo · Transferencia · Addi · Sistecrédito (primer pago) · Cesantías (solo Velari)</span>
+            <span className="text-amber-900 font-bold ml-2 flex items-center gap-1.5" style={{ fontFamily: 'Barlow Condensed' }}><Tag size={16} /> Descuento:</span>
+            <span className="text-gray-700 font-medium">$50.000 al pagar de contado (excl. Diverplaza)</span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
             {principal.map(s => <SedeCard key={s.id} sede={s} onVerMas={setSedeSeleccionada} />)}
             {/* Brand card */}
             <div className="hidden md:flex relative overflow-hidden rounded-2xl flex-col items-center justify-center text-center p-6 gap-2"
-              style={{ background: 'linear-gradient(135deg, #0d0d00 0%, #1a1400 60%, #0a0800 100%)', border: '1px solid rgba(250,204,21,0.25)', boxShadow: '0 0 40px rgba(250,204,21,0.10)' }}>
+              style={{ background: 'linear-gradient(135deg, #0a0a0a 0%, #171717 100%)', border: '1.5px solid rgba(212,175,55,0.3)', boxShadow: '0 10px 30px rgba(0,0,0,0.08)' }}>
               {/* Glow ambiental */}
               <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at 50% 35%, rgba(250,204,21,0.12) 0%, transparent 70%)' }} />
               <div className="relative z-10 flex flex-col items-center gap-2">
@@ -395,9 +394,9 @@ export default function Sedes() {
                   alt="Don Juanito Drivers"
                   width="220" height="220" loading="lazy"
                   className="animate-float"
-                  style={{ width: '220px', height: 'auto', mixBlendMode: 'multiply', filter: 'drop-shadow(0 0 22px rgba(250,204,21,0.50))' }}
+                  style={{ width: '220px', height: 'auto', filter: 'drop-shadow(0 0 22px rgba(250,204,21,0.50))' }}
                 />
-                <p className="text-gray-500 text-xs max-w-[160px] leading-relaxed" style={{ marginTop: '4px' }}>
+                <p className="text-gray-400 text-xs max-w-[160px] leading-relaxed" style={{ marginTop: '4px' }}>
                   Tu red de confianza para obtener la licencia de conducción
                 </p>
               </div>
