@@ -6,16 +6,27 @@ import { abrirWhatsApp } from '../utils/whatsapp'
 export default function Hero() {
   return (
     <section id="inicio" className="relative min-h-screen flex items-center overflow-hidden pb-28 pt-16">
-      {/* Background with luminous wash */}
+      {/* Background image - fully visible with smart contrast framing */}
       <div className="absolute inset-0 z-0">
-        <div className="relative w-full h-[65vh] md:h-full">
-          <img src="/hero-background.webp" alt="Familia feliz Don Juanito Drivers" width="1920" height="1080" loading="eager"
-            className="w-full h-full object-cover object-[60%_top] md:object-center opacity-30"
+        <div className="relative w-full h-full">
+          <img
+            src="/hero-background.webp"
+            alt="Familia feliz Don Juanito Drivers"
+            width="1920"
+            height="1080"
+            loading="eager"
+            className="w-full h-full object-cover object-[70%_center] md:object-center opacity-95 md:opacity-100"
           />
         </div>
-        {/* Gradients to keep text crisp on the left while showcasing the image smoothly */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/85 to-white/40" />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-[#f8f9fa]" />
+
+        {/* Gradiente izquierdo para que el texto oscuro sea 100% nítido y legible */}
+        <div className="hidden md:block absolute inset-y-0 left-0 w-full md:w-[65%] lg:w-[58%] bg-gradient-to-r from-[#f8f9fa] via-[#f8f9fa]/90 to-transparent pointer-events-none" />
+
+        {/* Gradiente inferior para conectar suavemente con la barra de estadísticas */}
+        <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#f8f9fa] to-transparent pointer-events-none" />
+
+        {/* Gradiente móvil para asegurar legibilidad del texto sin tapar la foto */}
+        <div className="md:hidden absolute inset-0 bg-gradient-to-b from-[#f8f9fa]/90 via-[#f8f9fa]/50 to-[#f8f9fa] pointer-events-none" />
       </div>
 
       {/* Content */}

@@ -21,9 +21,9 @@ export default function App() {
       <div className="fixed inset-0 z-0 pointer-events-none">
         {/* Main Background Image */}
         <div className="w-full h-full relative">
-          <img src="/hero-background.webp" alt="Fondo Don Juanito" width="1920" height="1080" loading="eager" className="w-full h-full object-cover object-[60%_top] md:object-center opacity-20" />
+          <img src="/hero-background.webp" alt="Fondo Don Juanito" width="1920" height="1080" loading="eager" className="w-full h-full object-cover object-[60%_top] md:object-center opacity-45" />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/85 to-[#f8f9fa]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-white/65 to-[#f8f9fa]" />
         
         {/* Minimalist Driving Details */}
         {/* Vertical Road Dashed Line */}
