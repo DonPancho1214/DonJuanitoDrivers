@@ -34,8 +34,8 @@ export default function Hero() {
         <div className="max-w-2xl xl:max-w-3xl">
           <div className="inline-flex items-center gap-2.5 mb-6 px-4 py-1.5 rounded-full border border-[#D4AF37] bg-black text-white shadow-sm animate-fade-in-up"
             style={{ animationDelay: '0.1s', opacity: 0 }}>
-            <span className="w-2 h-2 bg-[#F5C518] rounded-full animate-pulse shadow-[0_0_8px_#F5C518]" />
-            <span className="text-[#F5C518] text-xs font-bold uppercase tracking-wider">Red de escuelas certificadas</span>
+            <span className="w-2 h-2 bg-[#D4AF37] rounded-full animate-pulse shadow-[0_0_8px_#D4AF37]" />
+            <span className="text-[#D4AF37] text-xs font-bold uppercase tracking-wider">Red de escuelas certificadas</span>
           </div>
 
           <h1 className="font-semibold leading-tight mb-6 animate-fade-in-up tracking-tight"
@@ -55,19 +55,19 @@ export default function Hero() {
             </p>
             <ul className="text-base space-y-2.5 text-gray-800 font-medium">
               <li className="flex items-center gap-2.5">
-                <span className="w-5 h-5 rounded-full bg-black text-[#F5C518] inline-flex items-center justify-center text-xs font-black shadow-sm shrink-0">✓</span>
+                <span className="w-5 h-5 rounded-full bg-black text-[#D4AF37] inline-flex items-center justify-center text-xs font-black shadow-sm shrink-0">✓</span>
                 <span>Atención personalizada</span>
               </li>
               <li className="flex items-center gap-2.5">
-                <span className="w-5 h-5 rounded-full bg-black text-[#F5C518] inline-flex items-center justify-center text-xs font-black shadow-sm shrink-0">✓</span>
+                <span className="w-5 h-5 rounded-full bg-black text-[#D4AF37] inline-flex items-center justify-center text-xs font-black shadow-sm shrink-0">✓</span>
                 <span>Acompañamiento paso a paso</span>
               </li>
               <li className="flex items-center gap-2.5">
-                <span className="w-5 h-5 rounded-full bg-black text-[#F5C518] inline-flex items-center justify-center text-xs font-black shadow-sm shrink-0">✓</span>
+                <span className="w-5 h-5 rounded-full bg-black text-[#D4AF37] inline-flex items-center justify-center text-xs font-black shadow-sm shrink-0">✓</span>
                 <span>Escuelas aliadas en Bogotá y Soacha</span>
               </li>
               <li className="flex items-center gap-2.5">
-                <span className="w-5 h-5 rounded-full bg-black text-[#F5C518] inline-flex items-center justify-center text-xs font-black shadow-sm shrink-0">✓</span>
+                <span className="w-5 h-5 rounded-full bg-black text-[#D4AF37] inline-flex items-center justify-center text-xs font-black shadow-sm shrink-0">✓</span>
                 <span>Procesos seguros y confiables</span>
               </li>
             </ul>

@@ -76,7 +76,7 @@ function Stars({ count }) {
           <svg key={i} width="14" height="14" viewBox="0 0 24 24" className="overflow-visible">
             <defs>
               <linearGradient id={gradientId}>
-                <stop offset={`${fillValue * 100}%`} stopColor="#FACC15" />
+                <stop offset={`${fillValue * 100}%`} stopColor="#D4AF37" />
                 <stop offset={`${fillValue * 100}%`} stopColor="#374151" />
               </linearGradient>
             </defs>
@@ -127,7 +127,7 @@ function ReviewCard({ t, isMock }) {
         </div>
         <div className="ml-auto flex flex-col items-end gap-1">
           <Stars count={rating} />
-          <span className="text-xs px-2.5 py-0.5 rounded bg-black text-[#F5C518] border border-[#D4AF37] font-bold"
+          <span className="text-xs px-2.5 py-0.5 rounded bg-black text-[#D4AF37] border border-[#D4AF37] font-bold"
             style={{ fontFamily: 'Barlow Condensed' }}>
             {categoria}
           </span>
@@ -216,8 +216,8 @@ function ReviewFormModal({ onClose }) {
                   <button type="button" key={star} onClick={() => setForm({ ...form, estrellas: star })}
                     className="transition-transform hover:scale-110 focus:outline-none">
                     <svg width="34" height="34" viewBox="0 0 24 24"
-                      fill={star <= form.estrellas ? '#FACC15' : 'none'}
-                      stroke={star <= form.estrellas ? '#FACC15' : '#9ca3af'}
+                      fill={star <= form.estrellas ? '#D4AF37' : 'none'}
+                      stroke={star <= form.estrellas ? '#D4AF37' : '#9ca3af'}
                       strokeWidth="1.5">
                       <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                     </svg>

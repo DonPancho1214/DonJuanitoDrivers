@@ -215,12 +215,12 @@ function SedeCard({ sede, onVerMas }) {
   if (sede.destacada) {
     return (
       <div className="md:col-span-2 lg:col-span-2 relative overflow-hidden rounded-2xl card-hover"
-        style={{ background: 'linear-gradient(135deg, #1a1500 0%, #1f1800 50%, #0a0a00 100%)', border: '2px solid #FACC15', boxShadow: '0 0 60px rgba(250,204,21,0.18)' }}>
-        <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at 30% 30%, rgba(250,204,21,0.08) 0%, transparent 70%)' }} />
+        style={{ background: 'linear-gradient(135deg, #1a1500 0%, #1f1800 50%, #0a0a00 100%)', border: '2px solid #D4AF37', boxShadow: '0 0 60px rgba(212,175,55,0.18)' }}>
+        <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at 30% 30%, rgba(212,175,55,0.08) 0%, transparent 70%)' }} />
         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-yellow-600 via-yellow-400 to-yellow-600" />
         <div className="p-8 relative">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-5 font-bold text-xs tracking-widest uppercase"
-            style={{ background: 'rgba(250,204,21,0.15)', border: '1px solid rgba(250,204,21,0.5)', color: '#FACC15', fontFamily: 'Barlow Condensed' }}>
+            style={{ background: 'rgba(212,175,55,0.15)', border: '1px solid rgba(212,175,55,0.5)', color: '#D4AF37', fontFamily: 'Barlow Condensed' }}>
             <Star size={14} className="inline mr-1 fill-yellow-400" /> SEDE PRINCIPAL — ACOMPAÑAMIENTO TOTAL
           </div>
           <div className="flex flex-col md:flex-row md:items-start gap-6">
@@ -255,7 +255,7 @@ function SedeCard({ sede, onVerMas }) {
               <div className="flex flex-wrap gap-2 mb-5">
                 {sede.categorias.map(c => (
                   <span key={c} className="px-3 py-1.5 rounded font-black text-sm"
-                    style={{ background: 'rgba(250,204,21,0.15)', border: '1px solid rgba(250,204,21,0.4)', color: '#FACC15', fontFamily: 'Barlow Condensed' }}>{c}</span>
+                    style={{ background: 'rgba(212,175,55,0.15)', border: '1px solid rgba(212,175,55,0.4)', color: '#D4AF37', fontFamily: 'Barlow Condensed' }}>{c}</span>
                 ))}
               </div>
               <div className="flex flex-wrap gap-3">
@@ -268,7 +268,7 @@ function SedeCard({ sede, onVerMas }) {
             </div>
             <div className="hidden md:flex items-center justify-center w-32 h-32 rounded-full border-2 border-yellow-400/30 animate-float shrink-0">
               <svg width="56" height="56" viewBox="0 0 64 64" fill="none">
-                <path d="M32 8l4 12h12l-10 7 4 12-10-7-10 7 4-12-10-7h12z" stroke="#FACC15" strokeWidth="2" fill="rgba(250,204,21,0.1)" />
+                <path d="M32 8l4 12h12l-10 7 4 12-10-7-10 7 4-12-10-7h12z" stroke="#D4AF37" strokeWidth="2" fill="rgba(212,175,55,0.1)" />
               </svg>
             </div>
           </div>
@@ -285,7 +285,7 @@ function SedeCard({ sede, onVerMas }) {
       {sede.alertas?.length > 0 ? (
         <div className="h-11 mb-3 flex flex-wrap gap-1 items-start pt-1.5">
           {sede.alertas.map((a, i) => (
-            <span key={i} className="text-xs px-2.5 py-0.5 rounded-full font-bold bg-black text-[#F5C518] border border-[#D4AF37]">{a}</span>
+            <span key={i} className="text-xs px-2.5 py-0.5 rounded-full font-bold bg-black text-[#D4AF37] border border-[#D4AF37]">{a}</span>
           ))}
         </div>
       ) : (
@@ -330,7 +330,7 @@ function SedeCard({ sede, onVerMas }) {
       </div>
       <div className="flex flex-wrap gap-1.5 mb-4">
         {sede.categorias.map(c => (
-          <span key={c} className="px-2.5 py-0.5 rounded text-xs font-bold bg-black text-[#F5C518] border border-[#D4AF37]"
+          <span key={c} className="px-2.5 py-0.5 rounded text-xs font-bold bg-black text-[#D4AF37] border border-[#D4AF37]"
             style={{ fontFamily: 'Barlow Condensed' }}>{c}</span>
         ))}
       </div>

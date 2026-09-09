@@ -1046,7 +1046,7 @@ https://www.runt.gov.co/directorio-de-actores`
                             border: `1.5px solid ${form.sabeManejar === op.val ? '#D4AF37' : '#e5e7eb'}`,
                           }}>
                           <input type="radio" name="sabeManejar" value={op.val} checked={form.sabeManejar === op.val} onChange={handleChange} className="sr-only" />
-                          <span className={`text-sm font-semibold ${form.sabeManejar === op.val ? 'text-[#F5C518]' : 'text-gray-800'}`}>{op.label}</span>
+                          <span className={`text-sm font-semibold ${form.sabeManejar === op.val ? 'text-[#D4AF37]' : 'text-gray-800'}`}>{op.label}</span>
                         </label>
                       ))}
                     </div>

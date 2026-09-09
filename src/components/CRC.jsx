@@ -110,7 +110,7 @@ export default function CRC() {
               ].map(step => (
                 <div key={step.n} className="flex items-start gap-3 mb-3 last:mb-0">
                   <div className="w-7 h-7 rounded-full flex items-center justify-center shrink-0 text-xs font-black"
-                    style={{ background: '#0a0a0a', border: '1px solid #D4AF37', color: '#F5C518', fontFamily: 'Barlow Condensed' }}>
+                    style={{ background: '#0a0a0a', border: '1px solid #D4AF37', color: '#D4AF37', fontFamily: 'Barlow Condensed' }}>
                     {step.n}
                   </div>
                   <div>

@@ -67,10 +67,10 @@ export default function Navbar() {
               return (
                 <a key={l.href} href={l.href} onClick={() => setActiveSection(l.id)}
                   className="relative text-sm font-semibold tracking-wider uppercase group transition-colors duration-200"
-                  style={{ fontFamily: 'Barlow Condensed', letterSpacing: '0.1em', color: isActive ? '#FACC15' : '#d1d5db' }}>
+                  style={{ fontFamily: 'Barlow Condensed', letterSpacing: '0.1em', color: isActive ? '#D4AF37' : '#d1d5db' }}>
                   {l.label}
                   <span className="absolute -bottom-1 left-0 h-0.5 rounded-full transition-all duration-300"
-                    style={{ width: isActive ? '100%' : '0%', background: '#FACC15' }} />
+                    style={{ width: isActive ? '100%' : '0%', background: '#D4AF37' }} />
                 </a>
               )
             })}
@@ -97,7 +97,7 @@ export default function Navbar() {
               return (
                 <a key={l.href} href={l.href} onClick={() => { setMenuOpen(false); setActiveSection(l.id) }}
                   className="transition-all font-semibold tracking-wider uppercase text-sm py-2.5 px-3 rounded-lg"
-                  style={{ fontFamily: 'Barlow Condensed', letterSpacing: '0.1em', color: isActive ? '#FACC15' : '#d1d5db', background: isActive ? 'rgba(250,204,21,0.08)' : 'transparent' }}>
+                  style={{ fontFamily: 'Barlow Condensed', letterSpacing: '0.1em', color: isActive ? '#D4AF37' : '#d1d5db', background: isActive ? 'rgba(212,175,55,0.1)' : 'transparent' }}>
                   {l.label}
                 </a>
               )

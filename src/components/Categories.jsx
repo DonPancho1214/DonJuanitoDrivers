@@ -8,16 +8,16 @@ const categories = [
     subtitle: 'Motocicletas',
     icon: (
       <svg viewBox="0 0 64 64" fill="none" className="w-14 h-14">
-        <circle cx="16" cy="48" r="10" stroke="#FACC15" strokeWidth="2.5"/>
-        <circle cx="48" cy="48" r="10" stroke="#FACC15" strokeWidth="2.5"/>
-        <path d="M26 48h12M32 48V28l8-8h8l4 16" stroke="#FACC15" strokeWidth="2.5" strokeLinecap="round"/>
-        <path d="M32 28l-12 4" stroke="#FACC15" strokeWidth="2.5" strokeLinecap="round"/>
-        <circle cx="40" cy="18" r="4" stroke="#FACC15" strokeWidth="2"/>
+        <circle cx="16" cy="48" r="10" stroke="#D4AF37" strokeWidth="2.5"/>
+        <circle cx="48" cy="48" r="10" stroke="#D4AF37" strokeWidth="2.5"/>
+        <path d="M26 48h12M32 48V28l8-8h8l4 16" stroke="#D4AF37" strokeWidth="2.5" strokeLinecap="round"/>
+        <path d="M32 28l-12 4" stroke="#D4AF37" strokeWidth="2.5" strokeLinecap="round"/>
+        <circle cx="40" cy="18" r="4" stroke="#D4AF37" strokeWidth="2"/>
       </svg>
     ),
     description: 'Motocicletas de más de 125 c.c. Ideal para movilidad, libertad y aventura urbana.',
     features: ['+125 c.c.', 'Urbana y carretera', 'Libertad total'],
-    color: '#FACC15',
+    color: '#D4AF37',
   },
   {
     code: 'B1',
@@ -25,16 +25,16 @@ const categories = [
     subtitle: 'Vehículos Particulares',
     icon: (
       <svg viewBox="0 0 64 64" fill="none" className="w-14 h-14">
-        <rect x="8" y="22" width="48" height="24" rx="4" stroke="#FACC15" strokeWidth="2.5"/>
-        <path d="M14 22l6-12h24l6 12" stroke="#FACC15" strokeWidth="2.5" strokeLinecap="round"/>
-        <circle cx="18" cy="46" r="7" stroke="#FACC15" strokeWidth="2.5"/>
-        <circle cx="46" cy="46" r="7" stroke="#FACC15" strokeWidth="2.5"/>
-        <rect x="22" y="26" width="20" height="10" rx="2" stroke="#FACC15" strokeWidth="1.5"/>
+        <rect x="8" y="22" width="48" height="24" rx="4" stroke="#D4AF37" strokeWidth="2.5"/>
+        <path d="M14 22l6-12h24l6 12" stroke="#D4AF37" strokeWidth="2.5" strokeLinecap="round"/>
+        <circle cx="18" cy="46" r="7" stroke="#D4AF37" strokeWidth="2.5"/>
+        <circle cx="46" cy="46" r="7" stroke="#D4AF37" strokeWidth="2.5"/>
+        <rect x="22" y="26" width="20" height="10" rx="2" stroke="#D4AF37" strokeWidth="1.5"/>
       </svg>
     ),
     description: 'Carros, camionetas y camperos. La licencia más popular para uso cotidiano.',
     features: ['Carros', 'Camionetas', 'Camperos / SUV'],
-    color: '#FACC15',
+    color: '#D4AF37',
   },
   {
     code: 'C1',
@@ -42,19 +42,19 @@ const categories = [
     subtitle: 'Servicio Público',
     icon: (
       <svg viewBox="0 0 64 64" fill="none" className="w-14 h-14">
-        <rect x="4" y="16" width="56" height="32" rx="4" stroke="#FACC15" strokeWidth="2.5"/>
-        <path d="M4 26h56" stroke="#FACC15" strokeWidth="2"/>
-        <circle cx="14" cy="48" r="6" stroke="#FACC15" strokeWidth="2.5"/>
-        <circle cx="50" cy="48" r="6" stroke="#FACC15" strokeWidth="2.5"/>
-        <path d="M20 48h24" stroke="#FACC15" strokeWidth="2"/>
-        <rect x="12" y="30" width="10" height="8" rx="1" stroke="#FACC15" strokeWidth="1.5"/>
-        <rect x="27" y="30" width="10" height="8" rx="1" stroke="#FACC15" strokeWidth="1.5"/>
-        <rect x="42" y="30" width="10" height="8" rx="1" stroke="#FACC15" strokeWidth="1.5"/>
+        <rect x="4" y="16" width="56" height="32" rx="4" stroke="#D4AF37" strokeWidth="2.5"/>
+        <path d="M4 26h56" stroke="#D4AF37" strokeWidth="2"/>
+        <circle cx="14" cy="48" r="6" stroke="#D4AF37" strokeWidth="2.5"/>
+        <circle cx="50" cy="48" r="6" stroke="#D4AF37" strokeWidth="2.5"/>
+        <path d="M20 48h24" stroke="#D4AF37" strokeWidth="2"/>
+        <rect x="12" y="30" width="10" height="8" rx="1" stroke="#D4AF37" strokeWidth="1.5"/>
+        <rect x="27" y="30" width="10" height="8" rx="1" stroke="#D4AF37" strokeWidth="1.5"/>
+        <rect x="42" y="30" width="10" height="8" rx="1" stroke="#D4AF37" strokeWidth="1.5"/>
       </svg>
     ),
     description: 'Taxis, vans y microbuses. Habilítate para el transporte público y genera ingresos.',
     features: ['Taxis', 'Vans', 'Microbuses'],
-    color: '#FACC15',
+    color: '#D4AF37',
   },
   {
     code: 'C2',
@@ -62,18 +62,18 @@ const categories = [
     subtitle: 'Vehículo Especial',
     icon: (
       <svg viewBox="0 0 64 64" fill="none" className="w-14 h-14">
-        <rect x="4" y="24" width="56" height="24" rx="3" stroke="#FACC15" strokeWidth="2.5"/>
-        <rect x="44" y="24" width="16" height="24" rx="1" stroke="#FACC15" strokeWidth="2.5"/>
-        <path d="M44 34h16" stroke="#FACC15" strokeWidth="2"/>
-        <circle cx="14" cy="48" r="6" stroke="#FACC15" strokeWidth="2.5"/>
-        <circle cx="28" cy="48" r="6" stroke="#FACC15" strokeWidth="2.5"/>
-        <circle cx="50" cy="48" r="6" stroke="#FACC15" strokeWidth="2.5"/>
-        <path d="M6 24l4-10h16l4 10" stroke="#FACC15" strokeWidth="2.5" strokeLinecap="round"/>
+        <rect x="4" y="24" width="56" height="24" rx="3" stroke="#D4AF37" strokeWidth="2.5"/>
+        <rect x="44" y="24" width="16" height="24" rx="1" stroke="#D4AF37" strokeWidth="2.5"/>
+        <path d="M44 34h16" stroke="#D4AF37" strokeWidth="2"/>
+        <circle cx="14" cy="48" r="6" stroke="#D4AF37" strokeWidth="2.5"/>
+        <circle cx="28" cy="48" r="6" stroke="#D4AF37" strokeWidth="2.5"/>
+        <circle cx="50" cy="48" r="6" stroke="#D4AF37" strokeWidth="2.5"/>
+        <path d="M6 24l4-10h16l4 10" stroke="#D4AF37" strokeWidth="2.5" strokeLinecap="round"/>
       </svg>
     ),
     description: 'Camiones rígidos, busetas y buses. Para trabajar como conductor profesional en vehículos grandes.',
     features: ['Camiones', 'Busetas', 'Buses'],
-    color: '#FACC15',
+    color: '#D4AF37',
   },
 ]
 
@@ -91,7 +91,7 @@ function CategoriaDetalle({ cat, onClose }) {
         }}
         onClick={e => e.stopPropagation()}>
         
-        <div className="h-1.5 w-full" style={{ background: 'linear-gradient(90deg, #FACC15, #f59e0b, #FACC15)' }} />
+        <div className="h-1.5 w-full" style={{ background: 'linear-gradient(90deg, #D4AF37, #B48222, #D4AF37)' }} />
 
         <button onClick={onClose}
           className="absolute top-4 right-4 w-9 h-9 rounded-full flex items-center justify-center transition-all z-10 hover:bg-gray-200"
@@ -103,7 +103,7 @@ function CategoriaDetalle({ cat, onClose }) {
 
         <div className="p-7">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full mb-4 text-xs font-bold tracking-widest uppercase"
-            style={{ background: '#0a0a0a', border: '1px solid #D4AF37', color: '#F5C518', fontFamily: 'Barlow Condensed' }}>
+            style={{ background: '#0a0a0a', border: '1px solid #D4AF37', color: '#D4AF37', fontFamily: 'Barlow Condensed' }}>
             {cat.code} — {cat.subtitle}
           </div>
           
@@ -182,7 +182,7 @@ export default function Categories() {
 
                 {/* Badge */}
                 <div className="inline-flex items-center gap-2.5 mb-5 px-4 py-1.5 rounded-full border border-[#D4AF37] bg-black text-white self-start shadow-sm">
-                  <span className="text-[#F5C518]">
+                  <span className="text-[#D4AF37]">
                     {cat.code === 'A2' && <Bike size={20} />}
                     {cat.code === 'B1' && <Car size={20} />}
                     {cat.code === 'C1' && <Bus size={20} />}

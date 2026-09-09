@@ -29,7 +29,7 @@ function PreciosBlock({ precios, combos, nota }) {
             style={{ background: '#f9fafb', border: '1px solid #e5e7eb' }}>
             <div className="px-4 py-2 flex items-center gap-2"
               style={{ background: '#0a0a0a', borderBottom: '1px solid #D4AF37' }}>
-              <span className="text-[#F5C518] font-black text-sm" style={{ fontFamily: "'Outfit', sans-serif" }}>
+              <span className="text-[#D4AF37] font-black text-sm" style={{ fontFamily: "'Outfit', sans-serif" }}>
                 Categoría {cat}
               </span>
             </div>
@@ -54,8 +54,8 @@ function PreciosBlock({ precios, combos, nota }) {
           style={{ background: '#f9fafb', border: '1px solid #e5e7eb' }}>
           <div className="px-4 py-2"
             style={{ background: '#0a0a0a', borderBottom: '1px solid #D4AF37' }}>
-            <span className="text-[#F5C518] font-black text-sm flex items-center gap-1.5" style={{ fontFamily: "'Outfit', sans-serif" }}>
-              <Lightbulb size={14} className="text-[#F5C518]" /> Combos
+            <span className="text-[#D4AF37] font-black text-sm flex items-center gap-1.5" style={{ fontFamily: "'Outfit', sans-serif" }}>
+              <Lightbulb size={14} className="text-[#D4AF37]" /> Combos
             </span>
           </div>
           <div className="px-4 py-1">
@@ -142,7 +142,7 @@ export default function SedeDetalle({ sede, onClose }) {
         }}
         onClick={e => e.stopPropagation()}>
 
-        <div className="h-1.5 w-full" style={{ background: 'linear-gradient(90deg, #FACC15, #f59e0b, #FACC15)' }} />
+        <div className="h-1.5 w-full" style={{ background: 'linear-gradient(90deg, #D4AF37, #B48222, #D4AF37)' }} />
 
         <div className="sticky top-4 z-50 w-full flex justify-end px-4 pointer-events-none h-0">
           <button onClick={onClose}
@@ -158,8 +158,8 @@ export default function SedeDetalle({ sede, onClose }) {
         <div className="p-7">
           {sede.destacada && (
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full mb-4 text-xs font-bold tracking-widest uppercase"
-              style={{ background: '#0a0a0a', border: '1px solid #D4AF37', color: '#F5C518', fontFamily: 'Barlow Condensed' }}>
-              <Star size={14} className="inline mr-1 fill-[#F5C518] text-[#F5C518]" /> SEDE PRINCIPAL — ACOMPAÑAMIENTO TOTAL
+              style={{ background: '#0a0a0a', border: '1px solid #D4AF37', color: '#D4AF37', fontFamily: 'Barlow Condensed' }}>
+              <Star size={14} className="inline mr-1 fill-[#D4AF37] text-[#D4AF37]" /> SEDE PRINCIPAL — ACOMPAÑAMIENTO TOTAL
             </div>
           )}
 
@@ -167,7 +167,7 @@ export default function SedeDetalle({ sede, onClose }) {
             <div className="flex flex-wrap gap-2 mb-4">
               {sede.alertas.map((a, i) => (
                 <div key={i} className="px-3 py-1.5 rounded-lg text-xs font-bold"
-                  style={{ background: '#0a0a0a', border: '1px solid #D4AF37', color: '#F5C518' }}>
+                  style={{ background: '#0a0a0a', border: '1px solid #D4AF37', color: '#D4AF37' }}>
                   {a}
                 </div>
               ))}

@@ -19,13 +19,13 @@
 
 @layer utilities {
   .text-yellow-brand {
-    color: #FACC15;
+    color: #D4AF37;
   }
   .bg-yellow-brand {
-    background-color: #FACC15;
+    background-color: #C5942B;
   }
   .border-yellow-brand {
-    border-color: #FACC15;
+    border-color: #D4AF37;
   }
 }
 
@@ -113,7 +113,7 @@
 }
 
 .btn-yellow {
-  background: #FACC15;
+  background: #C5942B;
   color: #0a0a0a;
   font-weight: 800;
   font-family: 'Barlow Condensed', sans-serif;
@@ -130,9 +130,9 @@
   gap: 0.5rem;
 }
 .btn-yellow:hover {
-  background: #fde047;
+  background: #D4AF37;
   transform: scale(1.03);
-  box-shadow: 0 8px 30px rgba(250,204,21,0.45);
+  box-shadow: 0 8px 30px rgba(197, 148, 43, 0.35);
 }
 
 .btn-outline {
@@ -145,7 +145,7 @@
   text-transform: uppercase;
   padding: 0.82rem 2rem;
   border-radius: 8px;
-  border: 1.5px solid #FACC15;
+  border: 1.5px solid #C5942B;
   cursor: pointer;
   transition: all 0.2s;
   display: inline-flex;
@@ -153,8 +153,8 @@
   gap: 0.5rem;
 }
 .btn-outline:hover {
-  background: #fef9c3;
-  border-color: #eab308;
+  background: #fdfaf0;
+  border-color: #B48222;
   transform: scale(1.03);
 }
 
@@ -163,30 +163,29 @@
   font-size: 0.85rem;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: #B38728;
+  color: #B48222;
   font-weight: 800;
 }
 
-/* Clases de Dorado Puro y Delineado Fino en Negro */
+/* Clases de Dorado Serio y Prestigioso (Sin bordes cartoon ni amarillo pollito) */
 .text-gold {
   color: #D4AF37;
 }
 
 .text-gold-bright {
-  color: #F5C518;
+  color: #D4AF37;
 }
 
 .text-gold-outline {
-  color: #F5C518;
-  -webkit-text-stroke: 1.2px #0a0a0a;
-  paint-order: stroke fill;
-  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  color: #B48222;
+  -webkit-text-stroke: 0;
+  text-shadow: none;
 }
 
 .text-gold-outline-sm {
-  color: #F5C518;
-  -webkit-text-stroke: 0.8px #0a0a0a;
-  paint-order: stroke fill;
+  color: #B48222;
+  -webkit-text-stroke: 0;
+  text-shadow: none;
 }
 
 .border-gold {
@@ -223,7 +222,7 @@
 /* Scrollbar */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: #f1f1f1; }
-::-webkit-scrollbar-thumb { background: #FACC15; border-radius: 3px; }
+::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 3px; }
 
 /* Form inputs */
 .form-input {

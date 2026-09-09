@@ -60,7 +60,7 @@ function renderMessageContent(content) {
     const boldParts = str.split(/(\*\*[^*]+\*\*)/g)
     return boldParts.map((bp, i) => {
       if (bp.startsWith('**') && bp.endsWith('**')) {
-        return <strong key={`${keyPrefix}-${i}`} className="font-semibold text-yellow-300">{bp.slice(2, -2)}</strong>
+        return <strong key={`${keyPrefix}-${i}`} className="font-semibold text-[#D4AF37]">{bp.slice(2, -2)}</strong>
       }
       return bp
     })
@@ -87,7 +87,7 @@ function renderMessageContent(content) {
         }}
         target={url.startsWith('http') ? '_blank' : undefined}
         rel={url.startsWith('http') ? 'noopener noreferrer' : undefined}
-        className="text-yellow-400 font-semibold underline underline-offset-2 hover:text-yellow-300 transition-colors cursor-pointer inline-flex items-center gap-0.5"
+        className="text-[#D4AF37] font-semibold underline underline-offset-2 hover:text-[#f3d368] transition-colors cursor-pointer inline-flex items-center gap-0.5"
       >
         {label} ↗
       </a>
@@ -216,7 +216,7 @@ export default function Chatbot({ isOpen, setIsOpen }) {
             {/* Header */}
             <div className="p-4 border-b border-amber-500/20 bg-black/60 flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full bg-yellow-400 flex items-center justify-center">
+                <div className="w-8 h-8 rounded-full bg-[#D4AF37] flex items-center justify-center">
                   <Bot size={18} className="text-black" />
                 </div>
                 <div>
@@ -242,10 +242,10 @@ export default function Chatbot({ isOpen, setIsOpen }) {
             >
               {messages.map((msg, idx) => (
                 <div key={idx} className={`flex gap-3 max-w-[85%] ${msg.role === 'user' ? 'ml-auto flex-row-reverse' : 'mr-auto'}`}>
-                  <div className={`w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center ${msg.role === 'user' ? 'bg-white/10 text-white' : 'bg-yellow-400 text-black'}`}>
+                  <div className={`w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center ${msg.role === 'user' ? 'bg-white/10 text-white' : 'bg-[#D4AF37] text-black'}`}>
                     {msg.role === 'user' ? <User size={16} /> : <Bot size={16} />}
                   </div>
-                  <div className={`p-3 rounded-2xl text-sm whitespace-pre-wrap ${msg.role === 'user' ? 'bg-yellow-400 text-black rounded-tr-none font-medium' : 'bg-white/10 text-white rounded-tl-none font-light leading-relaxed'}`}>
+                  <div className={`p-3 rounded-2xl text-sm whitespace-pre-wrap ${msg.role === 'user' ? 'bg-[#C5942B] text-black rounded-tr-none font-medium' : 'bg-white/10 text-white rounded-tl-none font-light leading-relaxed'}`}>
                     {renderMessageContent(msg.content)}
                   </div>
                 </div>
@@ -260,7 +260,7 @@ export default function Chatbot({ isOpen, setIsOpen }) {
                       <button 
                         key={i}
                         onClick={() => handleSend(s)}
-                        className="text-xs px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-gray-300 hover:bg-yellow-400/10 hover:border-yellow-400/30 hover:text-yellow-400 transition-all text-left"
+                        className="text-xs px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-gray-300 hover:bg-[#D4AF37]/10 hover:border-[#D4AF37]/30 hover:text-[#D4AF37] transition-all text-left"
                       >
                         {s}
                       </button>
@@ -271,7 +271,7 @@ export default function Chatbot({ isOpen, setIsOpen }) {
               
               {isLoading && (
                 <div className="flex gap-3 max-w-[85%] mr-auto">
-                  <div className="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center bg-yellow-400 text-black">
+                  <div className="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center bg-[#D4AF37] text-black">
                     <Bot size={16} />
                   </div>
                   <div className="p-3 rounded-2xl bg-white/10 text-white rounded-tl-none flex items-center gap-1">
@@ -293,13 +293,13 @@ export default function Chatbot({ isOpen, setIsOpen }) {
                   onChange={(e) => setInputValue(e.target.value)}
                   onKeyDown={handleKeyDown}
                   placeholder="Escribe tu pregunta..."
-                  className="w-full bg-white/5 border border-white/10 rounded-full pl-4 pr-12 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-yellow-400/50 transition-colors"
+                  className="w-full bg-white/5 border border-white/10 rounded-full pl-4 pr-12 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#D4AF37]/50 transition-colors"
                   disabled={isLoading}
                 />
                 <button
                   onClick={() => handleSend(inputValue)}
                   disabled={!inputValue.trim() || isLoading}
-                  className="absolute right-2 p-1.5 bg-yellow-400 text-black rounded-full hover:bg-yellow-500 disabled:opacity-50 disabled:hover:bg-yellow-400 transition-colors"
+                  className="absolute right-2 p-1.5 bg-[#C5942B] text-black rounded-full hover:bg-[#D4AF37] disabled:opacity-50 disabled:hover:bg-[#C5942B] transition-colors"
                 >
                   {isLoading ? <Loader2 size={16} className="animate-spin" /> : <Send size={16} />}
                 </button>
@@ -314,7 +314,7 @@ export default function Chatbot({ isOpen, setIsOpen }) {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(!isOpen)}
-        className="w-14 h-14 rounded-full bg-yellow-400 text-black flex items-center justify-center shadow-[0_8px_30px_rgba(250,204,21,0.45)] hover:bg-yellow-500 transition-colors z-50"
+        className="w-14 h-14 rounded-full bg-[#C5942B] text-black flex items-center justify-center shadow-[0_8px_30px_rgba(197,148,43,0.35)] hover:bg-[#D4AF37] transition-colors z-50"
       >
         {isOpen ? <X size={24} /> : <MessageSquare size={24} />}
       </motion.button>
