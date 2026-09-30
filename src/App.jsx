@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { AnimatePresence } from 'framer-motion'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Categories from './components/Categories'
@@ -12,12 +13,23 @@ import Footer from './components/Footer'
 import WhatsAppFloat from './components/WhatsAppFloat'
 import Chatbot from './components/Chatbot'
 import SectionDivider from './components/SectionDivider'
+import IntroSplash from './components/IntroSplash'
 
 export default function App() {
   const [activeWidget, setActiveWidget] = useState(null) // 'whatsapp' | 'chatbot' | null
+  const [showIntro, setShowIntro] = useState(() => {
+    try {
+      return !sessionStorage.getItem('donjuanito_intro_seen')
+    } catch {
+      return false
+    }
+  })
 
   return (
     <div className="min-h-screen bg-[#f8f9fa] text-gray-900 relative overflow-hidden">
+      <AnimatePresence>
+        {showIntro && <IntroSplash onFinish={() => setShowIntro(false)} />}
+      </AnimatePresence>
       <div className="fixed inset-0 z-0 pointer-events-none">
         {/* Main Background Image */}
         <div className="w-full h-full relative">
