@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
 import { supabase } from '../lib/supabase'
 
 // MODERACIÓN: Para aprobar una reseña ve a supabase.com/dashboard
@@ -88,7 +89,7 @@ function Stars({ count }) {
   )
 }
 
-function ReviewCard({ t, isMock }) {
+function ReviewCard({ t, isMock, index = 0 }) {
   const initials = getInitials(t.nombre)
   const color = t.color || getColor(t.nombre)
   const rating = t.estrellas ?? t.rating ?? 5
@@ -99,7 +100,13 @@ function ReviewCard({ t, isMock }) {
   const hasTexto = texto && texto.trim() !== '' && texto.trim().toUpperCase() !== 'EMPTY'
 
   return (
-    <div className="glass-card card-hover p-6 flex flex-col gap-4 relative overflow-hidden group">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-40px' }}
+      transition={{ duration: 0.5, delay: (index % 3) * 0.1, ease: [0.16, 1, 0.3, 1] }}
+      className="glass-card card-hover p-6 flex flex-col gap-4 relative overflow-hidden group"
+    >
       <div className="absolute top-0 left-0 right-0 h-0.5 opacity-0 group-hover:opacity-100 transition-opacity"
         style={{ background: `linear-gradient(90deg, transparent, ${color}, transparent)` }} />
 
@@ -133,7 +140,7 @@ function ReviewCard({ t, isMock }) {
           </span>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
 
@@ -317,7 +324,13 @@ const visibleReviews = showAll
       <div className="absolute inset-0 grid-bg opacity-30 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="text-center mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="text-center mb-16"
+        >
           <div className="section-label mb-3">Reseñas</div>
           <h2 className="font-black text-gray-900 mb-4" style={{ fontFamily: 'Barlow Condensed', fontSize: 'clamp(2.5rem,5vw,4rem)' }}>
             LO QUE DICEN NUESTROS
@@ -329,7 +342,7 @@ const visibleReviews = showAll
               : `Más de ${stats.total} personas ya confían en Don Juanito Drivers para obtener su licencia de conducción.`
             }
           </p>
-        </div>
+        </motion.div>
 
         {/* Grid de cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -349,7 +362,7 @@ const visibleReviews = showAll
             ))
           ) : (
             visibleReviews.map((t, i) => (
-              <ReviewCard key={t.id ?? i} t={t} isMock={usingMock} />
+              <ReviewCard key={t.id ?? i} t={t} isMock={usingMock} index={i} />
             ))
           )}
         </div>

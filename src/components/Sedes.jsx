@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { motion } from 'framer-motion'
 import SedeDetalle from './SedeDetalle'
 import { Star, MapPin, Wallet, AlertTriangle, CreditCard, Tag } from 'lucide-react'
 // Sistema round-robin centralizado — distribye clicks entre asesores
@@ -207,14 +208,19 @@ function isSedeOpen(horariosStr) {
   }
 }
 
-function SedeCard({ sede, onVerMas }) {
+function SedeCard({ sede, onVerMas, index = 0 }) {
   // Mensaje prellenado con el nombre de cada sede
   const waMsg = `Hola quiero información sobre la sede ${sede.nombre}`
   const isOpen = isSedeOpen(sede.horarios)
 
   if (sede.destacada) {
     return (
-      <div className="md:col-span-2 lg:col-span-2 relative overflow-hidden rounded-2xl card-hover"
+      <motion.div
+        initial={{ opacity: 0, y: 35 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-50px' }}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        className="md:col-span-2 lg:col-span-2 relative overflow-hidden rounded-2xl card-hover"
         style={{ background: 'linear-gradient(135deg, #1a1500 0%, #1f1800 50%, #0a0a00 100%)', border: '2px solid #D4AF37', boxShadow: '0 0 60px rgba(212,175,55,0.18)' }}>
         <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at 30% 30%, rgba(212,175,55,0.08) 0%, transparent 70%)' }} />
         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-yellow-600 via-yellow-400 to-yellow-600" />
@@ -273,14 +279,19 @@ function SedeCard({ sede, onVerMas }) {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     )
   }
 
   const zona = ZONAS[sede.id]
 
   return (
-    <div className="glass-card card-hover p-6 flex flex-col relative overflow-hidden group">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-50px' }}
+      transition={{ duration: 0.5, delay: (index % 4) * 0.08, ease: [0.16, 1, 0.3, 1] }}
+      className="glass-card card-hover p-6 flex flex-col relative overflow-hidden group">
       <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
       {sede.alertas?.length > 0 ? (
         <div className="h-11 mb-3 flex flex-wrap gap-1 items-start pt-1.5">
@@ -350,7 +361,7 @@ function SedeCard({ sede, onVerMas }) {
           </a>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
 
@@ -363,7 +374,13 @@ export default function Sedes() {
     <>
       <section id="sedes" className="py-24 relative" style={{ background: 'rgba(255,255,255,0.7)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="text-center mb-16"
+          >
             <div className="section-label mb-3">Nuestras sedes</div>
             <h2 className="font-black text-gray-900 mb-4" style={{ fontFamily: 'Barlow Condensed', fontSize: 'clamp(2.5rem,5vw,4rem)' }}>
               ENCUENTRA TU <span className="font-black text-gold-outline">SEDE MÁS CERCANA</span>
@@ -371,21 +388,33 @@ export default function Sedes() {
             <p className="text-gray-600 max-w-xl mx-auto text-base">
               9 sedes activas en Bogotá y Soacha. Agendamiento previo requerido salvo en Diverplaza.
             </p>
-          </div>
+          </motion.div>
 
           {/* Info banner */}
-          <div className="mb-8 p-4 rounded-xl flex flex-wrap gap-3 items-center justify-center text-sm bg-white border border-[#D4AF37]/50 shadow-sm">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="mb-8 p-4 rounded-xl flex flex-wrap gap-3 items-center justify-center text-sm bg-white border border-[#D4AF37]/50 shadow-sm"
+          >
             <span className="text-gray-900 font-bold flex items-center gap-1.5" style={{ fontFamily: 'Barlow Condensed' }}><CreditCard size={16} className="text-[#B38728]" /> Métodos de pago:</span>
             <span className="text-gray-700 font-medium">Efectivo · Transferencia · Addi · Sistecrédito (primer pago) · Cesantías (solo Velari)</span>
             <span className="text-gray-900 font-bold ml-2 flex items-center gap-1.5" style={{ fontFamily: 'Barlow Condensed' }}><Tag size={16} className="text-[#B38728]" /> Descuento:</span>
             <span className="text-gray-700 font-medium">$50.000 al pagar de contado (excl. Diverplaza)</span>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
             {principal.map(s => <SedeCard key={s.id} sede={s} onVerMas={setSedeSeleccionada} />)}
             {/* Brand card */}
-            <div className="hidden md:flex relative overflow-hidden rounded-2xl flex-col items-center justify-center text-center p-6 gap-2"
-              style={{ background: 'linear-gradient(135deg, #0a0a0a 0%, #171717 100%)', border: '1.5px solid rgba(212,175,55,0.3)', boxShadow: '0 10px 30px rgba(0,0,0,0.08)' }}>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="hidden md:flex relative overflow-hidden rounded-2xl flex-col items-center justify-center text-center p-6 gap-2"
+              style={{ background: 'linear-gradient(135deg, #0a0a0a 0%, #171717 100%)', border: '1.5px solid rgba(212,175,55,0.3)', boxShadow: '0 10px 30px rgba(0,0,0,0.08)' }}
+            >
               {/* Glow ambiental */}
               <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at 50% 35%, rgba(250,204,21,0.12) 0%, transparent 70%)' }} />
               <div className="relative z-10 flex flex-col items-center gap-2">
@@ -400,11 +429,11 @@ export default function Sedes() {
                   Tu red de confianza para obtener la licencia de conducción
                 </p>
               </div>
-            </div>
+            </motion.div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {otras.map(s => <SedeCard key={s.id} sede={s} onVerMas={setSedeSeleccionada} />)}
+            {otras.map((s, i) => <SedeCard key={s.id} sede={s} index={i} onVerMas={setSedeSeleccionada} />)}
           </div>
         </div>
       </section>

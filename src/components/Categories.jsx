@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { motion } from 'framer-motion'
 import { MapPin, Bike, Car, Bus, Truck } from 'lucide-react'
 
 const categories = [
@@ -155,7 +156,13 @@ export default function Categories() {
 
         <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 relative">
           {/* Header */}
-          <div className="text-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="text-center mb-16"
+          >
             <div className="section-label mb-3">Nuestras categorías</div>
             <h2 className="font-black text-gray-900 mb-4" style={{fontFamily:'Barlow Condensed', fontSize:'clamp(2.5rem,5vw,4rem)'}}>
               ¿QUÉ LICENCIA <span className="font-black text-gold-outline">NECESITAS?</span>
@@ -163,15 +170,18 @@ export default function Categories() {
             <p className="text-gray-600 max-w-xl mx-auto text-base">
               Ofrecemos formación completa para cuatro categorías de licencia. Cada programa está diseñado con los más altos estándares de seguridad vial.
             </p>
-          </div>
+          </motion.div>
 
           {/* Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {categories.map((cat, i) => (
-              <div
+              <motion.div
                 key={cat.code}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-50px' }}
+                transition={{ duration: 0.55, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
                 className="glass-card card-hover p-8 flex flex-col relative overflow-hidden group"
-                style={{animationDelay:`${i*0.1}s`}}
               >
                 {/* Corner accent */}
                 <div className="absolute top-0 right-0 w-16 h-16 overflow-hidden">
@@ -212,7 +222,7 @@ export default function Categories() {
                 >
                   Más información →
                 </button>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

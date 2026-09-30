@@ -1,4 +1,5 @@
 import React from 'react'
+import { motion } from 'framer-motion'
 
 const values = [
   {
@@ -51,7 +52,12 @@ export default function About() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left content */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+          >
             <div className="section-label mb-3">Quiénes somos</div>
             <h2 className="font-black text-gray-900 mb-6" style={{fontFamily:'Barlow Condensed', fontSize:'clamp(2.5rem,5vw,4rem)', lineHeight:1.05}}>
               LA RED DE ESCUELAS
@@ -84,22 +90,25 @@ export default function About() {
               <a href="#agendar" className="btn-yellow shadow-md">Empezar ahora</a>
               <a href="#sedes" className="btn-outline shadow-sm">Ver sedes</a>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right: values grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {values.map((v, i) => (
-              <div
+              <motion.div
                 key={v.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-50px' }}
+                transition={{ duration: 0.5, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
                 className="glass-card card-hover p-6 group"
-                style={{animationDelay:`${i*0.1}s`}}
               >
                 <div className="w-12 h-12 rounded-lg border border-[#D4AF37] bg-black flex items-center justify-center mb-4 group-hover:scale-105 transition-transform shadow-sm">
                   {v.icon}
                 </div>
                 <h4 className="font-bold text-gray-900 text-base mb-2">{v.title}</h4>
                 <p className="text-gray-600 text-sm leading-relaxed">{v.desc}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
