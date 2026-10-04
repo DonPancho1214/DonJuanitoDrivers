@@ -253,19 +253,24 @@ export default function Chatbot({ isOpen, setIsOpen, introDone = true }) {
               <X size={14} />
             </button>
 
-            <div className="flex items-center gap-2.5 mb-2 pr-6">
-              <div className="relative">
-                <div className="w-8 h-8 rounded-full bg-[#D4AF37] flex items-center justify-center shrink-0">
-                  <Bot size={17} className="text-black" />
+            <div className="flex items-center gap-3 mb-2.5 pr-6">
+              <div className="relative shrink-0">
+                <div className="w-11 h-11 rounded-full border-2 border-[#D4AF37] overflow-hidden bg-black shadow-[0_0_12px_rgba(212,175,55,0.35)]">
+                  <img
+                    src="/don-juanito-avatar.jpg"
+                    alt="Don Juanito"
+                    className="w-full h-full object-cover"
+                    loading="eager"
+                  />
                 </div>
-                <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-green-500 border-2 border-black" />
+                <span className="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-green-500 border-2 border-black" />
               </div>
               <div className="min-w-0">
-                <div className="text-white text-xs font-bold leading-tight flex items-center gap-1.5" style={{ fontFamily: 'Outfit' }}>
+                <div className="text-white text-sm font-bold leading-tight flex items-center gap-1.5" style={{ fontFamily: 'Outfit' }}>
                   <span>Don Juanito</span>
-                  <span className="text-[10px] text-[#D4AF37] font-semibold tracking-wide uppercase px-1.5 py-0.5 rounded bg-[#D4AF37]/10">En línea</span>
+                  <span className="text-[10px] text-[#D4AF37] font-semibold tracking-wide uppercase px-1.5 py-0.5 rounded bg-[#D4AF37]/15 border border-[#D4AF37]/40">En línea</span>
                 </div>
-                <div className="text-gray-400 text-[10px] truncate">Especialista en Trámites</div>
+                <div className="text-gray-400 text-xs truncate">Especialista en Trámites</div>
               </div>
             </div>
 
@@ -295,13 +300,20 @@ export default function Chatbot({ isOpen, setIsOpen, introDone = true }) {
             {/* Header */}
             <div className="p-4 border-b border-amber-500/20 bg-black/60 flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full bg-[#D4AF37] flex items-center justify-center">
-                  <Bot size={18} className="text-black" />
+                <div className="relative shrink-0">
+                  <div className="w-10 h-10 rounded-full border-2 border-[#D4AF37] overflow-hidden bg-black shadow-[0_0_10px_rgba(212,175,55,0.3)]">
+                    <img 
+                      src="/don-juanito-avatar.jpg" 
+                      alt="Don Juanito" 
+                      className="w-full h-full object-cover" 
+                    />
+                  </div>
+                  <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-500 border-2 border-black" />
                 </div>
                 <div>
                   <h3 className="text-white font-semibold text-sm" style={{ fontFamily: 'Outfit' }}>Don Juanito</h3>
                   <p className="text-gray-400 text-xs flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-green-500"></span> Especialista en Trámites • En línea
+                    Especialista en Trámites • <span className="text-[#D4AF37] font-medium">En línea</span>
                   </p>
                 </div>
               </div>
@@ -321,8 +333,16 @@ export default function Chatbot({ isOpen, setIsOpen, introDone = true }) {
             >
               {messages.map((msg, idx) => (
                 <div key={idx} className={`flex gap-3 max-w-[85%] ${msg.role === 'user' ? 'ml-auto flex-row-reverse' : 'mr-auto'}`}>
-                  <div className={`w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center ${msg.role === 'user' ? 'bg-white/10 text-white' : 'bg-[#D4AF37] text-black'}`}>
-                    {msg.role === 'user' ? <User size={16} /> : <Bot size={16} />}
+                  <div className={`w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center overflow-hidden ${msg.role === 'user' ? 'bg-white/10 text-white' : 'border border-[#D4AF37] shadow-sm'}`}>
+                    {msg.role === 'user' ? (
+                      <User size={16} />
+                    ) : (
+                      <img 
+                        src="/don-juanito-avatar.jpg" 
+                        alt="Don Juanito" 
+                        className="w-full h-full object-cover" 
+                      />
+                    )}
                   </div>
                   <div className={`p-3 rounded-2xl text-sm whitespace-pre-wrap ${msg.role === 'user' ? 'bg-[#C5942B] text-black rounded-tr-none font-medium' : 'bg-white/10 text-white rounded-tl-none font-light leading-relaxed'}`}>
                     {renderMessageContent(msg.content)}
@@ -350,8 +370,12 @@ export default function Chatbot({ isOpen, setIsOpen, introDone = true }) {
               
               {isLoading && (
                 <div className="flex gap-3 max-w-[85%] mr-auto">
-                  <div className="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center bg-[#D4AF37] text-black">
-                    <Bot size={16} />
+                  <div className="w-8 h-8 rounded-full flex-shrink-0 overflow-hidden border border-[#D4AF37] shadow-sm">
+                    <img 
+                      src="/don-juanito-avatar.jpg" 
+                      alt="Don Juanito" 
+                      className="w-full h-full object-cover" 
+                    />
                   </div>
                   <div className="p-3 rounded-2xl bg-white/10 text-white rounded-tl-none flex items-center gap-1">
                     <span className="w-2 h-2 rounded-full bg-white/40 animate-bounce" style={{ animationDelay: '0ms' }} />
