@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import SedeDetalle from './SedeDetalle'
-import { Star, MapPin, Wallet, AlertTriangle, CreditCard, Tag } from 'lucide-react'
+import { Star, MapPin, Wallet, AlertTriangle, CreditCard } from 'lucide-react'
 // Sistema round-robin centralizado — distribye clicks entre asesores
 import { abrirWhatsApp } from '../utils/whatsapp'
 
@@ -399,12 +399,18 @@ export default function Sedes() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-40px' }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="mb-8 p-4 rounded-xl flex flex-wrap gap-3 items-center justify-center text-sm bg-white border border-[#D4AF37]/50 shadow-sm"
+            className="mb-8 p-3.5 sm:p-4 rounded-xl flex flex-wrap gap-2.5 sm:gap-3 items-center justify-center text-xs sm:text-sm bg-white border border-[#D4AF37]/50 shadow-sm text-center"
           >
-            <span className="text-gray-900 font-bold flex items-center gap-1.5" style={{ fontFamily: 'Barlow Condensed' }}><CreditCard size={16} className="text-[#B38728]" /> Métodos de pago:</span>
-            <span className="text-gray-700 font-medium">Efectivo · Transferencia · Addi · Sistecrédito (primer pago) · Cesantías (solo Velari)</span>
-            <span className="text-gray-900 font-bold ml-2 flex items-center gap-1.5" style={{ fontFamily: 'Barlow Condensed' }}><Tag size={16} className="text-[#B38728]" /> Descuento:</span>
-            <span className="text-gray-700 font-medium">$50.000 al pagar de contado (excl. Diverplaza)</span>
+            <span className="text-gray-900 font-bold flex items-center gap-1.5" style={{ fontFamily: 'Barlow Condensed' }}>
+              <CreditCard size={16} className="text-[#B38728]" /> Métodos de pago:
+            </span>
+            <span className="text-gray-700 font-medium">
+              Efectivo · Transferencia · Addi · Sistecrédito · Cesantías
+            </span>
+            <span className="hidden sm:inline text-gray-300">|</span>
+            <span className="text-xs text-amber-900/90 bg-amber-500/10 px-2.5 py-0.5 rounded-full border border-amber-500/20 font-medium">
+              * Los métodos de pago y financiación dependen de cada escuela
+            </span>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
