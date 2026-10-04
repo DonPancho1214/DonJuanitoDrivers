@@ -10,7 +10,7 @@ import { getTarifaSede } from '../data/preciosKB'
 const sedesData = {
   'CEA Diverplaza (Sede Principal)': {
     direccion: 'Cra. 100 #72-19, Bogotá',
-    mensajePersonalizado: '🚗 Sede Principal — Acompañamiento integral, único con Addi, Sistecrédito y descuento de contado de hasta $50.000.',
+    mensajePersonalizado: '🚗 Sede Principal — Acompañamiento integral, facilidades con Addi / Sistecrédito y descuento de contado de hasta $50.000.',
   },
   'Conductores Bogotá': {
     direccion: 'Cl. 71 #14a-14, Bogotá',

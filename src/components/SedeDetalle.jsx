@@ -283,7 +283,7 @@ export default function SedeDetalle({ sede, onClose }) {
             </div>
             <p className="text-gray-900 text-sm font-semibold leading-relaxed">
               {esDiverplaza ? (
-                <>Puedes iniciar con el <span className="text-[#B38728] font-bold">50% del valor total</span> o financiar con <span className="text-[#B38728] font-bold">Addi y Sistecrédito</span>. ¡Pagando de contado obtienes hasta <span className="text-[#B38728] font-bold">$50.000 COP de descuento</span>!</>
+                <>Facilidades de pago y financiación: matrícula inicial desde el <span className="text-[#B38728] font-bold">50% del valor total</span>, financiación mediante <span className="text-[#B38728] font-bold">Addi y Sistecrédito</span>, o descuento preferencial de hasta <span className="text-[#B38728] font-bold">$50.000 COP</span> en pago de contado.</>
               ) : (
                 <>Tarifas oficiales para <span className="text-[#B38728] font-bold">pago de contado</span> y facilidades de <span className="text-[#B38728] font-bold">financiación</span> para matricularte.</>
               )}

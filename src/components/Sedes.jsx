@@ -18,9 +18,9 @@ export const sedes = [
     mapsUrl: 'https://maps.app.goo.gl/5z8N3A2kvNCTtgmp9',
     alertas: [
       <span key="p" className="flex items-center gap-1"><Star size={12} className="fill-[#D4AF37] text-[#D4AF37]" /> Sede Principal — Acompañamiento Integral</span>,
-      <span key="c" className="flex items-center gap-1"><CreditCard size={12} /> Única con Addi, Sistecrédito y Plan Turbo</span>
+      <span key="c" className="flex items-center gap-1"><CreditCard size={12} /> Financiación con Addi, Sistecrédito y Plan Turbo</span>
     ],
-    descripcion: 'CEA Diverplaza es la sede principal y más completa de Don Juanito Drivers. El asesor acompaña al estudiante durante TODO el proceso con seguimiento personalizado. Es la ÚNICA sede autorizada con Addi y Sistecrédito, Plan Turbo y descuento de hasta $50.000 COP por pago de contado.',
+    descripcion: 'Sede principal de Don Juanito Drivers. Brinda acompañamiento integral y asesoría personalizada a lo largo de todo el proceso de formación y certificación ante el RUNT. Dispone de beneficios exclusivos como financiación mediante Addi y Sistecrédito, modalidad Plan Turbo y un descuento preferencial de hasta $50.000 COP en pago de contado.',
   },
   {
     id: 'conductores',
