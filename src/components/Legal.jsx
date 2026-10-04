@@ -18,7 +18,7 @@ const sections = [
     icon: <Lock size={24} className="text-[#D4AF37]" />,
     content: [
       'Don Juanito Drivers recopila datos personales únicamente con fines de prestación del servicio de formación vial y comunicación con el usuario.',
-      'Los datos recolectados incluyen: nombre completo, número de teléfono, correo electrónico, número de documento de identidad y localidad de residencia.',
+      'Para el contacto y agendamiento inicial únicamente se requiere el nombre completo y el número de teléfono. El documento de identidad no es obligatorio para realizar la solicitud en el sitio web; sin embargo, la escuela de conducción en donde se formalice la matrícula lo solicitará para su registro e inscripción oficial ante el RUNT.',
       'La información personal no será vendida, cedida ni compartida con terceros sin el consentimiento expreso del titular, salvo obligación legal.',
       'El titular de los datos tiene derecho a conocer, actualizar, rectificar y suprimir su información personal en cualquier momento, contactando a nuestro equipo en los canales disponibles.',
       'Don Juanito Drivers adopta medidas técnicas y organizativas para proteger los datos personales contra pérdida, acceso no autorizado o divulgación indebida.',

@@ -908,12 +908,12 @@ https://www.runt.gov.co/directorio-de-actores`
 
               {/* Cédula */}
               <div className="flex flex-col gap-1.5">
-                <label htmlFor="cedula" className="text-gray-700 text-xs uppercase tracking-wider font-bold">Número de cédula</label>
+                <label htmlFor="cedula" className="text-gray-700 text-xs uppercase tracking-wider font-bold">Número de cédula <span className="text-gray-400 font-normal lowercase">(opcional)</span></label>
                 <input 
                   id="cedula"
                   className={`form-input ${errors.cedula ? 'border-red-500 focus:border-red-500' : ''}`} 
                   name="cedula" 
-                  placeholder="Tu número de cédula" 
+                  placeholder="Tu número de cédula (opcional)" 
                   value={form.cedula} 
                   onChange={handleChange} 
                 />
