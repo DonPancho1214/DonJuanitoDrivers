@@ -2,8 +2,9 @@ import React from 'react'
 import { Navigation, Clock, Bike, Car, Bus, Truck, Wallet, Lightbulb, MapPin, CalendarDays, Star, ClipboardList, CheckCircle2 } from 'lucide-react'
 // Sistema round-robin centralizado
 import { abrirWhatsApp } from '../utils/whatsapp'
-// Precios dinámicos desde Supabase
+// Precios dinámicos desde Supabase y tabla de conocimiento oficial v2.3
 import { usePrecios } from '../hooks/usePrecios'
+import { PRECIOS_KB, normalizarNombreSede, getTarifaSede } from '../data/preciosKB'
 
 // PriceRow: label izquierda, valor derecha
 function PriceRow({ label, value, highlight, indent }) {
@@ -39,8 +40,8 @@ function PreciosBlock({ precios, combos, nota }) {
                   key={key} 
                   label={key.startsWith('↳') ? key : key} 
                   value={val} 
-                  highlight={key.includes('CONTADO')} 
-                  indent={key.includes('CONTADO')} 
+                  highlight={key.includes('Contado') || key.includes('CONTADO')} 
+                  indent={false} 
                 />
               ))}
             </div>
@@ -67,8 +68,8 @@ function PreciosBlock({ precios, combos, nota }) {
                     key={key} 
                     label={key.startsWith('↳') ? key : key} 
                     value={val} 
-                    highlight={key.includes('CONTADO')} 
-                    indent={key.includes('CONTADO')} 
+                    highlight={key.includes('Contado') || key.includes('CONTADO')} 
+                    indent={false} 
                   />
                 ))}
               </div>
@@ -90,24 +91,53 @@ export default function SedeDetalle({ sede, onClose }) {
   // Carga precios dinámicos desde Supabase
   const { precios: preciosRaw, loading: preciosLoading, error: preciosError } = usePrecios(sede.nombre)
 
-  // Transforma los datos de Supabase al formato que usa PreciosBlock
+  const sedeCanon = normalizarNombreSede(sede.nombre)
+  const kbData = PRECIOS_KB[sedeCanon]
+  const esDiverplaza = kbData?.esPrincipal || sede.nombre.includes('Diverplaza')
+
+  // Transforma los datos al formato de PreciosBlock usando las tarifas oficiales de la KB
   const preciosFormateados = {}
   const combosFormateados = []
 
-  if (preciosRaw) {
+  if (kbData && kbData.precios) {
+    Object.entries(kbData.precios).forEach(([cat, p]) => {
+      const isCombo = cat.includes('/')
+      const precioFinanciadoStr = `$${p.conPracticas.toLocaleString('es-CO')}`
+      const precioContadoStr = `$${p.contadoCon.toLocaleString('es-CO')}`
+
+      const labelContado = esDiverplaza ? 'Precio de Contado (Descuento $50k)' : 'Precio de Contado'
+      const labelFinanciado = esDiverplaza ? 'Precio Financiado (Addi / Siste / 50%)' : 'Precio Financiado'
+
+      if (isCombo) {
+        const nombreCombo = cat.replace('/', ' + ')
+        let combo = combosFormateados.find(c => c.nombre === nombreCombo)
+        if (!combo) {
+          combo = { nombre: nombreCombo, precios: {} }
+          combosFormateados.push(combo)
+        }
+        combo.precios[labelContado] = precioContadoStr
+        combo.precios[labelFinanciado] = precioFinanciadoStr
+      } else {
+        preciosFormateados[cat] = {
+          [labelContado]: precioContadoStr,
+          [labelFinanciado]: precioFinanciadoStr,
+        }
+      }
+    })
+  } else if (preciosRaw) {
     preciosRaw.forEach(row => {
-      // Ocultar visualmente la modalidad SIN PRACTICAS en el modal
       if (row.modalidad.toUpperCase().includes('SIN PRACTICA')) return
 
       const isCombo = row.categoria.includes('/')
-      const precioStr = `$${row.precio.toLocaleString('es-CO')}`
-      const contadoStr = `$${(row.precio - 50000).toLocaleString('es-CO')}`
+      const tarifa = getTarifaSede(sede.nombre, row.categoria, true)
+      const pFin = tarifa ? tarifa.financiado : row.precio
+      const pCon = tarifa ? tarifa.contado : (esDiverplaza ? row.precio - 50000 : row.precio - 100000)
 
-      // Cambiar visualmente 'CON PRACTICAS' a 'CURSO COMPLETO'
-      let displayModalidad = row.modalidad
-      if (displayModalidad.toUpperCase() === 'CON PRACTICAS') {
-        displayModalidad = 'CURSO COMPLETO'
-      }
+      const precioStr = `$${pFin.toLocaleString('es-CO')}`
+      const contadoStr = `$${pCon.toLocaleString('es-CO')}`
+
+      const labelContado = esDiverplaza ? 'Precio de Contado (Descuento $50k)' : 'Precio de Contado'
+      const labelFinanciado = esDiverplaza ? 'Precio Financiado' : 'Precio Financiado'
 
       if (isCombo) {
         const nombreCombo = row.categoria.replace('/', ' + ')
@@ -116,12 +146,12 @@ export default function SedeDetalle({ sede, onClose }) {
           combo = { nombre: nombreCombo, precios: {} }
           combosFormateados.push(combo)
         }
-        combo.precios[displayModalidad] = precioStr
-        combo.precios[displayModalidad + ' DE CONTADO'] = contadoStr
+        combo.precios[labelContado] = contadoStr
+        combo.precios[labelFinanciado] = precioStr
       } else {
         if (!preciosFormateados[row.categoria]) preciosFormateados[row.categoria] = {}
-        preciosFormateados[row.categoria][displayModalidad] = precioStr
-        preciosFormateados[row.categoria][displayModalidad + ' DE CONTADO'] = contadoStr
+        preciosFormateados[row.categoria][labelContado] = contadoStr
+        preciosFormateados[row.categoria][labelFinanciado] = precioStr
       }
     })
   }
@@ -252,23 +282,32 @@ export default function SedeDetalle({ sede, onClose }) {
               <Lightbulb className="text-[#B38728]" size={24} />
             </div>
             <p className="text-gray-900 text-sm font-semibold leading-relaxed">
-              Puedes iniciar con el <span className="text-[#B38728] font-bold">50% del valor total</span> del curso o <span className="text-[#B38728] font-bold">pagar de contado</span> te saldrá más barato.
+              {esDiverplaza ? (
+                <>Puedes iniciar con el <span className="text-[#B38728] font-bold">50% del valor total</span> o financiar con <span className="text-[#B38728] font-bold">Addi y Sistecrédito</span>. ¡Pagando de contado obtienes hasta <span className="text-[#B38728] font-bold">$50.000 COP de descuento</span>!</>
+              ) : (
+                <>Tarifas oficiales para <span className="text-[#B38728] font-bold">pago de contado</span> y facilidades de <span className="text-[#B38728] font-bold">financiación</span> para matricularte.</>
+              )}
             </p>
           </div>
 
           {/* Precios */}
           <div className="mb-6">
             <div className="text-gray-500 text-xs uppercase tracking-wider mb-3 flex items-center gap-2 font-semibold">
-              <Wallet size={14} className="text-gray-500" /> Precios
+              <Wallet size={14} className="text-gray-500" /> Tarifas Oficiales (Contado y Financiado)
             </div>
 
             <div className="py-2 px-3 mb-4 rounded-xl text-xs font-bold text-center"
               style={{ background: '#fef3c7', border: '1px solid #fde68a', color: '#92400e' }}>
-              ★ Todos los precios incluyen exámenes médicos.
+              ★ Todos los precios incluyen exámenes médicos y certificación RUNT.
             </div>
 
-            {/* Estado: cargando */}
-            {preciosLoading && (
+            {/* Renderizado de Precios */}
+            {Object.keys(preciosFormateados).length > 0 || combosFormateados.length > 0 ? (
+              <PreciosBlock
+                precios={preciosFormateados}
+                combos={combosFormateados}
+              />
+            ) : preciosLoading ? (
               <div className="space-y-3 animate-pulse">
                 {[1, 2, 3].map(i => (
                   <div key={i} className="rounded-xl overflow-hidden"
@@ -282,22 +321,11 @@ export default function SedeDetalle({ sede, onClose }) {
                   </div>
                 ))}
               </div>
-            )}
-
-            {/* Estado: error */}
-            {!preciosLoading && (preciosError || !preciosRaw || preciosRaw.length === 0) && (
+            ) : (
               <div className="p-4 rounded-xl text-sm font-medium"
                 style={{ background: '#fef3c7', border: '1px solid #fde68a', color: '#92400e' }}>
                 No se pudieron cargar los precios. Contáctanos por WhatsApp para más información.
               </div>
-            )}
-
-            {/* Estado: datos OK */}
-            {!preciosLoading && !preciosError && preciosRaw && preciosRaw.length > 0 && (
-              <PreciosBlock
-                precios={preciosFormateados}
-                combos={combosFormateados}
-              />
             )}
           </div>
 

@@ -2,47 +2,47 @@ import React, { useState, useEffect } from 'react'
 import { CheckCircle2, XCircle, AlertTriangle, Bike, Car } from 'lucide-react'
 // Sistema round-robin centralizado de asesores de WhatsApp
 import { abrirWhatsApp } from '../utils/whatsapp'
-// Precios dinámicos desde Supabase
+// Precios dinámicos desde Supabase y tarifas oficiales de la Base de Conocimientos v2.3
 import { usePrecios } from '../hooks/usePrecios'
+import { getTarifaSede } from '../data/preciosKB'
 
-// Objeto sedesData con direcciones y mensajes personalizados para cada sede.
-// Es fácil de editar y añadir más sedes en el futuro.
+// Objeto sedesData con direcciones y mensajes personalizados para cada sede según KB v2.3.
 const sedesData = {
   'CEA Diverplaza (Sede Principal)': {
     direccion: 'Cra. 100 #72-19, Bogotá',
-    mensajePersonalizado: '🚗 Sede Principal — Acompañamiento total durante todo el proceso.',
+    mensajePersonalizado: '🚗 Sede Principal — Acompañamiento integral, único con Addi, Sistecrédito y descuento de contado de hasta $50.000.',
   },
   'Conductores Bogotá': {
     direccion: 'Cl. 71 #14a-14, Bogotá',
-    mensajePersonalizado: '⭐ Única sede que ofrece la categoría C2.',
+    mensajePersonalizado: '⭐ Chapinero — Única sede que ofrece la categoría C2 (camión sencillo).',
   },
   'CEA Velari': {
-    direccion: 'Ac 100 #60d-05, Bogotá',
-    mensajePersonalizado: '💰 Acepta pagos con fondo de cesantías.',
+    direccion: 'Av. Calle 100 #60d-05 / 65, Barrio Rincón de los Andes, Bogotá',
+    mensajePersonalizado: '💰 Calle 100 — Única sede que acepta pagos con fondo de cesantías.',
   },
   'El Agente Guerrero': {
-    direccion: 'Autopista Sur #54-55, Bogotá',
-    mensajePersonalizado: '📍 Ubicado estratégicamente en la Autopista Sur.',
+    direccion: 'Autopista Sur #54-55 / Cl. 45A Sur #54A-55 Piso 2, Bogotá',
+    mensajePersonalizado: '📍 Kennedy / Venecia — Ubicado estratégicamente en la Autopista Sur.',
   },
   'CEA Auto Xua': {
-    direccion: 'Cl. 12 #8A-01, Soacha',
-    mensajePersonalizado: '⚠️ NO permite homologaciones — Curso completo obligatorio.',
+    direccion: 'Cl. 12 #8A-01, Soacha Parque',
+    mensajePersonalizado: '⚠️ Soacha Parque — Política estricta: Cero homologaciones (curso completo obligatorio).',
   },
   'CEA Carvajal': {
-    direccion: 'Carrera 71D #20 Sur Piso 4, Bogotá',
-    mensajePersonalizado: '⭐ Maneja sistema pico y cédula.',
+    direccion: 'Carrera 71D, Cl. 20 Sur #8 Piso 4, Bogotá',
+    mensajePersonalizado: '⭐ Primera de Mayo — Maneja modalidad Pico y Cédula en clases teóricas.',
   },
   'CEA Al Timón': {
-    direccion: 'Cl. 65d Sur, Bogotá',
-    mensajePersonalizado: '📍 Sede en el Sur de Bogotá.',
+    direccion: 'Calle 65D Sur #79C-24/26, Barrio Bosa, Bogotá',
+    mensajePersonalizado: '📍 Bosa — Cita previa obligatoria de matrícula.',
   },
   'CEA Valuvial': {
-    direccion: 'Carrera 19D Diagonal 63 Sur, Bogotá',
-    mensajePersonalizado: '📍 Sede en la zona Centro-Sur de Bogotá.',
+    direccion: 'Carrera 19D #63-18 Sur Piso 2, Barrio San Francisco, Bogotá',
+    mensajePersonalizado: '📍 Ciudad Bolívar — Límite de aforo: máximo 4 horas de teoría al día.',
   },
   'CEA Centro Suba': {
-    direccion: 'Calle 145 #91-19 Local 1001, Bogotá',
-    mensajePersonalizado: '📍 Sede en la zona Norte de Bogotá (Suba).',
+    direccion: 'Calle 145 #91-19 Local 110, Bogotá',
+    mensajePersonalizado: '📍 Suba — Sede moderna en la zona norte de Bogotá.',
   },
 }
 
@@ -130,62 +130,87 @@ const CATEGORIA_LABEL = {
  * @param {string} metodoPago  - valor del select del formulario
  * @param {boolean} esAutoXua  - true cuando la sede es CEA Auto Xua
  */
-function calcularPrecio(preciosData, categoria, sabeManejar, metodoPago, esAutoXua) {
-  if (!preciosData || !categoria) return null
+/**
+ * Calcula el precio final a partir de los datos de Supabase y la KB v2.3.
+ * @param {Array} preciosData  - rows de Supabase para la sede
+ * @param {string} categoria   - ej. 'A2', 'B1', 'A2/B1'
+ * @param {string} sabeManejar - 'Si' | 'No' | 'moto_si_carro_no' | 'carro_si_moto_no'
+ * @param {string} metodoPago  - valor del select del formulario
+ * @param {boolean} esAutoXua  - true cuando la sede es CEA Auto Xua
+ * @param {string} sede        - nombre de la sede
+ */
+function calcularPrecio(preciosData, categoria, sabeManejar, metodoPago, esAutoXua, sede) {
+  if (!categoria || !sede) return null
 
+  const isDiverplaza = sede === 'CEA Diverplaza (Sede Principal)'
+  const conPracticas = esAutoXua ? true : sabeManejar !== 'Si'
+
+  // Consultar la tarifa oficial de la KB v2.3
+  const tarifaKB = getTarifaSede(sede, categoria, conPracticas)
+
+  // Encontrar el precio base en Supabase si está disponible, o usar la KB
   const modalidad = esAutoXua
     ? 'CURSO COMPLETO'
     : sabeManejar === 'Si' ? 'SIN PRACTICAS' : 'CON PRACTICAS'
 
-  const row = preciosData.find(p =>
+  const row = preciosData?.find(p =>
     p.categoria === categoria &&
     (p.modalidad === modalidad || p.modalidad === 'CURSO COMPLETO')
   )
-  if (!row) return null
-  const base = row.precio
+
+  const base = tarifaKB ? tarifaKB.financiado : (row?.precio || 0)
+  if (!base) return null
 
   let inicial = null
   let total = base
   let isCredito = false
   let isMatricula = false
 
-  if (metodoPago === 'De Contado') {
-    total = base - 50000
-  } else if (metodoPago === 'Addi (+7%)') {
-    inicial = Math.round((base / 2) * 1.07)
-    total = Math.round(base * 1.07)
-    isCredito = true
-  } else if (metodoPago === 'Sistecrédito (+5%)') {
-    inicial = Math.round((base / 2) * 1.05)
-    total = Math.round(base * 1.05)
-    isCredito = true
-  } else if (metodoPago === 'Me matriculo con el 50%') {
-    inicial = Math.round(base / 2)
-    total = base
-    isMatricula = true
-  } else if (metodoPago === 'Me matriculo con 400 Mil') {
-    inicial = 400000
-    total = base
-    isMatricula = true
-  } else if (metodoPago === 'Me matriculo con 800 Mil') {
-    inicial = 800000
-    total = base
-    isMatricula = true
+  if (isDiverplaza) {
+    if (metodoPago === 'De Contado') {
+      // Diverplaza es la ÚNICA con descuento de hasta $50.000 COP al contado
+      total = base - 50000
+    } else if (metodoPago === 'Addi (+7%)') {
+      inicial = total = Math.round(base * 1.07)
+      isCredito = true
+    } else if (metodoPago === 'Sistecrédito (+5%)') {
+      inicial = total = Math.round(base * 1.05)
+      isCredito = true
+    } else if (metodoPago === 'Me matriculo con el 50%') {
+      inicial = Math.round(base / 2)
+      total = base
+      isMatricula = true
+    }
+  } else {
+    // Sedes afiliadas: usan la tabla oficial de Contado fija vs Financiado fija
+    if (metodoPago === 'De Contado') {
+      total = tarifaKB ? tarifaKB.contado : (base - 100000)
+    } else if (metodoPago === 'Me matriculo con 400 Mil') {
+      inicial = 400000
+      total = tarifaKB ? tarifaKB.financiado : base
+      isMatricula = true
+    } else if (metodoPago === 'Me matriculo con 800 Mil') {
+      inicial = 800000
+      total = tarifaKB ? tarifaKB.financiado : base
+      isMatricula = true
+    } else {
+      total = tarifaKB ? tarifaKB.financiado : base
+    }
   }
 
   return { inicial, total, base, isCredito, isMatricula }
 }
 
-/** Label descriptivo bajo el precio según el método elegido */
-function getPrecioLabel(metodoPago) {
-  if (metodoPago === 'De Contado') return 'Pagando de contado'
-  if (metodoPago === 'Addi (+7%)') return 'Matrícula con Addi'
-  if (metodoPago === 'Sistecrédito (+5%)') return 'Matrícula con Sistecrédito'
-  if (
-    metodoPago === 'Me matriculo con el 50%' ||
-    metodoPago === 'Me matriculo con 400 Mil' ||
-    metodoPago === 'Me matriculo con 800 Mil'
-  ) return 'Valor matrícula (50%)'
+/** Label descriptivo bajo el precio según el método elegido y sede */
+function getPrecioLabel(metodoPago, isDiverplaza) {
+  if (metodoPago === 'De Contado') {
+    return isDiverplaza ? 'Pagando de contado (Ahorras hasta $50.000)' : 'Tarifa oficial de contado'
+  }
+  if (metodoPago === 'Addi (+7%)') return 'Valor total con Addi (Solo matrícula)'
+  if (metodoPago === 'Sistecrédito (+5%)') return 'Valor total con Sistecrédito (Solo matrícula)'
+  if (metodoPago === 'Me matriculo con el 50%') return 'Valor matrícula inicial (50%)'
+  if (metodoPago === 'Me matriculo con 400 Mil') return 'Valor abono inicial ($400.000)'
+  if (metodoPago === 'Me matriculo con 800 Mil') return 'Valor abono inicial ($800.000)'
   return 'Valor del curso'
 }
 
@@ -267,9 +292,15 @@ export default function Booking() {
   const supabaseSedeName = SEDE_SUPABASE_NOMBRE[form.sede] || null
   const { precios: preciosRaw, loading: preciosLoading } = usePrecios(supabaseSedeName)
 
-  // Categorías disponibles para el dropdown, según los datos de Supabase
-  const orderedCategories = ['A2', 'B1', 'C1', 'A2/B1', 'A2/C1'];
-  const categoriasDisponibles = [...new Set(preciosRaw?.map(p => p.categoria) || [])].sort((a, b) => {
+  // Categorías disponibles para el dropdown, según los datos de Supabase y KB
+  const orderedCategories = ['A2', 'B1', 'C1', 'C2', 'A2/B1', 'A2/C1'];
+  const rawCats = (preciosRaw && preciosRaw.length > 0)
+    ? preciosRaw.map(p => p.categoria)
+    : (form.sede === 'Conductores Bogotá' 
+        ? ['A2', 'B1', 'C1', 'C2', 'A2/B1', 'A2/C1'] 
+        : ['A2', 'B1', 'C1', 'A2/B1', 'A2/C1']);
+
+  const categoriasDisponibles = [...new Set(rawCats)].sort((a, b) => {
     let indexA = orderedCategories.indexOf(a);
     let indexB = orderedCategories.indexOf(b);
     if (indexA === -1) indexA = 99;
@@ -278,7 +309,7 @@ export default function Booking() {
   })
 
   // Precio final calculado en tiempo real
-  const precioFinal = calcularPrecio(preciosRaw, form.categoria, form.sabeManejar, form.metodoPago, isAutoXua)
+  const precioFinal = calcularPrecio(preciosRaw, form.categoria, form.sabeManejar, form.metodoPago, isAutoXua, form.sede)
 
   const { minDate, maxDate } = (() => {
     const today = new Date()
@@ -952,16 +983,16 @@ https://www.runt.gov.co/directorio-de-actores`
                   
                   {form.sede === 'CEA Diverplaza (Sede Principal)' ? (
                     <>
-                      <option value="De Contado">De Contado</option>
+                      <option value="De Contado">De Contado (Descuento hasta $50.000)</option>
                       <option value="Addi (+7%)">Addi (+7%) ⚠️ Solo matrícula</option>
                       <option value="Sistecrédito (+5%)">Sistecrédito (+5%) ⚠️ Solo matrícula</option>
                       <option value="Me matriculo con el 50%">Me matriculo con el 50%</option>
                     </>
                   ) : (
                     <>
-                      <option value="De Contado">De Contado</option>
+                      <option value="De Contado">De Contado (Tarifa fija de contado)</option>
                       <option value={isComboCategory ? "Me matriculo con 800 Mil" : "Me matriculo con 400 Mil"}>
-                        {isComboCategory ? "Me matriculo con 800 Mil" : "Me matriculo con 400 Mil"}
+                        {isComboCategory ? "Me matriculo con 800 Mil (Financiado)" : "Me matriculo con 400 Mil (Financiado)"}
                       </option>
                     </>
                   )}
@@ -1104,7 +1135,7 @@ https://www.runt.gov.co/directorio-de-actores`
                             <span className="font-black text-3xl block text-gold-outline" style={{ fontFamily: 'Barlow Condensed' }}>
                               {precioFinal ? formatPrice(precioFinal.total) : 'Por definir con asesor'}
                             </span>
-                            <span className="text-gray-600 text-xs font-semibold">{getPrecioLabel(form.metodoPago)}</span>
+                            <span className="text-gray-600 text-xs font-semibold">{getPrecioLabel(form.metodoPago, form.sede === 'CEA Diverplaza (Sede Principal)')}</span>
                           </>
                         )}
                       </>
