@@ -176,6 +176,14 @@ function calcularPrecio(preciosData, categoria, sabeManejar, metodoPago, esAutoX
     } else if (metodoPago === 'Sistecrédito (+5%)') {
       inicial = total = Math.round(base * 1.05)
       isCredito = true
+    } else if (metodoPago === 'Me matriculo con 400 Mil') {
+      inicial = 400000
+      total = base
+      isMatricula = true
+    } else if (metodoPago === 'Me matriculo con 800 Mil') {
+      inicial = 800000
+      total = base
+      isMatricula = true
     } else if (metodoPago === 'Me matriculo con el 50%') {
       inicial = Math.round(base / 2)
       total = base
@@ -984,9 +992,11 @@ https://www.runt.gov.co/directorio-de-actores`
                   {form.sede === 'CEA Diverplaza (Sede Principal)' ? (
                     <>
                       <option value="De Contado">De Contado (Descuento hasta $50.000)</option>
+                      <option value={isComboCategory ? "Me matriculo con 800 Mil" : "Me matriculo con 400 Mil"}>
+                        {isComboCategory ? "Me matriculo con 800 Mil (Financiado)" : "Me matriculo con 400 Mil (Financiado)"}
+                      </option>
                       <option value="Addi (+7%)">Addi (+7%) ⚠️ Solo matrícula</option>
                       <option value="Sistecrédito (+5%)">Sistecrédito (+5%) ⚠️ Solo matrícula</option>
-                      <option value="Me matriculo con el 50%">Me matriculo con el 50%</option>
                     </>
                   ) : (
                     <>

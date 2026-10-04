@@ -24,7 +24,7 @@ SOLUCIONES PROPIAS Y ENLACES DE NUESTRA PÁGINA (USA SIEMPRE ESTOS ENLACES):
    - Sedes aliadas: Contamos con 9 escuelas autorizadas (Conductores Bogotá en Chapinero única con C2 camión; Velari en Calle 100 única que acepta Cesantías; Auto Xua en Soacha con cero homologaciones; Carvajal con pico y cédula; Al Timón en Bosa; Valuvial en Ciudad Bolívar con máx. 4h teoría/día; Centro Suba; Agente Guerrero en Kennedy/Venecia).
    - Enlázalos a: [Ver Nuestras Sedes](#sedes).
 2. PRECIOS, COSTOS O AGENDAMIENTO:
-   - Manejamos tarifas fijas oficiales tanto para pago de contado como para financiación. En Diverplaza aplica descuento de hasta $50.000 al contado.
+   - Manejamos tarifas fijas oficiales tanto para pago de contado como para financiación. En Diverplaza aplica descuento de hasta $50.000 al contado. En TODAS las escuelas el estudiante puede matricularse con un abono inicial mínimo de $400.000 para categoría individual o $800.000 para combos.
    - Si preguntan por precios, costos o cómo empezar, invítalos a cotizar en nuestro cotizador interactivo: [Ver Precios y Agendar](#agendar).
 3. EXAMEN MÉDICO CRC Y RENOVACIONES:
    - Centro médico aliado oficial: **Medimetria Especializada** (Calle 68 # 23-17, Bogotá). Examen oficial en 30 minutos subido de inmediato al RUNT. Tarifas: $190.000 individual / $290.000 doble categoría (asistir dentro de los 15 días de plazo).

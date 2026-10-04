@@ -106,7 +106,7 @@ export default function SedeDetalle({ sede, onClose }) {
       const precioContadoStr = `$${p.contadoCon.toLocaleString('es-CO')}`
 
       const labelContado = esDiverplaza ? 'Precio de Contado (Descuento $50k)' : 'Precio de Contado'
-      const labelFinanciado = esDiverplaza ? 'Precio Financiado (Addi / Siste / 50%)' : 'Precio Financiado'
+      const labelFinanciado = esDiverplaza ? 'Precio Financiado (Addi / Siste / Cuotas)' : 'Precio Financiado'
 
       if (isCombo) {
         const nombreCombo = cat.replace('/', ' + ')
@@ -283,9 +283,9 @@ export default function SedeDetalle({ sede, onClose }) {
             </div>
             <p className="text-gray-900 text-sm font-semibold leading-relaxed">
               {esDiverplaza ? (
-                <>Facilidades de pago y financiación: matrícula inicial desde el <span className="text-[#B38728] font-bold">50% del valor total</span>, financiación mediante <span className="text-[#B38728] font-bold">Addi y Sistecrédito</span>, o descuento preferencial de hasta <span className="text-[#B38728] font-bold">$50.000 COP</span> en pago de contado.</>
+                <>Facilidades de pago y financiación: matrícula inicial desde <span className="text-[#B38728] font-bold">$400.000</span> (categoría individual) u <span className="text-[#B38728] font-bold">$800.000</span> (combos), financiación mediante <span className="text-[#B38728] font-bold">Addi y Sistecrédito</span>, o descuento preferencial de hasta <span className="text-[#B38728] font-bold">$50.000 COP</span> en pago de contado.</>
               ) : (
-                <>Tarifas oficiales para <span className="text-[#B38728] font-bold">pago de contado</span> y facilidades de <span className="text-[#B38728] font-bold">financiación</span> para matricularte.</>
+                <>Facilidades de pago y financiación: matrícula inicial desde <span className="text-[#B38728] font-bold">$400.000</span> (categoría individual) u <span className="text-[#B38728] font-bold">$800.000</span> (combos), y tarifas oficiales para <span className="text-[#B38728] font-bold">pago de contado</span>.</>
               )}
             </p>
           </div>
