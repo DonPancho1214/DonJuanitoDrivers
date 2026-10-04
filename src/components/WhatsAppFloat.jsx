@@ -1,30 +1,7 @@
 import React, { useState } from 'react'
-import { MessageCircle, X, User, RefreshCw, HelpCircle } from 'lucide-react'
+import { MessageCircle, X, User } from 'lucide-react'
 // Importar la función centralizada de round-robin
 import { abrirWhatsApp } from '../utils/whatsapp'
-
-// Opciones del menú flotante. Cada una tiene su propio mensaje prellenado.
-// Para agregar más opciones, simplemente añade un objeto al arreglo.
-const CONTACT_OPTIONS = [
-  {
-    id: 'asesor',
-    label: 'Contacta A Un Asesor',
-    icon: <User size={18} />,
-    msg: 'Hola, quiero información sobre las licencias de conducción'
-  },
-  {
-    id: 'renovacion',
-    label: 'Renovacion/Refrendacion',
-    icon: <RefreshCw size={18} />,
-    msg: 'Hola, necesito información sobre el proceso de renovación de mi licencia.'
-  },
-  {
-    id: 'ayuda',
-    label: 'Pedir ayuda',
-    icon: <HelpCircle size={18} />,
-    msg: 'Hola, necesito ayuda con un proceso.'
-  }
-]
 
 export default function WhatsAppFloat({ isOpen, setIsOpen }) {
   const [hovered, setHovered] = useState(false)
@@ -33,30 +10,33 @@ export default function WhatsAppFloat({ isOpen, setIsOpen }) {
     <div className="fixed bottom-6 right-24 z-50 flex flex-col items-end gap-3 pointer-events-none">
       {/* Menu Container */}
       {isOpen && (
-        <div className="pointer-events-auto bg-[#1a1a1a] border border-white/10 rounded-2xl shadow-2xl p-3 flex flex-col gap-2 min-w-[260px] animate-fade-in-up mb-2 overflow-hidden relative"
-          style={{ boxShadow: '0 20px 50px rgba(0,0,0,0.5)' }}>
-          <div className="absolute top-0 left-0 right-0 h-1 bg-green-500" />
-          <div className="px-3 py-2 mb-1 border-b border-white/5">
-            <p className="text-white font-bold text-xs tracking-widest uppercase" style={{ fontFamily: 'Barlow Condensed' }}>¿Cómo podemos ayudarte?</p>
-          </div>
-          {CONTACT_OPTIONS.map((opt) => (
-            // Usar button en lugar de <a> para que la lógica round-robin se ejecute en el clic
-            <button
-              key={opt.id}
-              type="button"
-              className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 text-gray-300 hover:text-yellow-400 transition-all group w-full text-left"
-              onClick={() => {
-                // Selecciona el siguiente asesor en turno y abre WhatsApp
-                abrirWhatsApp(opt.msg)
-                setIsOpen(false)
-              }}
-            >
-              <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-yellow-400/10 transition-colors">
-                {opt.icon}
-              </div>
-              <span className="text-sm font-medium">{opt.label}</span>
-            </button>
-          ))}
+        <div 
+          className="pointer-events-auto bg-[#141414]/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.6)] p-2.5 flex flex-col min-w-[270px] animate-fade-in-up mb-2 overflow-hidden relative"
+        >
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 to-green-500" />
+          
+          <button
+            type="button"
+            className="flex items-center gap-3 p-3 rounded-xl bg-white/5 hover:bg-[#25D366]/15 border border-white/5 hover:border-[#25D366]/30 text-white transition-all group w-full text-left"
+            onClick={() => {
+              // Selecciona el siguiente asesor en turno y abre WhatsApp
+              abrirWhatsApp('Hola, quiero ponerme en contacto con un asesor de Don Juanito Drivers')
+              setIsOpen(false)
+            }}
+          >
+            <div className="w-10 h-10 rounded-full bg-[#25D366]/20 text-[#25D366] flex items-center justify-center shrink-0 group-hover:scale-105 group-hover:bg-[#25D366] group-hover:text-black transition-all">
+              <User size={20} />
+            </div>
+            <div className="flex flex-col">
+              <span className="text-sm font-semibold text-white group-hover:text-[#25D366] transition-colors leading-snug">
+                Ponte en contacto con un asesor
+              </span>
+              <span className="text-[11px] text-gray-400 flex items-center gap-1.5 mt-0.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                Respuesta inmediata por WhatsApp
+              </span>
+            </div>
+          </button>
         </div>
       )}
 
