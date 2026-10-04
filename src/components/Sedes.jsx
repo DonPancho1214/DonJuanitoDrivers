@@ -304,50 +304,53 @@ function SedeCard({ sede, onVerMas, index = 0 }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-50px' }}
       transition={{ duration: 0.5, delay: (index % 4) * 0.08, ease: [0.16, 1, 0.3, 1] }}
-      className="bg-white rounded-2xl p-5 sm:p-6 border border-gray-200/90 hover:border-[#D4AF37] shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group relative overflow-hidden"
+      className="bg-white rounded-2xl p-5 border border-gray-200/90 hover:border-[#D4AF37] shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group relative overflow-hidden h-full"
     >
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
 
+      {/* Bloque Superior */}
       <div>
-        {/* Encabezado: Título + Zona */}
-        <div className="flex items-start justify-between gap-2 mb-1">
-          <h3
-            className="font-black text-gray-900 text-2xl tracking-tight leading-snug group-hover:text-amber-800 transition-colors"
-            style={{ fontFamily: "'Outfit', sans-serif" }}
-          >
-            {sede.nombre}
-          </h3>
+        {/* Encabezado: Título + Zona con altura fija simétrica */}
+        <div className="flex items-start justify-between gap-2 h-14 mb-2">
+          <div className="h-full flex items-center pr-1">
+            <h3
+              className="font-black text-gray-900 text-xl sm:text-[21px] tracking-tight leading-snug group-hover:text-amber-800 transition-colors line-clamp-2"
+              style={{ fontFamily: "'Outfit', sans-serif" }}
+            >
+              {sede.nombre}
+            </h3>
+          </div>
           {zona && (
-            <span className={`text-[10px] px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider border shrink-0 mt-1 ${zona.clase}`}>
+            <span className={`text-[10px] px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider border shrink-0 mt-1.5 ${zona.clase}`}>
               {zona.nombre}
             </span>
           )}
         </div>
 
         {/* Sector / Lugar */}
-        <div className="flex items-center gap-1.5 text-[#B38728] text-xs font-bold uppercase tracking-wider mb-3">
+        <div className="flex items-center gap-1.5 text-[#B38728] text-xs font-bold uppercase tracking-wider h-5 mb-3 truncate">
           <MapPin size={13} className="text-[#B38728] shrink-0" />
-          <span>{sede.subtitulo}</span>
+          <span className="truncate">{sede.subtitulo}</span>
         </div>
 
-        {/* Horarios & Estado Abierta/Cerrada (Sin dirección) */}
-        <div className="flex items-center justify-between gap-2 mb-4 pb-3 border-b border-gray-100 text-xs">
+        {/* Horarios & Estado Abierta/Cerrada */}
+        <div className="flex items-center justify-between gap-2 h-7 mb-3.5 pb-2 border-b border-gray-100 text-xs">
           <div className="flex items-center gap-1.5 text-gray-600 font-medium">
             <Clock size={13} className="text-gray-400 shrink-0" />
             <span>{sede.horarios}</span>
           </div>
-          <span className="inline-flex items-center gap-1.5 text-[11px] font-bold">
+          <span className="inline-flex items-center gap-1.5 text-[11px] font-bold shrink-0">
             {isOpen ? (
               <>
-                <span className="relative flex h-2.5 w-2.5">
+                <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                 </span>
                 <span className="text-emerald-600 font-bold">Abierta</span>
               </>
             ) : (
               <>
-                <span className="h-2.5 w-2.5 rounded-full bg-red-500 ring-2 ring-red-100"></span>
+                <span className="h-2 w-2 rounded-full bg-red-500 ring-2 ring-red-100"></span>
                 <span className="text-red-500 font-bold">Cerrada</span>
               </>
             )}
@@ -355,8 +358,8 @@ function SedeCard({ sede, onVerMas, index = 0 }) {
         </div>
 
         {/* Categorías */}
-        <div className="flex flex-wrap items-center gap-1.5 mb-5">
-          <span className="text-[11px] text-gray-400 font-semibold mr-1">Cursos:</span>
+        <div className="flex items-center gap-1.5 h-6 mb-4">
+          <span className="text-[11px] text-gray-400 font-semibold mr-1 shrink-0">Cursos:</span>
           {sede.categorias.map(c => (
             <span key={c} className="px-2 py-0.5 rounded-md text-xs font-bold bg-amber-50 text-amber-900 border border-amber-200/70"
               style={{ fontFamily: 'Barlow Condensed' }}>
@@ -366,20 +369,20 @@ function SedeCard({ sede, onVerMas, index = 0 }) {
         </div>
       </div>
 
-      {/* Botones de Acción (Atractivos para la compra) */}
-      <div className="flex flex-col gap-2 pt-2">
+      {/* Botones de Acción Simétricos */}
+      <div className="flex flex-col gap-2 mt-auto pt-2">
         <button
           onClick={() => onVerMas(sede)}
-          className="w-full py-2.5 px-4 rounded-xl font-extrabold text-xs sm:text-sm text-gray-950 bg-gradient-to-r from-[#D4AF37] via-[#E8C252] to-[#B89020] hover:brightness-105 active:scale-[0.98] shadow-sm hover:shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
+          className="w-full h-10 px-4 rounded-xl font-extrabold text-xs sm:text-sm text-gray-950 bg-gradient-to-r from-[#D4AF37] via-[#E8C252] to-[#B89020] hover:brightness-105 active:scale-[0.98] shadow-sm hover:shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
         >
           <span>Ver Precios y Cupos</span>
           <span className="text-base font-bold leading-none">→</span>
         </button>
-        <div className="flex gap-2">
+        <div className="grid grid-cols-2 gap-2">
           <button
             type="button"
             onClick={() => abrirWhatsApp(waMsg)}
-            className="flex-1 py-2 px-3 rounded-xl font-semibold text-xs text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200/80 transition-colors flex items-center justify-center gap-1.5"
+            className="h-9 px-3 rounded-xl font-bold text-xs text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200/80 transition-colors flex items-center justify-center gap-1.5"
           >
             {WA_ICON}
             <span>WhatsApp</span>
@@ -388,7 +391,7 @@ function SedeCard({ sede, onVerMas, index = 0 }) {
             href={sede.mapsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="py-2 px-3 rounded-xl font-semibold text-xs text-gray-600 bg-gray-50 hover:bg-gray-100 border border-gray-200 transition-colors flex items-center justify-center gap-1"
+            className="h-9 px-3 rounded-xl font-bold text-xs text-gray-700 bg-gray-50 hover:bg-gray-100 border border-gray-200 transition-colors flex items-center justify-center gap-1.5"
             title="Cómo llegar"
           >
             <MapPin size={13} className="text-[#B38728]" />
