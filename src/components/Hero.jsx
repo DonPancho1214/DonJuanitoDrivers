@@ -41,8 +41,8 @@ export default function Hero() {
           <h1 className="font-semibold leading-tight mb-6 animate-fade-in-up tracking-tight"
             style={{ fontFamily: 'Outfit', fontSize: 'clamp(3rem,6vw,5.5rem)', animationDelay: '0.2s', opacity: 0 }}>
             <span className="text-gray-900 font-extrabold">Obtener tu licencia</span><br />
-            <span className="text-gray-600 font-medium">de conducción nunca fue</span><br />
-            <span className="font-black text-gold-outline">tan fácil.</span>
+            <span className="text-gray-600 font-medium">de conducción</span><br />
+            <span className="font-black text-gold-outline">¡nunca fue tan fácil!</span>
           </h1>
 
           <div className="text-gray-600 text-lg md:text-xl mb-10 max-w-xl leading-relaxed font-normal animate-fade-in-up"
