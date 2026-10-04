@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import SedeDetalle from './SedeDetalle'
-import { Star, MapPin, Wallet, AlertTriangle, CreditCard } from 'lucide-react'
+import { Star, MapPin, Wallet, AlertTriangle, CreditCard, Clock } from 'lucide-react'
 // Sistema round-robin centralizado — distribye clicks entre asesores
 import { abrirWhatsApp } from '../utils/whatsapp'
 
@@ -10,7 +10,7 @@ export const sedes = [
     id: 'diverplaza',
     nombre: 'CEA Diverplaza',
     bookingKey: 'CEA Diverplaza (Sede Principal)',
-    subtitulo: 'Sede Principal • Calle 80',
+    subtitulo: 'Calle 80 • Álamos',
     direccion: 'Cra. 100 #72-19, Bogotá',
     horarios: 'Lun–Sáb: 7am – 6pm',
     categorias: ['A2', 'B1', 'C1'],
@@ -25,20 +25,20 @@ export const sedes = [
   {
     id: 'conductores',
     nombre: 'Conductores Bogotá',
-    subtitulo: 'Chapinero • Habilitada C2 (Camión)',
+    subtitulo: 'Chapinero',
     direccion: 'Cl. 71 #14a-14, Bogotá',
     horarios: 'Lun–Vie: 8am – 5pm',
     categorias: ['A2', 'B1', 'C1', 'C2'],
     destacada: false,
     mapsUrl: 'https://maps.app.goo.gl/RKB3fmzkve582yny5',
-    alertas: [<span key="c2" className="flex items-center gap-1"><Star size={12} className="fill-yellow-400" /> Única sede que ofrece categoría C2</span>],
+    alertas: [<span key="c2" className="flex items-center gap-1"><Star size={12} className="fill-yellow-400" /> Única sede que ofrece categoría C2 (Camión)</span>],
     descripcion: 'Conductores Bogotá en Chapinero es la única sede de la red con habilitación para categoría C2 (camiones de pacha sencilla, máx. 4h prácticas diarias). Cita previa obligatoria de matrícula bajo Camilo Velandia.',
     horas: { A2: '13 clases teoría (26h) + 4h taller', B1: '13 clases teoría (26h) + 6h taller', C1: '15 clases teoría (30h) + 6h taller', C2: '10 clases teoría (20h) + 10h taller' },
   },
   {
     id: 'velari',
     nombre: 'CEA Velari',
-    subtitulo: 'Calle 100 • Acepta Cesantías',
+    subtitulo: 'Calle 100',
     direccion: 'Av. Calle 100 #60d-05 / 65, Barrio Rincón de los Andes, Bogotá',
     horarios: 'Lun–Sáb: 7am – 5pm',
     categorias: ['A2', 'B1', 'C1'],
@@ -50,7 +50,7 @@ export const sedes = [
   {
     id: 'guerrero',
     nombre: 'El Agente Guerrero',
-    subtitulo: 'Kennedy / Venecia • Autopista Sur',
+    subtitulo: 'Kennedy / Venecia',
     direccion: 'Autopista Sur #54-55 / Cl. 45A Sur #54A-55 Piso 2, Bogotá',
     horarios: 'Lun–Sáb: 8am – 5pm',
     categorias: ['A2', 'B1', 'C1'],
@@ -62,7 +62,7 @@ export const sedes = [
   {
     id: 'autoxua',
     nombre: 'CEA Auto Xua',
-    subtitulo: 'Soacha Parque • Cero Homologaciones',
+    subtitulo: 'Soacha Parque',
     direccion: 'Cl. 12 #8A-01, Soacha Parque',
     horarios: 'Lun–Sáb: 8am – 6pm',
     categorias: ['A2', 'B1', 'C1'],
@@ -74,7 +74,7 @@ export const sedes = [
   {
     id: 'carvajal',
     nombre: 'CEA Carvajal',
-    subtitulo: 'Primera de Mayo • Pico y Cédula',
+    subtitulo: 'Primera de Mayo',
     direccion: 'Carrera 71D, Cl. 20 Sur #8 Piso 4, Bogotá',
     horarios: 'Lun–Sáb: 8am – 5pm',
     categorias: ['A2', 'B1', 'C1'],
@@ -98,7 +98,7 @@ export const sedes = [
   {
     id: 'valuvial',
     nombre: 'CEA Valuvial',
-    subtitulo: 'Ciudad Bolívar • Restricción Aforo',
+    subtitulo: 'Ciudad Bolívar',
     direccion: 'Carrera 19D #63-18 Sur Piso 2, Barrio San Francisco, Bogotá',
     horarios: 'Lun–Sáb: 8am – 6pm',
     categorias: ['A2', 'B1', 'C1'],
@@ -227,52 +227,61 @@ function SedeCard({ sede, onVerMas, index = 0 }) {
         style={{ background: 'linear-gradient(135deg, #1a1500 0%, #1f1800 50%, #0a0a00 100%)', border: '2px solid #D4AF37', boxShadow: '0 0 60px rgba(212,175,55,0.18)' }}>
         <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at 30% 30%, rgba(212,175,55,0.08) 0%, transparent 70%)' }} />
         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-yellow-600 via-yellow-400 to-yellow-600" />
-        <div className="p-8 relative">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-5 font-bold text-xs tracking-widest uppercase"
+        <div className="p-7 sm:p-8 relative">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full mb-4 font-bold text-xs tracking-widest uppercase"
             style={{ background: 'rgba(212,175,55,0.15)', border: '1px solid rgba(212,175,55,0.5)', color: '#D4AF37', fontFamily: 'Barlow Condensed' }}>
-            <Star size={14} className="inline mr-1 fill-yellow-400" /> SEDE PRINCIPAL — ACOMPAÑAMIENTO TOTAL
+            <Star size={13} className="inline mr-1 fill-yellow-400" /> SEDE PRINCIPAL
           </div>
           <div className="flex flex-col md:flex-row md:items-start gap-6">
             <div className="flex-1">
-              <h3 className="font-black text-white mb-2" style={{ fontFamily: "'Outfit', sans-serif", fontSize: '1.9rem' }}>{sede.nombre}</h3>
+              <h3 className="font-black text-white mb-1" style={{ fontFamily: "'Outfit', sans-serif", fontSize: '1.9rem' }}>{sede.nombre}</h3>
+              <p className="text-[#D4AF37] text-xs font-bold uppercase tracking-wider mb-4">{sede.subtitulo}</p>
+              
               <div className="flex flex-col gap-2 mb-5">
                 <div className="flex items-center gap-2 text-gray-300 text-sm">
-                  <svg className="text-yellow-400 shrink-0" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" /><circle cx="12" cy="10" r="3" /></svg>
-                  {sede.direccion}
+                  <MapPin size={15} className="text-yellow-400 shrink-0" />
+                  <span>{sede.direccion}</span>
                 </div>
                 <div className="flex items-center gap-2 text-gray-300 text-sm">
-                  <svg className="text-yellow-400 shrink-0" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
+                  <Clock size={15} className="text-yellow-400 shrink-0" />
                   <span>{sede.horarios}</span>
                   <span className="inline-flex items-center gap-1.5 ml-2 text-xs font-semibold">
                     {isOpen ? (
                       <>
-                        <span className="relative flex h-2.5 w-2.5">
-                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+                        <span className="relative flex h-2 w-2">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                         </span>
-                        <span className="text-green-400">Abierta ahora</span>
+                        <span className="text-emerald-400 font-bold">Abierta ahora</span>
                       </>
                     ) : (
                       <>
-                        <span className="h-2.5 w-2.5 rounded-full bg-red-500"></span>
-                        <span className="text-red-400">Cerrada</span>
+                        <span className="h-2 w-2 rounded-full bg-red-400"></span>
+                        <span className="text-gray-400">Cerrada</span>
                       </>
                     )}
                   </span>
                 </div>
               </div>
-              <div className="flex flex-wrap gap-2 mb-5">
+
+              <div className="flex flex-wrap gap-2 mb-6">
                 {sede.categorias.map(c => (
-                  <span key={c} className="px-3 py-1.5 rounded font-black text-sm"
+                  <span key={c} className="px-3 py-1 rounded font-black text-xs"
                     style={{ background: 'rgba(212,175,55,0.15)', border: '1px solid rgba(212,175,55,0.4)', color: '#D4AF37', fontFamily: 'Barlow Condensed' }}>{c}</span>
                 ))}
               </div>
+
               <div className="flex flex-wrap gap-3">
-                <button type="button" onClick={() => abrirWhatsApp(waMsg)} className="btn-yellow text-sm animate-pulse-glow">
-                  {WA_ICON} WhatsApp
+                <button onClick={() => onVerMas(sede)} className="btn-yellow text-sm font-extrabold flex items-center gap-2 cursor-pointer shadow-md hover:brightness-105 active:scale-[0.98]">
+                  <span>Ver Precios y Cupos</span>
+                  <span>→</span>
                 </button>
-                <button onClick={() => onVerMas(sede)} className="btn-outline text-sm cursor-pointer">Ver precios</button>
-                <a href={sede.mapsUrl} target="_blank" rel="noopener noreferrer" className="btn-outline text-sm"><MapPin size={16} className="inline mr-1" /> Cómo llegar</a>
+                <button type="button" onClick={() => abrirWhatsApp(waMsg)} className="btn-outline text-sm flex items-center gap-1.5 text-white border-white/30 hover:border-yellow-400">
+                  {WA_ICON} <span>WhatsApp</span>
+                </button>
+                <a href={sede.mapsUrl} target="_blank" rel="noopener noreferrer" className="btn-outline text-sm flex items-center gap-1.5 text-white border-white/30 hover:border-yellow-400">
+                  <MapPin size={14} className="text-[#D4AF37]" /> <span>Cómo llegar</span>
+                </a>
               </div>
             </div>
             <div className="hidden md:flex items-center justify-center w-32 h-32 rounded-full border-2 border-yellow-400/30 animate-float shrink-0">
@@ -294,73 +303,98 @@ function SedeCard({ sede, onVerMas, index = 0 }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-50px' }}
       transition={{ duration: 0.5, delay: (index % 4) * 0.08, ease: [0.16, 1, 0.3, 1] }}
-      className="glass-card card-hover p-6 flex flex-col relative overflow-hidden group">
-      <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-      {sede.alertas?.length > 0 ? (
-        <div className="h-11 mb-3 flex flex-wrap gap-1 items-start pt-1.5">
-          {sede.alertas.map((a, i) => (
-            <span key={i} className="text-xs px-2.5 py-0.5 rounded-full font-bold bg-black text-[#D4AF37] border border-[#D4AF37]">{a}</span>
+      className="bg-white rounded-2xl p-5 sm:p-6 border border-gray-200/90 hover:border-[#D4AF37] shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group relative overflow-hidden"
+    >
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+
+      {/* Top Header: Lugar & Zona */}
+      <div>
+        <div className="flex items-center justify-between gap-2 mb-2">
+          <div className="flex items-center gap-1.5 text-[#B38728] text-xs font-bold uppercase tracking-wider">
+            <MapPin size={13} className="text-[#B38728] shrink-0" />
+            <span>{sede.subtitulo}</span>
+          </div>
+          {zona && (
+            <span className={`text-[10px] px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider border ${zona.clase}`}>
+              {zona.nombre}
+            </span>
+          )}
+        </div>
+
+        {/* Nombre Sede */}
+        <h3 className="font-extrabold text-gray-900 text-xl mb-3 tracking-tight group-hover:text-amber-900 transition-colors" style={{ fontFamily: "'Outfit', sans-serif" }}>
+          {sede.nombre}
+        </h3>
+
+        {/* Dirección y Horarios */}
+        <div className="flex flex-col gap-2 mb-4 pb-4 border-b border-gray-100 text-xs">
+          <div className="flex items-start gap-2 text-gray-600 font-medium">
+            <span className="text-gray-400 shrink-0 mt-0.5">•</span>
+            <span className="line-clamp-1">{sede.direccion}</span>
+          </div>
+          <div className="flex items-center justify-between gap-2 text-gray-600 font-medium">
+            <div className="flex items-center gap-1.5">
+              <Clock size={13} className="text-gray-400 shrink-0" />
+              <span>{sede.horarios}</span>
+            </div>
+            <span className="inline-flex items-center gap-1.5 text-[10px] font-bold">
+              {isOpen ? (
+                <>
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                  </span>
+                  <span className="text-emerald-700 font-bold">Abierta</span>
+                </>
+              ) : (
+                <>
+                  <span className="h-1.5 w-1.5 rounded-full bg-gray-400"></span>
+                  <span className="text-gray-400">Cerrada</span>
+                </>
+              )}
+            </span>
+          </div>
+        </div>
+
+        {/* Categorías */}
+        <div className="flex flex-wrap items-center gap-1.5 mb-5">
+          <span className="text-[11px] text-gray-400 font-semibold mr-1">Cursos:</span>
+          {sede.categorias.map(c => (
+            <span key={c} className="px-2 py-0.5 rounded-md text-xs font-bold bg-amber-50 text-amber-900 border border-amber-200/70"
+              style={{ fontFamily: 'Barlow Condensed' }}>
+              {c}
+            </span>
           ))}
         </div>
-      ) : (
-        <div className="h-11 mb-3 flex flex-wrap gap-1 items-start pt-1.5 opacity-0 pointer-events-none" aria-hidden="true">
-          <span className="text-xs px-2 py-0.5 rounded-full select-none">&nbsp;</span>
-        </div>
-      )}
-      <h3 className="font-black text-gray-900 text-xl mb-0.5" style={{ fontFamily: "'Outfit', sans-serif" }}>{sede.nombre}</h3>
-      <div className="flex flex-wrap items-center gap-2 mb-3">
-        <span className="text-[#B38728] text-xs font-bold uppercase tracking-wider">{sede.subtitulo}</span>
-        {zona && (
-          <span className={`text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider border ${zona.clase}`}>
-            {zona.nombre}
-          </span>
-        )}
       </div>
-      <div className="flex flex-col gap-1.5 mb-4 flex-1">
-        <div className="flex items-start gap-2">
-          <svg className="text-[#D4AF37] shrink-0 mt-0.5" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" /><circle cx="12" cy="10" r="3" /></svg>
-          <span className="text-gray-600 text-xs font-medium">{sede.direccion}</span>
-        </div>
-        <div className="flex items-center gap-2 flex-wrap">
-          <svg className="text-[#D4AF37] shrink-0" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
-          <span className="text-gray-600 text-xs font-medium">{sede.horarios}</span>
-          <span className="inline-flex items-center gap-1 ml-1.5 text-[10px] font-bold">
-            {isOpen ? (
-              <>
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                </span>
-                <span className="text-green-600">Abierta ahora</span>
-              </>
-            ) : (
-              <>
-                <span className="h-2 w-2 rounded-full bg-red-500"></span>
-                <span className="text-red-500">Cerrada</span>
-              </>
-            )}
-          </span>
-        </div>
-      </div>
-      <div className="flex flex-wrap gap-1.5 mb-4">
-        {sede.categorias.map(c => (
-          <span key={c} className="px-2.5 py-0.5 rounded text-xs font-bold bg-black text-[#D4AF37] border border-[#D4AF37]"
-            style={{ fontFamily: 'Barlow Condensed' }}>{c}</span>
-        ))}
-      </div>
-      <div className="flex flex-col gap-2">
-        <button type="button" onClick={() => abrirWhatsApp(waMsg)}
-          className="btn-yellow text-xs py-2.5 justify-center w-full shadow-sm" style={{ whiteSpace: 'nowrap' }}>
-          {WA_ICON} WhatsApp
+
+      {/* Botones de Acción (Atractivos para la compra) */}
+      <div className="flex flex-col gap-2 pt-2">
+        <button
+          onClick={() => onVerMas(sede)}
+          className="w-full py-2.5 px-4 rounded-xl font-extrabold text-xs sm:text-sm text-gray-950 bg-gradient-to-r from-[#D4AF37] via-[#E8C252] to-[#B89020] hover:brightness-105 active:scale-[0.98] shadow-sm hover:shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
+        >
+          <span>Ver Precios y Cupos</span>
+          <span className="text-base font-bold leading-none">→</span>
         </button>
         <div className="flex gap-2">
-          <button onClick={() => onVerMas(sede)}
-            className="btn-outline text-xs py-2.5 w-1/2 justify-center cursor-pointer px-2 shadow-sm" style={{ whiteSpace: 'nowrap' }}>
-            Ver precios
+          <button
+            type="button"
+            onClick={() => abrirWhatsApp(waMsg)}
+            className="flex-1 py-2 px-3 rounded-xl font-semibold text-xs text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200/80 transition-colors flex items-center justify-center gap-1.5"
+          >
+            {WA_ICON}
+            <span>WhatsApp</span>
           </button>
-          <a href={sede.mapsUrl} target="_blank" rel="noopener noreferrer"
-            className="btn-outline text-xs py-2.5 w-1/2 justify-center px-2 shadow-sm" title="Cómo llegar">
-            <MapPin size={14} />
+          <a
+            href={sede.mapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="py-2 px-3 rounded-xl font-semibold text-xs text-gray-600 bg-gray-50 hover:bg-gray-100 border border-gray-200 transition-colors flex items-center justify-center gap-1"
+            title="Cómo llegar"
+          >
+            <MapPin size={13} className="text-[#B38728]" />
+            <span>Ubicación</span>
           </a>
         </div>
       </div>
