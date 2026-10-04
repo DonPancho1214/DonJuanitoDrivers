@@ -102,15 +102,35 @@ function renderMessageContent(content) {
   return parts
 }
 
-export default function Chatbot({ isOpen, setIsOpen }) {
+export default function Chatbot({ isOpen, setIsOpen, introDone = true }) {
   const [messages, setMessages] = useState([
     { role: 'assistant', content: '¡Hola! Soy Don Juanito, tu especialista en trámites de conducción 👋 Te ayudaré con cualquier duda sobre tu licencia, el examen médico o agendamiento. ¿En qué te puedo colaborar hoy?' }
   ])
   const [inputValue, setInputValue] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+  const [showNotification, setShowNotification] = useState(false)
+  const [dismissedNotification, setDismissedNotification] = useState(false)
   const messagesEndRef = useRef(null)
   const chatContainerRef = useRef(null)
   const modalRef = useRef(null)
+
+  // Mostrar notificación encima del chatbox después de la animación de bienvenida
+  useEffect(() => {
+    if (!introDone || isOpen || dismissedNotification) return
+
+    const timer = setTimeout(() => {
+      setShowNotification(true)
+    }, 1200)
+
+    return () => clearTimeout(timer)
+  }, [introDone, isOpen, dismissedNotification])
+
+  // Ocultar notificación si el usuario abre el chatbox
+  useEffect(() => {
+    if (isOpen) {
+      setShowNotification(false)
+    }
+  }, [isOpen])
 
   // Prevenir que el scroll del mouse mueva la página web de fondo
   useEffect(() => {
@@ -203,6 +223,65 @@ export default function Chatbot({ isOpen, setIsOpen }) {
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
       <AnimatePresence>
+        {!isOpen && showNotification && !dismissedNotification && (
+          <motion.div
+            initial={{ opacity: 0, y: 15, scale: 0.92 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 10, scale: 0.95 }}
+            transition={{ type: 'spring', stiffness: 350, damping: 25 }}
+            className="mb-3 mr-1 w-72 sm:w-80 bg-[#0a0a0a]/95 backdrop-blur-xl border border-[#D4AF37]/50 rounded-2xl shadow-[0_15px_35px_rgba(0,0,0,0.6),0_0_20px_rgba(212,175,55,0.2)] p-3.5 relative cursor-pointer group"
+            onClick={() => {
+              setShowNotification(false)
+              setDismissedNotification(true)
+              setIsOpen(true)
+            }}
+          >
+            {/* Bubble arrow pointing to chat button */}
+            <div className="absolute -bottom-2 right-6 w-0 h-0 border-x-8 border-x-transparent border-t-8 border-t-[#0a0a0a]" />
+            <div className="absolute -bottom-[9px] right-6 w-0 h-0 border-x-8 border-x-transparent border-t-8 border-t-[#D4AF37]/50 -z-10" />
+
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation()
+                setShowNotification(false)
+                setDismissedNotification(true)
+              }}
+              className="absolute top-2.5 right-2.5 w-6 h-6 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-colors"
+              aria-label="Cerrar notificación"
+            >
+              <X size={14} />
+            </button>
+
+            <div className="flex items-center gap-2.5 mb-2 pr-6">
+              <div className="relative">
+                <div className="w-8 h-8 rounded-full bg-[#D4AF37] flex items-center justify-center shrink-0">
+                  <Bot size={17} className="text-black" />
+                </div>
+                <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-green-500 border-2 border-black" />
+              </div>
+              <div className="min-w-0">
+                <div className="text-white text-xs font-bold leading-tight flex items-center gap-1.5" style={{ fontFamily: 'Outfit' }}>
+                  <span>Don Juanito</span>
+                  <span className="text-[10px] text-[#D4AF37] font-semibold tracking-wide uppercase px-1.5 py-0.5 rounded bg-[#D4AF37]/10">En línea</span>
+                </div>
+                <div className="text-gray-400 text-[10px] truncate">Especialista en Trámites</div>
+              </div>
+            </div>
+
+            <p className="text-gray-200 text-xs leading-relaxed font-light mb-2.5">
+              ¡Hola! Soy <strong className="font-semibold text-white">Don Juanito</strong>, tu asesor personal 👋 ¿Tienes dudas sobre tu licencia, examen médico o sedes? ¡Escríbeme aquí!
+            </p>
+
+            <div className="flex items-center justify-between pt-2 border-t border-white/10 text-[11px]">
+              <span className="text-[#D4AF37] font-medium group-hover:underline flex items-center gap-1">
+                Iniciar conversación <span className="group-hover:translate-x-0.5 transition-transform">→</span>
+              </span>
+              <span className="text-gray-500 text-[10px]">Respuesta inmediata</span>
+            </div>
+          </motion.div>
+        )}
+
         {isOpen && (
           <motion.div
             ref={modalRef}

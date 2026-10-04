@@ -65,6 +65,7 @@ export default function App() {
         <Chatbot 
           isOpen={activeWidget === 'chatbot'} 
           setIsOpen={(open) => setActiveWidget(open ? 'chatbot' : null)} 
+          introDone={!showIntro}
         />
       </div>
     </div>
