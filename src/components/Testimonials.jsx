@@ -146,6 +146,7 @@ function ReviewCard({ t, isMock, index = 0 }) {
 
 function ReviewFormModal({ onClose }) {
   const [form, setForm] = useState({ nombre: '', estrellas: 5, comentario: '' })
+  const [hoverEstrellas, setHoverEstrellas] = useState(0)
   const [status, setStatus] = useState('idle')
 
   const charCount = form.comentario.length
@@ -217,19 +218,59 @@ function ReviewFormModal({ onClose }) {
             </div>
 
             <div>
-              <label className="block text-gray-700 text-xs uppercase tracking-wider mb-1.5 font-bold">Calificación</label>
-              <div className="flex gap-2">
-                {[1, 2, 3, 4, 5].map(star => (
-                  <button type="button" key={star} onClick={() => setForm({ ...form, estrellas: star })}
-                    className="transition-transform hover:scale-110 focus:outline-none">
-                    <svg width="34" height="34" viewBox="0 0 24 24"
-                      fill={star <= form.estrellas ? '#D4AF37' : 'none'}
-                      stroke={star <= form.estrellas ? '#D4AF37' : '#9ca3af'}
-                      strokeWidth="1.5">
-                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                    </svg>
-                  </button>
-                ))}
+              <div className="flex items-center justify-between mb-1.5">
+                <label className="block text-gray-700 text-xs uppercase tracking-wider font-bold">Calificación</label>
+                {(hoverEstrellas || form.estrellas) > 0 && (
+                  <span className="text-xs font-bold text-[#B38728] transition-all duration-150">
+                    {
+                      {
+                        1: '1 estrella — Muy mala',
+                        2: '2 estrellas — Regular',
+                        3: '3 estrellas — Buena',
+                        4: '4 estrellas — Muy buena',
+                        5: '5 estrellas — ¡Excelente!',
+                      }[hoverEstrellas || form.estrellas]
+                    }
+                  </span>
+                )}
+              </div>
+              <div
+                className="flex items-center gap-1.5 py-1"
+                onMouseLeave={() => setHoverEstrellas(0)}
+              >
+                {[1, 2, 3, 4, 5].map(star => {
+                  const valorActivo = hoverEstrellas || form.estrellas
+                  const isFilled = star <= valorActivo
+
+                  return (
+                    <motion.button
+                      type="button"
+                      key={star}
+                      onClick={() => setForm(f => ({ ...f, estrellas: star }))}
+                      onMouseEnter={() => setHoverEstrellas(star)}
+                      whileHover={{ scale: 1.25 }}
+                      whileTap={{ scale: 0.9 }}
+                      transition={{ type: 'spring', stiffness: 450, damping: 15 }}
+                      className="cursor-pointer focus:outline-none p-1 rounded-lg transition-transform"
+                      title={`${star} estrella${star > 1 ? 's' : ''}`}
+                    >
+                      <svg
+                        width="36"
+                        height="36"
+                        viewBox="0 0 24 24"
+                        className="transition-all duration-150"
+                        style={{
+                          filter: isFilled ? 'drop-shadow(0 2px 8px rgba(212,175,55,0.45))' : 'none',
+                        }}
+                        fill={isFilled ? '#D4AF37' : 'none'}
+                        stroke={isFilled ? '#D4AF37' : '#9ca3af'}
+                        strokeWidth="1.5"
+                      >
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                      </svg>
+                    </motion.button>
+                  )
+                })}
               </div>
             </div>
 
