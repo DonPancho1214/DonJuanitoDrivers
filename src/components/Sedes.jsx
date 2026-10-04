@@ -389,7 +389,7 @@ export default function Sedes() {
               ENCUENTRA TU <span className="font-black text-gold-outline">SEDE MÁS CERCANA</span>
             </h2>
             <p className="text-gray-600 max-w-xl mx-auto text-base">
-              9 sedes activas en Bogotá y Soacha. Agendamiento previo requerido salvo en Diverplaza.
+              9 sedes activas en Bogotá y Soacha. Agendamiento previo requerido para todas las escuelas.
             </p>
           </motion.div>
 
