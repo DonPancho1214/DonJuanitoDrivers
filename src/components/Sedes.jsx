@@ -38,7 +38,7 @@ export const sedes = [
   {
     id: 'velari',
     nombre: 'CEA Velari',
-    subtitulo: 'Calle 100',
+    subtitulo: 'Barrios Unidos • Calle 100',
     direccion: 'Av. Calle 100 #60d-05 / 65, Barrio Rincón de los Andes, Bogotá',
     horarios: 'Lun–Sáb: 7am – 5pm',
     categorias: ['A2', 'B1', 'C1'],
@@ -234,34 +234,35 @@ function SedeCard({ sede, onVerMas, index = 0 }) {
           </div>
           <div className="flex flex-col md:flex-row md:items-start gap-6">
             <div className="flex-1">
-              <h3 className="font-black text-white mb-1" style={{ fontFamily: "'Outfit', sans-serif", fontSize: '1.9rem' }}>{sede.nombre}</h3>
-              <p className="text-[#D4AF37] text-xs font-bold uppercase tracking-wider mb-4">{sede.subtitulo}</p>
+              <h3 className="font-black text-white mb-1 tracking-tight" style={{ fontFamily: "'Outfit', sans-serif", fontSize: '2.2rem', lineHeight: 1.15 }}>
+                {sede.nombre}
+              </h3>
+              <p className="text-[#D4AF37] text-xs font-bold uppercase tracking-wider mb-4 flex items-center gap-1.5">
+                <MapPin size={13} className="text-[#D4AF37] shrink-0" />
+                <span>{sede.subtitulo}</span>
+              </p>
               
-              <div className="flex flex-col gap-2 mb-5">
-                <div className="flex items-center gap-2 text-gray-300 text-sm">
-                  <MapPin size={15} className="text-yellow-400 shrink-0" />
-                  <span>{sede.direccion}</span>
-                </div>
-                <div className="flex items-center gap-2 text-gray-300 text-sm">
+              <div className="flex items-center gap-3 mb-5 text-gray-300 text-sm">
+                <div className="flex items-center gap-2">
                   <Clock size={15} className="text-yellow-400 shrink-0" />
                   <span>{sede.horarios}</span>
-                  <span className="inline-flex items-center gap-1.5 ml-2 text-xs font-semibold">
-                    {isOpen ? (
-                      <>
-                        <span className="relative flex h-2 w-2">
-                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                          <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                        </span>
-                        <span className="text-emerald-400 font-bold">Abierta ahora</span>
-                      </>
-                    ) : (
-                      <>
-                        <span className="h-2 w-2 rounded-full bg-red-400"></span>
-                        <span className="text-gray-400">Cerrada</span>
-                      </>
-                    )}
-                  </span>
                 </div>
+                <span className="inline-flex items-center gap-1.5 text-xs font-bold">
+                  {isOpen ? (
+                    <>
+                      <span className="relative flex h-2.5 w-2.5">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                      </span>
+                      <span className="text-emerald-400 font-bold">Abierta ahora</span>
+                    </>
+                  ) : (
+                    <>
+                      <span className="h-2.5 w-2.5 rounded-full bg-red-500 ring-2 ring-red-900/50"></span>
+                      <span className="text-red-400 font-bold">Cerrada</span>
+                    </>
+                  )}
+                </span>
               </div>
 
               <div className="flex flex-wrap gap-2 mb-6">
@@ -307,53 +308,50 @@ function SedeCard({ sede, onVerMas, index = 0 }) {
     >
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
 
-      {/* Top Header: Lugar & Zona */}
       <div>
-        <div className="flex items-center justify-between gap-2 mb-2">
-          <div className="flex items-center gap-1.5 text-[#B38728] text-xs font-bold uppercase tracking-wider">
-            <MapPin size={13} className="text-[#B38728] shrink-0" />
-            <span>{sede.subtitulo}</span>
-          </div>
+        {/* Encabezado: Título + Zona */}
+        <div className="flex items-start justify-between gap-2 mb-1">
+          <h3
+            className="font-black text-gray-900 text-2xl tracking-tight leading-snug group-hover:text-amber-800 transition-colors"
+            style={{ fontFamily: "'Outfit', sans-serif" }}
+          >
+            {sede.nombre}
+          </h3>
           {zona && (
-            <span className={`text-[10px] px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider border ${zona.clase}`}>
+            <span className={`text-[10px] px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider border shrink-0 mt-1 ${zona.clase}`}>
               {zona.nombre}
             </span>
           )}
         </div>
 
-        {/* Nombre Sede */}
-        <h3 className="font-extrabold text-gray-900 text-xl mb-3 tracking-tight group-hover:text-amber-900 transition-colors" style={{ fontFamily: "'Outfit', sans-serif" }}>
-          {sede.nombre}
-        </h3>
+        {/* Sector / Lugar */}
+        <div className="flex items-center gap-1.5 text-[#B38728] text-xs font-bold uppercase tracking-wider mb-3">
+          <MapPin size={13} className="text-[#B38728] shrink-0" />
+          <span>{sede.subtitulo}</span>
+        </div>
 
-        {/* Dirección y Horarios */}
-        <div className="flex flex-col gap-2 mb-4 pb-4 border-b border-gray-100 text-xs">
-          <div className="flex items-start gap-2 text-gray-600 font-medium">
-            <span className="text-gray-400 shrink-0 mt-0.5">•</span>
-            <span className="line-clamp-1">{sede.direccion}</span>
+        {/* Horarios & Estado Abierta/Cerrada (Sin dirección) */}
+        <div className="flex items-center justify-between gap-2 mb-4 pb-3 border-b border-gray-100 text-xs">
+          <div className="flex items-center gap-1.5 text-gray-600 font-medium">
+            <Clock size={13} className="text-gray-400 shrink-0" />
+            <span>{sede.horarios}</span>
           </div>
-          <div className="flex items-center justify-between gap-2 text-gray-600 font-medium">
-            <div className="flex items-center gap-1.5">
-              <Clock size={13} className="text-gray-400 shrink-0" />
-              <span>{sede.horarios}</span>
-            </div>
-            <span className="inline-flex items-center gap-1.5 text-[10px] font-bold">
-              {isOpen ? (
-                <>
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                  </span>
-                  <span className="text-emerald-700 font-bold">Abierta</span>
-                </>
-              ) : (
-                <>
-                  <span className="h-1.5 w-1.5 rounded-full bg-gray-400"></span>
-                  <span className="text-gray-400">Cerrada</span>
-                </>
-              )}
-            </span>
-          </div>
+          <span className="inline-flex items-center gap-1.5 text-[11px] font-bold">
+            {isOpen ? (
+              <>
+                <span className="relative flex h-2.5 w-2.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                </span>
+                <span className="text-emerald-600 font-bold">Abierta</span>
+              </>
+            ) : (
+              <>
+                <span className="h-2.5 w-2.5 rounded-full bg-red-500 ring-2 ring-red-100"></span>
+                <span className="text-red-500 font-bold">Cerrada</span>
+              </>
+            )}
+          </span>
         </div>
 
         {/* Categorías */}
